@@ -1,0 +1,52 @@
+@mixin box-sizing($model) {
+    -webkit-box-sizing: $model;
+    -moz-box-sizing: $model;
+    box-sizing: $model;
+}
+
+/*
+* {
+  @include box-sizing(border-box);
+}
+*/
+
+body { margin: 0; padding: 0}
+nav {
+    background-color: #eef;
+}
+article {
+    background: #fee;
+    padding: 5mm;
+}
+@media (min-width: 100mm) {
+    /* Navbar on right side */
+    .main {
+        max-width: 960px;
+    }
+    nav { 
+        display: table-cell;
+        min-width: 100px; 
+        padding: 5mm; 
+    }
+    article {
+        display: table-cell;
+        width: 100%;
+    }
+}
+.main {
+    margin: 0 auto; 
+    max-width: 200mm; 
+    background: #fee; 
+}
+header {
+    background-color: #e0e0e0;
+    font-size: 40mm;
+    text-align: center;
+}
+footer {
+    padding: 5mm;
+    background: #431;
+    font-size: 24mm;
+    text-align: center;
+    color: white;
+}
