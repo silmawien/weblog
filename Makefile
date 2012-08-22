@@ -21,7 +21,7 @@ ${OUTDIR}/%.html: posts/%.txt ${TEMPLATES}
 # sass
 ${OUTDIR}/%.css: %.scss
 	@mkdir -p $(@D)
-	sass $< > $@
+	bundle exec sass $< > $@
 
 # straight copy
 ${OUTDIR}/%: static/%
