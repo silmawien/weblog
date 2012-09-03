@@ -1,52 +1,78 @@
+$max-width: 800px;
+$nav-width: 260px;
+
+$normal-padding: 20px;
+
 @mixin box-sizing($model) {
     -webkit-box-sizing: $model;
     -moz-box-sizing: $model;
     box-sizing: $model;
 }
 
-/*
+/* Use the more sane border-box model. */
 * {
   @include box-sizing(border-box);
 }
-*/
 
-body { margin: 0; padding: 0}
-nav {
-    background-color: #eef;
+body {
+    margin: 3px 0 0 0;
+    padding: 0;
+    background: #303038;
 }
+
+#content {
+    background: #eee;
+}
+
+header {
+    font-size: 80px;
+    padding: $normal-padding;
+    text-align: center;
+    max-width: $max-width + $nav-width;
+    margin: 0 auto;
+}
+
+.main {
+    margin: 0 auto;
+}
+
 article {
-    background: #fee;
-    padding: 5mm;
+    padding: $normal-padding;
 }
-@media (min-width: 100mm) {
-    /* Navbar on right side */
+
+nav {
+    padding: $normal-padding;
+}
+
+footer {
+    padding: $normal-padding;
+    font-size: 14px;
+    text-align: center;
+    color: white;
+    max-width: $max-width + $nav-width;
+    margin: 0 auto;
+}
+
+/* Scale up nicely. First add margins. */
+@media (min-width: $max-width) {
     .main {
-        max-width: 960px;
+        width: $max-width;
     }
-    nav { 
+}
+
+/* Next move the nav bar to the side. */
+@media (min-width: $max-width + $nav-width) {
+    .main {
+        width: $max-width + $nav-width;
+    }
+    nav {
         display: table-cell;
-        min-width: 100px; 
-        padding: 5mm; 
+        width: $nav-width;
     }
     article {
         display: table-cell;
-        width: 100%;
+        width: $max-width;
+        max-width: $max-width;
+        overflow: hidden;
     }
-}
-.main {
-    margin: 0 auto; 
-    max-width: 200mm; 
-    background: #fee; 
-}
-header {
-    background-color: #e0e0e0;
-    font-size: 40mm;
-    text-align: center;
-}
-footer {
-    padding: 5mm;
-    background: #431;
-    font-size: 24mm;
-    text-align: center;
-    color: white;
 }

@@ -19,15 +19,18 @@ def read_post(path):
             # Metadata section ends with an empty line
             if not line.strip(): break
             # Metadata has the format "key: value"
-            [key, value] = re.split("\s*:\s*", line)
+            [key, value] = re.split(u"\s*:\s*", unicode(line, "utf-8"))
             post[key.lower()] = value.strip()
         
         # The remainder is markdown-content
         md = "".join([line for line in f])
-        post["content"] = markdown(md)
+        post["content"] = unicode(markdown(md), "utf-8")
     return post
     
-if __name__ == "__main__":
-    ctx = read_post(sys.argv[1])
+def mm(src):
+    ctx = read_post(src)
     env = Environment(loader=FileSystemLoader("templates"))
-    print env.get_template("post.html").render(ctx)
+    print env.get_template("post.html").render(ctx).encode("utf-8")
+
+if __name__ == "__main__":
+    mm(sys.argv[1])

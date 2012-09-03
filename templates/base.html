@@ -4,15 +4,36 @@
         {% block head %}
         <meta charset="utf-8" />
         <title>{% block title %}{% endblock %} - Some Blog</title>
-        <link rel="stylesheet" href="style.css" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <link rel="stylesheet" href="/style/style.css" />
         {% endblock %}
     </head>
     <body>
-        <div id="content">{% block content %}{% endblock %}</div>
-        <div id="footer">
+        <div id="content">
+            <header>Some blog</header>
+            <div class="main">
+                <article>
+                {% block content %}{% endblock %}
+                </article>
+                <nav>
+                    <p>content</p>
+                    <p>content</p>
+                    <p>content</p>
+                    <p>content</p>
+                    <p>content</p>
+                    <p>content</p>
+                    <p>content</p>
+                    <p>content</p>
+                    <p>content</p>
+                    <p>content</p>
+                    <p>content</p>
+                </nav>
+            </div>
+        </div>
+        <footer>
             {% block footer %}
             &copy; Copyright 2008 by <a href="http://domain.invalid/">you</a>.
             {% endblock %}
-        </div>
+        </footer>
     </body>
 </html>

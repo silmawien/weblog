@@ -1,0 +1,117 @@
+Title: Literate Programming
+Created: 2012-09-02
+
+I just finished reading Donald Knuth's [WEB paper][1], where he describes his
+tool for literate programming.
+
+What I find interesting is that he claims that programs written in WEB have
+turned out to be really good; perhaps better than they would
+have been otherwise.
+
+[1]: http://www.literateprogramming.com/knuthweb.pdf
+
+WEB programs are not just comments and code interspersed. It's more like a
+kind of advanced macro-facility. You can define C-style macros, with a single
+parameter.
+
+    define print integer(#) ≡ write(# : 1)
+    {put a given integer into the output file,
+      in decimal notation, using only as many
+      digit positions as necessary }
+
+You can also rip out pieces of your code and replace it with a reference to
+some code defined elsewhere. This is the top-level description of a program
+for printing out the first 1000 prime numbers (sorry for butchering the
+type-setting when translating this back to text).
+
+    < Program to print the first thousand prime numbers 2 > ≡
+    program print_primes(output);
+        const m = 1000;
+            < Other constants of the program 5 >
+        var < Variables of the program 4 >
+            begin < Print the first m prime numbers 3 >;
+            end.
+
+This part defines 'Program to print ...' as a skeleton pascal program. The
+angle brackets are references to other definitions, with section numbers so
+that you can easily find them (all WEB programs are divided into sections).
+
+The angle bracket syntax allows you to present your program in a top-down
+style if you choose to, going beyond the methods of decomposition provided by
+the target language. Got some boiler plate code inside a super
+complex algorithm? Add a reference, and move it to a separate
+section where it won't interfere with your explanation of the algorithm. WEB
+makes sure the compiler sees the recombined code.
+
+References allow you to decompose code in a new dimension - for readability.
+It is good practice to do decompose anyway, of course, but the tools in your
+language - functions, macros - have one thing in common; the compiler must
+understand them. Consequently you may have to do extra work like move variable
+declarations around to keep the program syntactically sane.
+
+In a way, WEB is Javadoc turned inside out. Javadoc comments use special
+@-keywords and HTML tags to refer to other comments. This syntax is turned
+into HTML links by the Javadoc tool. All this goes on inside of comment blocks
+so the compiler isn't disturbed. In other languages the order of functions
+cater to the compiler, and not the programmer. Are we perhaps too
+accommodating? [SICP][] asserts that
+
+> programs must be written for people to read, and only incidentally for
+> machines to execute
+
+[SICP]: http://mitpress.mit.edu/sicp/front/node3.html
+
+From this point of view, WEB is doing it right. Yes, the program will need to
+go through an extra level of pre-processing, but in return it will be
+formatted for human readers *and* for computers.
+
+So are there any downsides? Is litterate programming useful for prototyping? I
+don't know. Maybe it helps you keep your thoughts collected as you explore a
+new problem domain. My own very limited exposure in Haskell (closer to Javadoc
+than WEB) supports this idea, but there are certainly times where you just
+want to test something out, without fully explaining or even understanding
+what's going on. Perhaps such adventures should be exempt from documentation,
+whether made from a REPL or with an editor/compiler.  Knuth's own
+experience seems to be the opposite, however.
+
+> The costs of WEB are more difficult to estimate at
+> higher levels, but I have found to my surprise that the
+> total time of writing and debugging a WEB program is
+> no greater than the total time of writing and debug-
+> ging an ALGOL or PASCAL program, even though my
+> WEB programs are much better, and even though I am
+> putting substantially more documentation into the pro-
+> grams. Therefore I have lately been using WEB for all of
+> my programming, even for one-off jobs that I write "for
+> my eyes only" just to explore occasional problems.
+
+Keep in mind that the fragments I showed earlier is the *output* produced by
+the WEAVE program from PRIMES.WEB. It's a
+description of the program as it is intended to be read by a human. To
+*execute* PRIMES.WEB, you would run it through TANGLE instead. This produces
+the code, ready for the compiler. The actual PRIMES.WEB is a combination of
+TEX and WEB markup, which I'm not going to show here (see the article!).
+
+The paper opened my eyes to a new dimension of programming style. If you think
+that a program that compiles cleanly is by definition beautiful, or if you
+feel your compiler is limiting you style-wise, you may want to have a look.
+I'll leave you with one last (rather long) quote from Knuth that in a humorous
+way predicts the exhibitionist aspect of Github. The paper is from 1983.
+
+> Now that I am writing all my programs in WEB, an
+> unforeseen problem has, however, arisen: I suddenly
+> have a collection of programs that seem quite beautiful
+> in my own eyes, and I have a compelling urge to publish
+> all of them so that everybody can admire these works of
+> art. A nice little 10-page program can easily be written
+> and debugged in an afternoon and evening; if I keep
+> accumulating such gems, I’ll soon run out of storage
+> space, and my office will be encrusted with webs of my
+> own making. There is no telling what will happen if
+> lots of other people catch WEB fever and start foisting
+> their creations on each other. I can already envision the
+> appearance of a new journal, to be entitled Webs, for
+> the publication of literate programs; I imagine that it
+> will have a large backlog and a large group of dedicated
+> editors and referees.
+

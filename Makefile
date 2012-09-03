@@ -1,5 +1,4 @@
 # Create site in ${OUTDIR}
-
 OUTDIR=/home/mattias/sandbox/blog.niklewski.com
 
 POSTS_SRC=$(wildcard posts/*/*/*.txt)
@@ -13,17 +12,20 @@ SCSS=$(patsubst %.scss,${OUTDIR}/%.css,${SCSS_SRC})
 
 TEMPLATES=$(wildcard templates/*)
 
-# markdown
+# delete incomplete output files
+.DELETE_ON_ERROR:
+
+# run markdown on txt files under posts/
 ${OUTDIR}/%.html: posts/%.txt ${TEMPLATES}
 	@mkdir -p $(@D)
 	python mm.py $< > $@
 
-# sass
+# run sass on scss files
 ${OUTDIR}/%.css: %.scss
 	@mkdir -p $(@D)
 	bundle exec sass $< > $@
 
-# straight copy
+# copy literally any files under static/
 ${OUTDIR}/%: static/%
 	@mkdir -p $(@D)
 	cp $< $@
