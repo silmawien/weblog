@@ -1,4 +1,4 @@
-$max-width: 800px;
+$max-width: 650px;
 $nav-width: 260px;
 
 $normal-padding: 20px;
@@ -9,15 +9,29 @@ $normal-padding: 20px;
     box-sizing: $model;
 }
 
+@import url(http://fonts.googleapis.com/css?family=Average);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro);
+
 /* Use the more sane border-box model. */
 * {
   @include box-sizing(border-box);
 }
 
+/* Default serif font */
+p {
+    font-family: Average, serif;
+    font-size: 18px;
+}
+
+/* Default sans-serif font */
+h1, header {
+    font-family: Source Sans Pro, sans-serif;
+}
+
 body {
     margin: 3px 0 0 0;
     padding: 0;
-    background: #303038;
+    background: #444;
 }
 
 #content {
@@ -25,11 +39,24 @@ body {
 }
 
 header {
-    font-size: 80px;
-    padding: $normal-padding;
-    text-align: center;
-    max-width: $max-width + $nav-width;
+    padding: 120px $normal-padding $normal-padding $normal-padding;
+    max-width: $max-width;
     margin: 0 auto;
+    position: relative;
+    font-size: 72px;
+}
+
+#title {
+}
+
+#doodle {
+    position: absolute;
+    left: -130px;
+}
+
+/* Avoid overflowing on narrow displays. */
+pre {
+    overflow: auto;
 }
 
 .main {
@@ -49,30 +76,34 @@ footer {
     font-size: 14px;
     text-align: center;
     color: white;
-    max-width: $max-width + $nav-width;
+    max-width: $max-width;
     margin: 0 auto;
 }
 
-/* Scale up nicely. First add margins. */
+/* Scale up nicely. Move the nav bar to the side. */
 @media (min-width: $max-width) {
-    .main {
-        width: $max-width;
-    }
-}
 
-/* Next move the nav bar to the side. */
-@media (min-width: $max-width + $nav-width) {
     .main {
-        width: $max-width + $nav-width;
+        max-width: $max-width + $nav-width;
     }
+
     nav {
         display: table-cell;
         width: $nav-width;
     }
+
     article {
         display: table-cell;
         width: $max-width;
         max-width: $max-width;
         overflow: hidden;
+    }
+
+    header {
+        max-width: $max-width + $nav-width;
+    }
+
+    footer {
+        max-width: $max-width + $nav-width;
     }
 }

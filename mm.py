@@ -5,11 +5,14 @@ import re
 from subprocess import Popen, PIPE
 import sys
 
-def markdown(source):
-    "Run markdown on source and return the resulting html."
-    p = Popen(["markdown"], stdin=PIPE, stdout=PIPE, stderr=PIPE)
+def filter(program, source):
+    "Run program on source and return the resulting output."
+    p = Popen([program], stdin=PIPE, stdout=PIPE, stderr=PIPE)
     stdoutdata, stderrdata = p.communicate(source)
     return stdoutdata
+
+def markdown(source):
+    return filter("SmartyPants.pl", filter("markdown", source))
 
 def read_post(path):
     "Return a dict with metadata and html content of a post."
