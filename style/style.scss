@@ -28,14 +28,30 @@ h1, header {
     font-family: Source Sans Pro, sans-serif;
 }
 
+a {
+    color: hsl(180, 90%, 40%);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
 body {
     margin: 3px 0 0 0;
     padding: 0;
-    background: #444;
+    background: #222;
 }
 
 #content {
     background: #eee;
+}
+
+#content:after {
+    content: "";
+    display: block;
+    height: 3px;
+    background: hsl(180, 30%, 60%);
 }
 
 header {
@@ -73,9 +89,7 @@ nav {
 
 footer {
     padding: $normal-padding;
-    font-size: 14px;
-    text-align: center;
-    color: white;
+    color: #eee;
     max-width: $max-width;
     margin: 0 auto;
 }
