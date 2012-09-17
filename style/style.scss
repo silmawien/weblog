@@ -1,4 +1,4 @@
-$max-width: 650px;
+$max-width: 700px;
 $nav-width: 260px;
 
 $normal-padding: 20px;
@@ -17,19 +17,24 @@ $normal-padding: 20px;
   @include box-sizing(border-box);
 }
 
-/* Default serif font */
-p {
-    font-family: Average, serif;
-    font-size: 18px;
+/* Default header style */
+h1, h2, h3 {
+    font-family: Source Sans Pro, sans-serif;
+    margin-top: 1.5em;
 }
 
-/* Default sans-serif font */
-h1, header {
-    font-family: Source Sans Pro, sans-serif;
+h1 {
+    font-size: 2em;
+    line-height: 1.0;
+}
+
+h2 {
+    font-size: 1.5em;
+    line-height: 1.0;
 }
 
 a {
-    color: hsl(180, 90%, 40%);
+    color: hsl(206, 79%, 46%);
     text-decoration: none;
 }
 
@@ -40,18 +45,28 @@ a:hover {
 body {
     margin: 3px 0 0 0;
     padding: 0;
-    background: #222;
+    background: hsl(220, 20%, 27%);
+
+    /* Default body text */
+    font-family: Arial, serif;
+    line-height: 1.6;
+    font-size: 14px;
+    color: #444;
+}
+
+p {
+    margin: 1.5em 0;
 }
 
 #content {
     background: #eee;
 }
 
-#content:after {
+#content:after, #content:before {
     content: "";
     display: block;
     height: 3px;
-    background: hsl(180, 30%, 60%);
+    background: hsl(206, 99%, 20%);
 }
 
 header {
@@ -59,7 +74,9 @@ header {
     max-width: $max-width;
     margin: 0 auto;
     position: relative;
-    font-size: 72px;
+    font-size: 92px;
+    line-height: 100%;
+    color: #ccc;
 }
 
 #title {
@@ -67,12 +84,29 @@ header {
 
 #doodle {
     position: absolute;
-    left: -130px;
+    left: -150px;
+    bottom: 0;
+}
+
+article .post-title {
+    font-size: 2.5em;
+    margin-bottom: 0;
+}
+
+article .post-date {
+    margin-top: 0.7em;
+    font-size: 12px;
+    color: #999;
 }
 
 /* Avoid overflowing on narrow displays. */
-pre {
+article pre {
     overflow: auto;
+    background: #ddd;
+    padding: 15px;
+
+    /* Code needs to be a little denser than body text to look good */
+    line-height: 1.3em;
 }
 
 .main {
@@ -81,6 +115,7 @@ pre {
 
 article {
     padding: $normal-padding;
+    overflow: hidden;
 }
 
 nav {
@@ -94,23 +129,31 @@ footer {
     margin: 0 auto;
 }
 
+footer p {
+    color: #bbb;
+}
+
 /* Scale up nicely. Move the nav bar to the side. */
 @media (min-width: $max-width) {
 
     .main {
         max-width: $max-width + $nav-width;
+
+        /* hack: cut out the nav bar to prevent scrollbars
+           just above cut-off width */
+        overflow: hidden;
     }
 
     nav {
         display: table-cell;
         width: $nav-width;
+        border-left: 1px solid #ccc;
     }
 
     article {
         display: table-cell;
         width: $max-width;
-        max-width: $max-width;
-        overflow: hidden;
+        min-width: $max-width;
     }
 
     header {

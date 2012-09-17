@@ -14,6 +14,26 @@ def filter(program, source):
 def markdown(source):
     return filter("SmartyPants.pl", filter("markdown", source))
 
+def make_tag_link(tagname):
+    "Create href, display-name from a tag name."
+    return { "href": "/tags/" + tagname, "name": tagname }
+
+english_months = ['january', 'february', 'march', 'april', 'may', 'june',
+        'july', 'august', 'september', 'october', 'november', 'december']
+
+def pretty_date(datestr):
+    "Convert 2012-09-10 to August 10, 2012."
+    (year, month, day) = datestr.split("-")
+    try:
+        month = english_months[int(month)].capitalize()
+    except IndexError:
+        sys.exit("Invalid date string: " + datestr)
+    return "{0} {1}, {2}".format(month, int(day), year)
+
+def make_date(datestr):
+    "Create datetime and display time for a html5 <time> element."
+    return { "datetime": datestr, "display": pretty_date(datestr) }
+
 def read_post(path):
     "Return a dict with metadata and html content of a post."
     post = dict()
@@ -23,8 +43,16 @@ def read_post(path):
             if not line.strip(): break
             # Metadata has the format "key: value"
             [key, value] = re.split(u"\s*:\s*", unicode(line, "utf-8"))
-            post[key.lower()] = value.strip()
-        
+            key = key.lower()
+
+            # split keys that appear to be plural
+            if key[-1] == "s":
+                post[key] = map(make_tag_link, value.split())
+            elif key == "created":
+                post[key] = make_date(value)
+            else:
+                post[key] = value.strip()
+
         # The remainder is markdown-content
         md = "".join([line for line in f])
         post["content"] = unicode(markdown(md), "utf-8")
