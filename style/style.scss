@@ -17,7 +17,10 @@ $normal-padding: 20px;
   @include box-sizing(border-box);
 }
 
-/* Default header style */
+/*
+ * Text
+ */
+
 h1, h2, h3 {
     font-family: Source Sans Pro, sans-serif;
     margin-top: 1.5em;
@@ -33,20 +36,7 @@ h2 {
     line-height: 1.0;
 }
 
-a {
-    color: hsl(206, 79%, 46%);
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
 body {
-    margin: 3px 0 0 0;
-    padding: 0;
-    background: hsl(220, 20%, 27%);
-
     /* Default body text */
     font-family: Arial, serif;
     line-height: 1.6;
@@ -56,6 +46,53 @@ body {
 
 p {
     margin: 1.5em 0;
+}
+
+header {
+    font-size: 92px;
+    line-height: 100%;
+    color: #ccc;
+}
+
+footer {
+    color: #eee;
+}
+
+/*
+ * Links
+ */
+
+a {
+    color: hsl(206, 79%, 46%);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Code needs to be a little denser than body text to look good */
+pre {
+    line-height: 1.3em;
+}
+
+/*
+ * Layout
+ */
+
+body {
+    margin: 3px 0 0 0;
+    padding: 0;
+    background: hsl(220, 20%, 27%);
+}
+
+header {
+    padding: 120px $normal-padding $normal-padding $normal-padding;
+    max-width: $max-width;
+}
+
+#doodle {
+    vertical-align: bottom;
 }
 
 #content {
@@ -69,31 +106,16 @@ p {
     background: hsl(206, 99%, 20%);
 }
 
-header {
-    padding: 120px $normal-padding $normal-padding $normal-padding;
-    max-width: $max-width;
-    margin: 0 auto;
-    position: relative;
-    font-size: 92px;
-    line-height: 100%;
-    color: #ccc;
+article {
+    overflow: hidden;
 }
 
-#title {
-}
-
-#doodle {
-    position: absolute;
-    left: -150px;
-    bottom: 0;
-}
-
-article .post-title {
+.post-title {
     font-size: 2.5em;
     margin-bottom: 0;
 }
 
-article .post-date {
+.post-date {
     margin-top: 0.7em;
     font-size: 12px;
     color: #999;
@@ -104,63 +126,52 @@ article pre {
     overflow: auto;
     background: #ddd;
     padding: 15px;
-
-    /* Code needs to be a little denser than body text to look good */
-    line-height: 1.3em;
 }
 
-.main {
-    margin: 0 auto;
-}
-
-article {
-    padding: $normal-padding;
-    overflow: hidden;
-}
-
-nav {
+/* Standard padding for text containers. */
+article, nav, footer, pre {
     padding: $normal-padding;
 }
 
-footer {
-    padding: $normal-padding;
-    color: #eee;
-    max-width: $max-width;
-    margin: 0 auto;
+/*
+ * Make resizing a little smoother.
+ */
+
+@media (min-width: $max-width) and (max-width: $max-width + $nav-width - 1px) {
+    article{
+        width: $max-width;
+        border-right: 1px solid #ccc;
+    }
 }
 
-footer p {
-    color: #bbb;
-}
+/*
+ * Move the nav bar to the side.
+ * Max-width.
+ */
 
-/* Scale up nicely. Move the nav bar to the side. */
-@media (min-width: $max-width) {
+@media (min-width: $max-width + $nav-width) {
+
+    header, footer, .main {
+        width: $max-width + $nav-width;
+        min-width: $max-width + $nav-width;
+        margin: 0 auto;
+    }
 
     .main {
-        max-width: $max-width + $nav-width;
-
         /* hack: cut out the nav bar to prevent scrollbars
            just above cut-off width */
-        overflow: hidden;
+        position: relative;
     }
 
     nav {
-        display: table-cell;
+        position: absolute;
+        top: 0;
+        right: 0;
         width: $nav-width;
-        border-left: 1px solid #ccc;
     }
 
     article {
-        display: table-cell;
-        width: $max-width;
-        min-width: $max-width;
-    }
-
-    header {
-        max-width: $max-width + $nav-width;
-    }
-
-    footer {
-        max-width: $max-width + $nav-width;
+        margin-right: $nav-width;
+        border-right: 1px solid #ccc;
     }
 }

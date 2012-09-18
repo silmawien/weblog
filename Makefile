@@ -32,7 +32,7 @@ ${OUTDIR}/drafts/%.html: drafts/%.txt ${TEMPLATES}
 # run sass on scss files
 ${OUTDIR}/%.css: %.scss
 	@mkdir -p $(@D)
-	sassc $< > $@
+	sass $< > $@
 
 # copy literally any files under static/
 ${OUTDIR}/%: static/%
