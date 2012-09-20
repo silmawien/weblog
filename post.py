@@ -8,6 +8,10 @@ import re
 from subprocess import Popen, PIPE
 import sys
 import os.path
+from itertools import takewhile
+
+# number of paragraphs in abstracts
+ABSTRACT_SIZE = 1
 
 def filter(program, source):
     "Run program on source and return the resulting output."
@@ -24,11 +28,6 @@ def markdown(source):
 def make_tag_link(tag):
     "Create href, display-name from a tag name."
     return { "href": "/tags/" + tag, "text": tag }
-
-def make_title(dst, title):
-    "Create href, display-name from title."
-    return { "href": dst, "text": title }
-
 
 english_months = ['january', 'february', 'march', 'april', 'may', 'june',
         'july', 'august', 'september', 'october', 'november', 'december']
@@ -47,6 +46,15 @@ def pretty_date(datestr):
 def make_date(datestr):
     "Create datetime and display time for a html5 <time> element."
     return { "datetime": datestr, "display": pretty_date(datestr) }
+
+def paragraph_counter(num):
+    "Count empty lines and return False after num such lines."
+    count = [num] # workaround for strange scoping rules in python 2.x
+    def counter(line):
+        if not line.strip():
+            count[0] -= 1
+        return count[0] > 0
+    return counter
 
 
 def read_post(src, dst):
@@ -71,11 +79,21 @@ def read_post(src, dst):
             elif key == "created":
                 post[key] = make_date(value)
             elif key == "title":
-                post[key] = make_title(dst, value)
+                post[key] = value
             else:
                 post[key] = value.strip()
 
+        # self-link (for header and abstract [...])
+        post["link"] = dst
+
         # The remainder is markdown-content
-        md = "".join([line for line in f])
+        body = [line for line in f]
+
+        # Format with markdown
+        md = "".join(body)
         post["content"] = unicode(markdown(md), "utf-8")
+
+        # Make a nice abstract, also with markdown
+        abstract = "".join(takewhile(paragraph_counter(ABSTRACT_SIZE), body))
+        post["abstract"] = unicode(markdown(abstract), "utf-8")
     return post

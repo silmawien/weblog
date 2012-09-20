@@ -57,7 +57,7 @@ ${STATIC}: ${OUTDIR}/%: static/%
 
 # render front page
 ${INDEX}: ${POSTS} ${TEMPLATES} ${SCRIPTS}
-	@echo $<
+	@echo index
 	@${POSTS_ENV} python render_index.py > $@
 
 # generate site to staging directory

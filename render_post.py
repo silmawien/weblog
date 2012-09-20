@@ -6,7 +6,7 @@ import sys
 import os
 
 def render_post(src, dst):
-    ctx = { "p": read_post(src, dst) }
+    ctx = read_post(src, dst)
     env = Environment(loader=FileSystemLoader("templates"))
     print env.get_template("single_post.html").render(ctx).encode("utf-8")
 

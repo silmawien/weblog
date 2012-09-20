@@ -15,7 +15,9 @@ def created_datetime(post):
 def render_index(srcs, dsts):
     posts = [read_post(x, y) for x, y in zip(srcs, dsts)]
     posts = sorted(posts, key=created_datetime, reverse=True)[0:MAX_POSTS]
-    ctx = { "title": "Some blog", "posts": posts }
+    # for p in posts:
+    #     p["content"] = p["abstract"]
+    ctx = { "title": "Index", "posts": posts }
     env = Environment(loader=FileSystemLoader("templates"))
     print env.get_template("index.html").render(ctx).encode("utf-8")
 

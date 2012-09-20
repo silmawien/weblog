@@ -3,7 +3,7 @@
     <head>
         {% block head %}
         <meta charset="utf-8" />
-        <title>{% block title %}{% endblock %} - Some Blog</title>
+        <title>Some blog - {% block title %}{% endblock %}</title>
         <!--
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         -->
@@ -12,7 +12,7 @@
     </head>
     <body>
         <header>
-            <span><a class="plain-link" href="/">匹狼</a></span>
+            <span><a class="plain-link" href="/">Some blog</a></span>
             <img id="doodle" src="/image/doodle2.png" />
         </header>
         <div id="content">
@@ -31,9 +31,7 @@
         </div>
         <footer>
             {% block footer %}
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
+            <p>content</p>
             {% endblock %}
         </footer>
     </body>

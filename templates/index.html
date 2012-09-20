@@ -6,7 +6,13 @@
 {% endblock %}
 {% block content %}
     {% for p in posts %}
+        {% set content = p.abstract %}
+        {% set title   = p.title %}
+        {% set created = p.created %}
+        {% set tags    = p.tags %}
+        {% set link    = p.link %}
         {% include "post.html" %}
+        <p><a href="{{ p.link }}">[&nbsp;&hellip;&nbsp;]</a></p>
         {%- if not loop.last %}<hr />{% endif %}
     {% endfor %}
 {% endblock %}
