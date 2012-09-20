@@ -1,0 +1,10 @@
+{# Page with a single post #}
+{% extends "base.html" %}
+{% block title %}{{ p.title.text }}{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    {% include "post.html" %}
+{% endblock %}
+

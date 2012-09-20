@@ -1,24 +1,19 @@
-{% extends "base.html" %}
-{% block title %}{{ title }}{% endblock %}
-{% block head %}
-    {{ super() }}
-{% endblock %}
-{% block content %}
-    <div class="post-header">
-        <h1 class="post-title">{{ title }}</h1>
-        <div class="post-date">
-            Posted on <time datetime="{{ created.datetime }}">
-                {{ created.display }}
-            </time>
-            {% for tag in tags %}
-                {% if loop.first %}in {% endif %}
-                <a href="{{ tag.href }}">{{ tag.name }}</a>
-                {%- if not loop.last %},{% endif %}
-            {% else %}
-                with no tags
-            {% endfor %}
-        </div>
+{# Post with title and content #}
+<div class="post-header">
+    <h1>
+        <a class="plain-link" href="{{ p.title.href }}">{{ p.title.text }}</a>
+    </h1>
+    <div class="post-date">
+        Posted on <time datetime="{{ p.created.datetime }}">
+            {{ p.created.display }}
+        </time>
+        {% for tag in p.tags %}
+            {% if loop.first %}in {% endif %}
+            <a href="{{ tag.href }}">{{ tag.text }}</a>
+            {%- if not loop.last %},{% endif %}
+        {% else %}
+            with no tags
+        {% endfor %}
     </div>
-    {{ content }}
-{% endblock %}
-
+</div>
+{{ p.content }}

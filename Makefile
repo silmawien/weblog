@@ -16,31 +16,52 @@ SCSS=$(patsubst %.scss,${OUTDIR}/%.css,${SCSS_SRC})
 
 TEMPLATES=$(wildcard templates/*)
 
+SCRIPTS=$(wildcard *.py)
+
+INDEX=${OUTDIR}/index.html
+
+# src paths and webroot-relative dst paths to all posts
+POSTS_ENV=SRC="${POSTS_SRC}" DST="$(subst ${OUTDIR},,${POSTS})"
+
 # delete incomplete output files
 .DELETE_ON_ERROR:
 
+#tmp:
+#	${POSTS_ENV} python
+
+default: stage
+
 # run markdown on txt files under posts/
-${OUTDIR}/%.html: posts/%.txt ${TEMPLATES}
+${POSTS}: ${OUTDIR}/%.html: posts/%.txt ${TEMPLATES} ${SCRIPTS}
+	@echo $<
 	@mkdir -p $(@D)
-	python mm.py $< > $@
+	@DST=$(subst ${OUTDIR},,$@) python render_post.py $< > $@
 
 # same for drafts (but see deploy rule)
-${OUTDIR}/drafts/%.html: drafts/%.txt ${TEMPLATES}
+${DRAFTS}: ${OUTDIR}/drafts/%.html: drafts/%.txt ${TEMPLATES} ${SCRIPTS}
+	@echo $<
 	@mkdir -p $(@D)
-	python mm.py $< > $@
+	@DST=$(subst ${OUTDIR},,$@) python render_post.py $< > $@
 
 # run sass on scss files
-${OUTDIR}/%.css: %.scss
+${SCSS}: ${OUTDIR}/%.css: %.scss
+	@echo $<
 	@mkdir -p $(@D)
-	sass $< > $@
+	@sass $< > $@
 
 # copy literally any files under static/
-${OUTDIR}/%: static/%
+${STATIC}: ${OUTDIR}/%: static/%
+	@echo $<
 	@mkdir -p $(@D)
-	cp $< $@
+	@cp $< $@
+
+# render front page
+${INDEX}: ${POSTS} ${TEMPLATES} ${SCRIPTS}
+	@echo $<
+	@${POSTS_ENV} python render_index.py > $@
 
 # generate site to staging directory
-stage: ${POSTS} ${DRAFTS} ${STATIC} ${SCSS}
+stage: ${POSTS} ${DRAFTS} ${STATIC} ${SCSS} ${INDEX}
 
 clean:
 	rm -rf ${OUTDIR}
