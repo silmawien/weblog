@@ -24,16 +24,17 @@ $normal-padding: 20px;
 h1, h2, h3 {
     font-family: Ubuntu, sans-serif;
     line-height: 1.0;
+    color: #444;
 }
 
 h1 {
-    font-size: 3.5em;
+    font-size: 2.2em;
     margin-top: 1.0em;
     margin-bottom: 0.2em;
 }
 
 h2 {
-    font-size: 1.8em;
+    font-size: 1.5em;
     margin-top: 1.5em;
 }
 
@@ -42,33 +43,35 @@ body {
     font-family: Georgia, serif;
     line-height: 1.4;
     font-size: 14px;
-    color: #444;
+    color: #666;
 }
 
 p {
-    margin: 1.5em 0;
+    margin: 0 0 1.5em 0;
     font-size: 16px;
     line-height: 1.7;
 }
 
 header {
     font-family: Georgia, serif;
-    font-size: 92px;
+    font-size: 82px;
     line-height: 1.0;
     color: #ccc;
 }
 
 footer {
-    color: #eee;
+    color: #ccc;
 }
 
 /* Code needs to be a little denser than body text to look good */
 pre {
     line-height: 1.3em;
+    color: #444;
 }
 
 .post-date {
     color: #999;
+    margin-bottom: 1.5em;
 }
 
 /*
@@ -96,11 +99,11 @@ a:hover {
 body {
     margin: 3px 0 0 0;
     padding: 0;
-    background: hsl(220, 20%, 27%);
+    background: hsl(330, 35%, 12%);
 }
 
 header {
-    padding: 120px $normal-padding $normal-padding $normal-padding;
+    padding: 30px $normal-padding $normal-padding $normal-padding;
     max-width: $max-width;
 }
 
@@ -115,8 +118,8 @@ header {
 #content:after, #content:before {
     content: "";
     display: block;
-    height: 3px;
-    background: hsl(206, 99%, 20%);
+    height: 1px;
+    background: hsl(220, 20%, 70%);
 }
 
 article {
@@ -131,19 +134,9 @@ article pre {
 }
 
 /* Standard padding for text containers. */
-article, nav, footer, pre {
+article, nav, footer {
     padding: $normal-padding;
-}
-
-/*
- * Make resizing a little smoother.
- */
-
-@media (min-width: $max-width) and (max-width: $max-width + $nav-width - 1px) {
-    article{
-        width: $max-width;
-        border-right: 1px solid #ccc;
-    }
+    max-width: $max-width; /* make resizing a little smoother */
 }
 
 /*
