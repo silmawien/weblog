@@ -5,8 +5,20 @@ $normal-padding: 20px;
 
 @mixin box-sizing($model) {
     -webkit-box-sizing: $model;
-    -moz-box-sizing: $model;
-    box-sizing: $model;
+       -moz-box-sizing: $model;
+            box-sizing: $model;
+}
+
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+       -moz-border-radius: $radius;
+            border-radius: $radius;
+}
+
+@mixin box-shadow($dx, $dy, $blur) {
+    -webkit-box-shadow: $dx $dy $blur;
+       -moz-box-shadow: $dx $dy $blur;
+            box-shadow: $dx $dy $blur;
 }
 
 @import url(http://fonts.googleapis.com/css?family=Average);
@@ -46,7 +58,7 @@ body {
     color: #666;
 }
 
-p {
+p, li {
     margin: 0 0 1.5em 0;
     font-size: 16px;
     line-height: 1.7;
@@ -99,7 +111,7 @@ a:hover {
 body {
     margin: 3px 0 0 0;
     padding: 0;
-    background: hsl(330, 35%, 12%);
+    background: hsl(220, 20%, 27%);
 }
 
 header {
@@ -113,6 +125,10 @@ header {
 
 #content {
     background: #eee;
+}
+
+#content img.shadow {
+    @include box-shadow(2px, 2px, 6px);
 }
 
 #content:after, #content:before {
@@ -139,6 +155,13 @@ article, nav, footer {
     max-width: $max-width; /* make resizing a little smoother */
 }
 
+nav {
+    background: white;
+    @include border-radius(8px);
+    margin: $normal-padding / 2;
+    padding: $normal-padding / 2;
+}
+
 /*
  * Move the nav bar to the side.
  * Max-width.
@@ -162,12 +185,14 @@ article, nav, footer {
         position: absolute;
         top: 0;
         right: 0;
-        width: $nav-width;
+        width: $nav-width - $normal-padding * 2;
+        margin: $normal-padding;
+        padding: $normal-padding;
+        @include box-sizing(margin-box);
     }
 
     article {
         margin-right: $nav-width;
-        border-right: 1px solid #ccc;
     }
 }
 
