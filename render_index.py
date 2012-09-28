@@ -22,19 +22,23 @@ def ensure_dir(path):
         os.makedirs(dirname)
 
 
+def posted_datetime(post):
+    return datetime.strptime(post["posted"]["datetime"], "%Y-%m-%d")
+
+
 def tag_index(posts, out):
-    # create a list of tuples (tag, [posts]) ...
     idx = defaultdict(list)
+    # make a dict tag -> [post]
     for post in filter(lambda p: "tags" in p, posts):
         for tag in post["tags"]:
             tag_name = tag["text"]
             idx[tag_name].append(post)
 
-    # .. sorted by post count
-    bags = sorted(idx.items(), key=lambda (tag, ps): len(ps), reverse=True)
+    # sort each list of posts by date
+    map(lambda p: p.sort(key=posted_datetime, reverse=True), idx.values())
 
     # create one index page per tag
-    for tag, posts in bags:
+    for tag, posts in idx.items():
         ctx = { "title": 'Posts tagged "' + tag + '"', "tag": tag,
                 "posts": posts }
         add_generated_templates(ctx)
@@ -44,10 +48,6 @@ def tag_index(posts, out):
         ensure_dir(outpath)
         with open(out + config.TAG_URL % tag, "w") as f:
             f.write(html)
-
-
-def posted_datetime(post):
-    return datetime.strptime(post["posted"]["datetime"], "%Y-%m-%d")
 
 
 def landing_page(posts):
