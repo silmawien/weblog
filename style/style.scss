@@ -3,6 +3,30 @@ $nav-width: 260px;
 
 $normal-padding: 20px;
 
+/*
+ * colors
+ */
+
+$gray: #ccc;
+
+/* http://ethanschoonover.com/solarized */
+$base03: #002b36;
+$base02: #073642;
+$base01: #586e75;
+$base00: #657b83;
+$base0: #839496;
+$base1: #93a1a1;
+$base2: #eee8d5;
+$base3: #fdf6e3;
+$yellow: #b58900;
+$orange: #cb4b16;
+$red: #dc322f;
+$magenta: #d33682;
+$violet: #6c71c4;
+$blue: #268bd2;
+$cyan: #2aa198;
+$green: #859900;
+
 @mixin box-sizing($model) {
     -webkit-box-sizing: $model;
        -moz-box-sizing: $model;
@@ -36,7 +60,7 @@ $normal-padding: 20px;
 h1, h2, h3 {
     font-family: Ubuntu, sans-serif;
     line-height: 1.0;
-    color: #444;
+    color: $base02;
 }
 
 h1 {
@@ -65,7 +89,7 @@ header {
     font-family: Georgia, serif;
     font-size: 82px;
     line-height: 1.0;
-    color: #ccc;
+    color: $magenta;
 }
 
 .post-header h1 {
@@ -73,7 +97,7 @@ header {
 }
 
 footer {
-    color: #ccc;
+    color: $gray;
 }
 
 /* Code needs to be a little denser than body text to look good */
@@ -83,7 +107,7 @@ pre {
 }
 
 .post-date {
-    color: #999;
+    color: $base01;
     margin-bottom: 1.5em;
 }
 
@@ -92,7 +116,7 @@ pre {
  */
 
 a {
-    color: hsl(206, 79%, 46%);
+    color: $blue;
     text-decoration: none;
 }
 
@@ -112,7 +136,7 @@ a:hover {
 body {
     margin: 3px 0 0 0;
     padding: 0;
-    background: hsl(220, 20%, 27%);
+    background: $base03;
 }
 
 header {
@@ -157,7 +181,7 @@ article, nav, footer {
 }
 
 nav {
-    background: white;
+    /*background: $base03;*/
     @include border-radius(8px);
     margin: $normal-padding / 2;
     padding: $normal-padding / 2;
@@ -204,8 +228,8 @@ nav {
 
 hr {
     width: 100%;
-    color: #ccc;
-    background-color: #ccc;
+    color: $gray;
+    background-color: $gray;
     height: 1px;
     border: 0px;
     margin-top: 40px;
