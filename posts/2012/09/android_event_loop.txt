@@ -1,4 +1,4 @@
-Created: 2012-09-15
+Posted: 2012-09-15
 Title: The Android Event Loop
 Tags: android programming
 

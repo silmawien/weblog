@@ -1,0 +1,18 @@
+{# Page with all posts under a tag #}
+{% extends "base.html" %}
+{% block title %}{{ title }}{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    <h1>Posts tagged '{{ tag }}'</h1>
+        {% for post in posts %}
+            <p>
+                <a href="{{ post.link }}">{{ post.title }}</a>
+                (<time datetime="{{ post.posted.datetime }}">
+                    {{- post.posted.display -}}
+                </time>)
+            </p>
+        {% endfor %}
+{% endblock %}
+

@@ -4,8 +4,8 @@
         <a class="plain-link" href="{{ link }}">{{ title }}</a>
     </h1>
     <div class="post-date">
-        Posted on <time datetime="{{ created.datetime }}">
-            {{ created.display }}
+        Posted on <time datetime="{{ posted.datetime }}">
+            {{ posted.display }}
         </time>
         {% for tag in tags %}
             {% if loop.first %}in {% endif %}

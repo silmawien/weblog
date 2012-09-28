@@ -18,7 +18,8 @@ TEMPLATES=$(wildcard templates/*)
 
 GEN_TEMPLATES=gen/footer.html gen/nav.html
 
-SCRIPTS=$(wildcard *.py)
+IDX_SCRIPT=render_index.py
+SCRIPTS=$(filter-out ${IDX_SCRIPT},$(wildcard *.py))
 
 INDEX=${OUT}/index.html
 
@@ -26,7 +27,7 @@ INDEX=${OUT}/index.html
 POST_ENV=TMP="${GEN_TEMPLATES}"
 
 # parameters for multi-post scripts
-FULL_ENV=SRC="${POSTS_SRC}" DST="$(subst ${OUT},,${POSTS})" TMP="${GEN_TEMPLATES}"
+FULL_ENV=SRC="${POSTS_SRC}" DST="$(subst ${OUT},,${POSTS})" TMP="${GEN_TEMPLATES}" OUT=${OUT}
 
 # delete incomplete output files
 .DELETE_ON_ERROR:
@@ -69,8 +70,9 @@ ${STATIC}: ${OUT}/%: static/%
 	@mkdir -p $(@D)
 	@cp $< $@
 
-# render front page
-${INDEX}: ${POSTS} ${TEMPLATES} ${SCRIPTS} ${GEN_TEMPLATES}
+# Render front page. This script reads every single post, so other index pages
+# (tags, by-date index) are generated here too, to keep things fast.
+${INDEX}: ${POSTS} ${TEMPLATES} ${SCRIPTS} ${IDX_SCRIPT} ${GEN_TEMPLATES}
 	@echo $@
 	@${FULL_ENV} python render_index.py > $@
 

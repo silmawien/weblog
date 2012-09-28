@@ -1,4 +1,8 @@
-# Render page with a single post.
+# Render pages which depend on all posts.
+# - latest posts (landing page)
+# - index by date
+# - index by tag
+# - etc
 
 from jinja2 import Environment, FileSystemLoader
 from post import read_post
@@ -6,23 +10,63 @@ import sys
 import os
 from datetime import datetime
 from common import add_generated_templates
+import config
+from collections import defaultdict
 
-# number of recent posts to render
+# number of recent posts to render on landing page
 MAX_POSTS = 5
 
-def created_datetime(post):
-    return datetime.strptime(post["created"]["datetime"], "%Y-%m-%d")
+def ensure_dir(path):
+    dirname = os.path.dirname(path)
+    if not os.path.exists(dirname):
+        os.makedirs(dirname)
 
-def render_index(srcs, dsts):
-    posts = [read_post(x, y) for x, y in zip(srcs, dsts)]
-    posts = sorted(posts, key=created_datetime, reverse=True)[0:MAX_POSTS]
-    ctx = { "title": "Index", "posts": posts }
+
+def tag_index(posts, out):
+    # create a list of tuples (tag, [posts]) ...
+    idx = defaultdict(list)
+    for post in filter(lambda p: "tags" in p, posts):
+        for tag in post["tags"]:
+            tag_name = tag["text"]
+            idx[tag_name].append(post)
+
+    # .. sorted by post count
+    bags = sorted(idx.items(), key=lambda (tag, ps): len(ps), reverse=True)
+
+    # create one index page per tag
+    for tag, posts in bags:
+        ctx = { "title": 'Posts tagged "' + tag + '"', "tag": tag,
+                "posts": posts }
+        add_generated_templates(ctx)
+        env = Environment(loader=FileSystemLoader("templates"))
+        html = env.get_template("tag.html").render(ctx).encode("utf-8")
+        outpath = out + config.TAG_URL % tag
+        ensure_dir(outpath)
+        with open(out + config.TAG_URL % tag, "w") as f:
+            f.write(html)
+
+
+def posted_datetime(post):
+    return datetime.strptime(post["posted"]["datetime"], "%Y-%m-%d")
+
+
+def landing_page(posts):
+    recent = sorted(posts, key=posted_datetime, reverse=True)[0:MAX_POSTS]
+    ctx = { "title": "Index", "posts": recent }
     add_generated_templates(ctx)
     env = Environment(loader=FileSystemLoader("templates"))
     print env.get_template("index.html").render(ctx).encode("utf-8")
 
 
+def render_index(srcs, dsts, out):
+    posts = [read_post(src, dst_url) for src, dst_url in zip(srcs, dsts)]
+
+    tag_index(posts, out)
+    landing_page(posts)
+
+
 if __name__ == "__main__":
     srcs = os.environ['SRC'].split()
     dsts = os.environ['DST'].split()
-    render_index(srcs, dsts)
+    out = os.environ['OUT']
+    render_index(srcs, dsts, out)

@@ -8,7 +8,7 @@
     {% for p in posts %}
         {% set content = p.abstract %}
         {% set title   = p.title %}
-        {% set created = p.created %}
+        {% set posted = p.posted %}
         {% set tags    = p.tags %}
         {% set link    = p.link %}
         {% include "post.html" %}

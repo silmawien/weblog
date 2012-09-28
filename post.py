@@ -1,5 +1,5 @@
 # Post interface.
-# 
+#
 # A post consists of metadata and contents.
 # read_post() returns a dict of all metadata plus the contents,
 # formatted as html.
@@ -9,6 +9,7 @@ from subprocess import Popen, PIPE
 import sys
 import os.path
 from itertools import takewhile
+import config
 
 # number of paragraphs in abstracts
 ABSTRACT_SIZE = 1
@@ -27,7 +28,8 @@ def markdown(source):
 
 def make_tag_link(tag):
     "Create href, display-name from a tag name."
-    return { "href": "/tags/" + tag, "text": tag }
+    return { "href": config.TAG_URL % tag, "text": tag }
+
 
 english_months = ['january', 'february', 'march', 'april', 'may', 'june',
         'july', 'august', 'september', 'october', 'november', 'december']
@@ -76,12 +78,10 @@ def read_post(src, dst):
             # linkify tags "tags: tag1 tag2"
             if key == "tags":
                 post[key] = map(make_tag_link, value.split())
-            elif key == "created":
+            elif key == "posted" or key == "created":
                 post[key] = make_date(value)
-            elif key == "title":
-                post[key] = value
             else:
-                post[key] = value.strip()
+                post[key] = value
 
         # self-link (for header and abstract [...])
         post["link"] = dst

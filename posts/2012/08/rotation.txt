@@ -1,5 +1,5 @@
 Title: The rotation matrix
-Created: 2012-08-16
+Posted: 2012-08-16
 Tags: programming pascal
 
 When I was around 14, a friend lent me a [Pascal book](http://books.google.se/books/about/Turbov%C3%A4gen_till_Pascal.html?id=dRf2MAAACAAJ&redir_esc=y). Pascal was used in Swedish schools and this copy came from his mom who was a teacher. He also lent me a copy of Turbo Pascal, a brilliant IDE for MSDOS that was way ahead of it's time.

@@ -1,0 +1,90 @@
+Title: Android layout colorizer
+Posted: 2012-09-22
+Posted: 2012-09-28
+Tags: android layout
+
+Despite the SDK developer's best intensions, creating a good Android layout is
+something of an art form. In this post I show a crude but useful utility that
+applies random background colors to find layout bugs.
+
+I am going to assume you have done your [homework][] and that you understand
+how `View` and `ViewGroup` objects combine to form a view tree.
+
+[homework]: http://developer.android.com/guide/topics/ui/declaring-layout.html
+
+## A Random Walk Down View Street
+
+If the hierarchy viewer is the interactive debugger of layouts, then
+changing the background color is the print statement. When I need to quickly
+figure some layout problem out, I start by setting bright background colors on a
+few views.
+
+    <TextView
+        android:background="#ff0000"
+        ...
+
+It is often enough to see if that unintentional gap between views is caused by
+a margin, a padding, or perhaps an incorrect gravity value.
+
+<!-- TODO: drawing displaying an unknown gap, and another with background that
+     shows it's the padding? -->
+<img src="/image/layout-gap.png" />
+
+Background colors help when talking to designers, too. A designer may tell you
+to "use a 16dp margin around this list" but forget to take the parent's padding
+into account. A colored box makes the bug obvious to them.
+
+It gets tedious really fast to manually change background colors. So I have
+this helper that acts on a whole view tree.
+
+    private static Random r = new Random();
+
+    private void dbgColorize(View view, boolean overwrite) {
+        Drawable bg = view.getBackground();
+        if (overwrite || (bg == null || bg instanceof ColorDrawable)) {
+            view.setBackgroundColor(Color.argb(0xa0,
+                    0xb0 + r.nextInt(0x40),
+                    0xb0 + r.nextInt(0x40),
+                    0xb0 + r.nextInt(0x40)));
+        }
+
+        if (view instanceof ViewGroup) {
+            ViewGroup vg = (ViewGroup)view;
+            for (int i = 0; i < vg.getChildCount(); i++) {
+                dbgColorize(vg.getChildAt(i), overwrite);
+            }
+        }
+    }
+
+It uses translucent, bright pastel colors to light your view up like a
+christmas tree. If this is too much for your dull, corporate environment
+(sorry!), try `0x80ffffff` for a monochrome feel.
+
+Set up an entry point, like a menu item, and point `dbgColorize` at the root of the view tree you want colorized:
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.dbg_colorize) {
+            dbgColorize(getWindow().getDecorView(), true);
+            ...
+
+By default `dbgColorize` is careful not to touch views that already have a
+background, but you can pass `overwrite = true` to override.
+
+## An Example
+
+Here is a simple layout with some alignment problems. The right side shows the
+same layout after `dbgColorize` is through with it.
+
+![result](/image/color-result.png)
+
+In the colorized version, we can start to understand what is going on. The
+`Button` is in fact left-aligned with the "Header", but has a large
+`leftPadding`, which must come from its 9-patch background. The `ListView` has
+a combined left margin and padding that aligns nicely with the "Header", but
+then the list items have an additional padding that pushes them too far in.
+
+So far the only obvious downside is having to manually hook the debug code up.
+With git though, you can do it once and keep the result on a local branch.
+That way it is always just a cherry-pick away.
+

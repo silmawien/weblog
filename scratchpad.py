@@ -45,12 +45,12 @@ def get_post(path):
             # Metadata has the format "key: value"
             [key, value] = re.split("\s*:\s*", line)
             post["meta"][key.lower()] = value.strip()
-        
+
         # The remainder is markdown-content
         md = "\n".join([line for line in f])
         post["content"] = markdown(md)
     return post
-    
+
 def get_posts():
     for root, dirs, files in os.walk("posts"):
         for name in files:
@@ -68,7 +68,7 @@ def generate():
 
     # Posts feed
     output("feed.xml", make_feed())
-    
+
     # Book listing ?
 
 if __name__ == "__main__":
