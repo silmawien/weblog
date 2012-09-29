@@ -85,13 +85,14 @@ There can be more than one `Handler` per `MessageQueue`. This may seem odd,
 but it is a convenient way to allow system messages and user-defined messages
 to coexist in the main thread's event loop. The way this works is that each
 `Message` has a reference to its **target**; a `Handler` that will eventually
-receive it.  That explains the `setTarget` call in the previous example. The
-target reference ensures that a message is routed to the correct handler,
-which means the message type is only used to identify messages within the
-scope of a single handler. So when you define your own handler you are free to
-define your message type constants without worrying about collisions with
-other handlers. In contrast, Win32 defines a range of values to avoid
-collisions between system messages and user messages.
+receive it.  That's the reason for the `setTarget` call in the previous
+example.
+
+Since the target is used to route a message to its handler, the message type
+is only used within the scope of that handler. So when you create your own
+handler you are free to define your message type constants without worrying
+about collisions with other handlers. In contrast, Win32 defines a range of
+values to avoid collisions between system messages and user messages.
 
 The loop
 ---

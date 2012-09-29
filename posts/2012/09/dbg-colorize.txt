@@ -3,7 +3,7 @@ Posted: 2012-09-22
 Posted: 2012-09-28
 Tags: android layout
 
-Despite the SDK developer's best intensions, creating a good Android layout is
+Despite the SDK developer's best intentions, creating a good Android layout is
 something of an art form. In this post I show a crude but useful utility that
 applies random background colors to find layout bugs.
 
@@ -57,7 +57,7 @@ this helper that acts on a whole view tree.
     }
 
 It uses translucent, bright pastel colors to light your view up like a
-christmas tree. If this is too much for your dull, corporate environment
+Christmas tree. If this is too much for your dull, corporate environment
 (sorry!), try `0x80ffffff` for a monochrome feel.
 
 Set up an entry point, like a menu item, and point `dbgColorize` at the root of the view tree you want colorized:
