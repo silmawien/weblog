@@ -6,8 +6,8 @@ import sys
 import os
 from common import add_generated_templates
 
-def render_post(src, dst):
-    ctx = read_post(src, dst)
+def render_post(src, url):
+    ctx = read_post(src, url)
 
     env = Environment(loader=FileSystemLoader("templates"))
     add_generated_templates(ctx)
@@ -16,5 +16,5 @@ def render_post(src, dst):
 
 if __name__ == "__main__":
     src = sys.argv[1]
-    dst = os.environ['DST']
-    render_post(src, dst)
+    url = os.environ['URL']
+    render_post(src, url)

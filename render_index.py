@@ -58,8 +58,8 @@ def landing_page(posts):
     print env.get_template("index.html").render(ctx).encode("utf-8")
 
 
-def render_index(srcs, dsts, out):
-    posts = [read_post(src, dst_url) for src, dst_url in zip(srcs, dsts)]
+def render_index(srcs, urls, out):
+    posts = [read_post(src, url) for src, url in zip(srcs, urls)]
 
     tag_index(posts, out)
     landing_page(posts)
@@ -67,6 +67,6 @@ def render_index(srcs, dsts, out):
 
 if __name__ == "__main__":
     srcs = os.environ['SRC'].split()
-    dsts = os.environ['DST'].split()
+    urls = os.environ['URL'].split()
     out = os.environ['OUT']
-    render_index(srcs, dsts, out)
+    render_index(srcs, urls, out)

@@ -28,7 +28,7 @@ a margin, a padding, or perhaps an incorrect gravity value.
 
 <!-- TODO: drawing displaying an unknown gap, and another with background that
      shows it's the padding? -->
-<img src="/image/layout-gap.png" />
+<img src="/mattias/image/layout-gap.png" />
 
 Background colors help when talking to designers, too. A designer may tell you
 to "use a 16dp margin around this list" but forget to take the parent's padding
@@ -76,7 +76,7 @@ background, but you can pass `overwrite = true` to override.
 Here is a simple layout with some alignment problems. The right side shows the
 same layout after `dbgColorize` is through with it.
 
-![result](/image/color-result.png)
+![result](/mattias/image/color-result.png)
 
 In the colorized version, we can start to understand what is going on. The
 `Button` is in fact left-aligned with the "Header", but has a large

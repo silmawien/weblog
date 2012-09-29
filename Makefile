@@ -1,6 +1,8 @@
 # Create site in ${OUT}
-OUT=/home/mattias/sandbox/stage.niklewski.com
-DEPLOY=/home/mattias/sandbox/blog.niklewski.com
+OUT=/home/mattias/sandbox/stage
+DEPLOY=/home/mattias/sandbox/blog
+
+ROOT=/mattias
 
 POSTS_SRC=$(wildcard posts/*/*/*.txt)
 POSTS=$(patsubst posts/%.txt,${OUT}/%.html,${POSTS_SRC})
@@ -27,7 +29,7 @@ INDEX=${OUT}/index.html
 POST_ENV=TMP="${GEN_TEMPLATES}"
 
 # parameters for multi-post scripts
-FULL_ENV=SRC="${POSTS_SRC}" DST="$(subst ${OUT},,${POSTS})" TMP="${GEN_TEMPLATES}" OUT=${OUT}
+FULL_ENV=SRC="${POSTS_SRC}" URL="$(subst ${OUT},${ROOT},${POSTS})" TMP="${GEN_TEMPLATES}" OUT=${OUT}
 
 # delete incomplete output files
 .DELETE_ON_ERROR:
@@ -50,13 +52,13 @@ ${GEN_TEMPLATES}: ${SCRIPTS} ${POSTS_SRC} ${TEMPLATES}
 ${POSTS}: ${OUT}/%.html: posts/%.txt ${TEMPLATES} ${SCRIPTS} ${GEN_TEMPLATES}
 	@echo $@
 	@mkdir -p $(@D)
-	@${POST_ENV} DST=$(subst ${OUT},,$@) python render_post.py $< > $@
+	@${POST_ENV} URL=$(subst ${OUT},${ROOT},$@) python render_post.py $< > $@
 
 # same for drafts (but see deploy rule)
 ${DRAFTS}: ${OUT}/drafts/%.html: drafts/%.txt ${TEMPLATES} ${SCRIPTS} | ${GEN_TEMPLATES}
 	@echo $@
 	@mkdir -p $(@D)
-	@${POST_ENV} DST=$(subst ${OUT},,$@) python render_post.py $< > $@
+	@${POST_ENV} URL=$(subst ${OUT},${ROOT},$@) python render_post.py $< > $@
 
 # run sass on scss files
 ${SCSS}: ${OUT}/%.css: %.scss
