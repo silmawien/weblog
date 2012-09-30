@@ -2,6 +2,7 @@
 OUT=/home/mattias/sandbox/stage
 DEPLOY=/home/mattias/sandbox/blog
 
+# Web root. Scripts use this to create links.
 ROOT=/mattias
 
 POSTS_SRC=$(wildcard posts/*/*/*.txt)
@@ -29,7 +30,7 @@ INDEX=${OUT}/index.html
 POST_ENV=TMP="${GEN_TEMPLATES}"
 
 # parameters for multi-post scripts
-FULL_ENV=SRC="${POSTS_SRC}" URL="$(subst ${OUT},${ROOT},${POSTS})" TMP="${GEN_TEMPLATES}" OUT=${OUT}
+FULL_ENV=SRC="${POSTS_SRC}" URL="$(subst ${OUT},${ROOT},${POSTS})" TMP="${GEN_TEMPLATES}" OUT=${OUT} ROOT=${ROOT}
 
 # delete incomplete output files
 .DELETE_ON_ERROR:
