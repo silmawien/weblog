@@ -8,7 +8,7 @@
     <h1>Category: '{{ tag }}'</h1>
         {% for post in posts %}
             <p>
-                <a href="{{ post.link }}">{{ post.title }}</a>
+                <a href="{{ post.url }}">{{ post.title }}</a>
                 (<time datetime="{{ post.posted.datetime }}">
                     {{- post.posted.display -}}
                 </time>)

@@ -8,9 +8,9 @@
     {% for p in posts %}
         {% set content = p.abstract %}
         {% set title   = p.title %}
-        {% set posted = p.posted %}
+        {% set posted  = p.posted %}
         {% set tags    = p.tags %}
-        {% set link    = p.link %}
+        {% set url     = p.url %}
         {% include "post.html" %}
         <p><a href="{{ p.link }}">[&nbsp;&hellip;&nbsp;]</a></p>
         {%- if not loop.last %}<hr />{% endif %}

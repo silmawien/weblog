@@ -2,8 +2,8 @@
 OUT=/home/mattias/sandbox/stage
 DEPLOY=/home/mattias/sandbox/blog
 
-# Web root. Scripts use this to create links.
-ROOT=/mattias
+# import config variables from python
+ROOT=`python -c "import config; print config.BLOG['root']"`
 
 POSTS_SRC=$(wildcard posts/*/*/*.txt)
 POSTS=$(patsubst posts/%.txt,${OUT}/%.html,${POSTS_SRC})
@@ -30,7 +30,7 @@ INDEX=${OUT}/index.html
 POST_ENV=TMP="${GEN_TEMPLATES}"
 
 # parameters for multi-post scripts
-FULL_ENV=SRC="${POSTS_SRC}" URL="$(subst ${OUT},${ROOT},${POSTS})" TMP="${GEN_TEMPLATES}" OUT=${OUT} ROOT=${ROOT}
+FULL_ENV=SRC="${POSTS_SRC}" URL="$(subst ${OUT},${ROOT},${POSTS})" TMP="${GEN_TEMPLATES}" OUT=${OUT}
 
 # delete incomplete output files
 .DELETE_ON_ERROR:

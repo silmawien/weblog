@@ -145,6 +145,10 @@ header {
     max-width: $max-width;
 }
 
+header img {
+    margin: 0 20px;
+}
+
 #doodle {
     vertical-align: bottom;
 }
@@ -179,7 +183,7 @@ article pre {
 /* Standard padding for text containers. */
 article, nav, footer {
     padding: $normal-padding;
-    max-width: $max-width; /* make resizing a little smoother */
+    /*max-width: $max-width;*/ /* make resizing a little smoother */
 }
 
 nav {
@@ -200,6 +204,10 @@ nav {
         width: $max-width + $nav-width;
         min-width: $max-width + $nav-width;
         margin: 0 auto;
+    }
+
+    header, footer {
+        border-left: 1px solid $base02;
     }
 
     .main {

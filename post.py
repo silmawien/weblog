@@ -84,7 +84,7 @@ def read_post(src, dst):
                 post[key] = value
 
         # self-link (for header and abstract [...])
-        post["link"] = dst
+        post["url"] = dst
 
         # The remainder is markdown-content
         body = [line for line in f]

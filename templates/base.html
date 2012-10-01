@@ -3,7 +3,7 @@
     <head>
         {% block head %}
         <meta charset="utf-8" />
-        <title>Some blog - {% block title %}{% endblock %}</title>
+        <title>{{ blog.title }} - {% block title %}{% endblock %}</title>
         <!--
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         -->
@@ -11,12 +11,13 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <link href="/mattias/js/gcp/prettify.css" type="text/css" rel="stylesheet" />
         <script type="text/javascript" src="/mattias/js/gcp/prettify.js"></script>
+        <link href="{{ blog.feed }}" type="application/atom+xml" rel="alternate" title="ATOM Feed">
         {% endblock %}
     </head>
     <body>
         <header>
-            <span><a class="plain-link" href="/">Some blog</a></span>
-            <img id="doodle" src="/mattias/image/doodle2.png" />
+            <span><a class="plain-link" href="{{ blog.root }}">Some blog</a></span>
+            <img id="doodle" src="/mattias/image/doodle3.png" />
         </header>
         <div id="content">
             <div class="main">

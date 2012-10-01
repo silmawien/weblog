@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <author>J Random Hacker</author>
+    <title>{{ blog.title }}</title>
+    <link href="{{ blog.base ~ blog.feed }}" rel="self" />
+    <link href="{{ blog.base ~ blog.root }}" />
+    <id>{{ blog.base ~ blog.root }}</id>
+    <updated>{{ posted }}</updated>
+    {% for post in posts %}
+    <entry>
+        <title>{{ post.title }}</title>
+        <link href="{{ blog.base ~ post.url }}"/>
+        <id>{{ blog.base ~ post.url }}</id>
+        <updated>{{ post.posted.datetime }}</updated>
+        <summary>{{ post.abstract }}</summary>
+        <content type="html">{{ post.content }}</content>
+    </entry>
+    {% endfor %}
+</feed>

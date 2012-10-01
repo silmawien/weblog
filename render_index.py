@@ -9,12 +9,15 @@ from post import read_post
 import sys
 import os
 from datetime import datetime
-from common import add_generated_templates
+from common import make_context
 import config
 from collections import defaultdict
 
 # number of recent posts to render on landing page
 MAX_POSTS = 5
+
+# share one Jinja environment
+env = Environment(loader=FileSystemLoader("templates"))
 
 def ensure_dir(path):
     dirname = os.path.dirname(path)
@@ -26,7 +29,7 @@ def posted_datetime(post):
     return datetime.strptime(post["posted"]["datetime"], "%Y-%m-%d")
 
 
-def tag_index(posts, out, root):
+def tag_index(posts, out):
     idx = defaultdict(list)
     # make a dict tag -> [post]
     for post in filter(lambda p: "tags" in p, posts):
@@ -39,15 +42,11 @@ def tag_index(posts, out, root):
 
     # create one index page per tag
     for tag, posts in idx.items():
-        ctx = { "title": 'Posts tagged "' + tag + '"', "tag": tag,
-                "posts": posts }
-        add_generated_templates(ctx)
-        env = Environment(loader=FileSystemLoader("templates"))
+        ctx = make_context({ "title": 'Posts tagged "' + tag + '"', "tag": tag,
+                "posts": posts })
         html = env.get_template("tag.html").render(ctx).encode("utf-8")
 
-        # strip the url root from TAG_URL to find the server path
-        server_path = os.path.relpath(config.TAG_URL, root) % tag
-        tagfile = os.path.join(out, server_path)
+        tagfile = out + config.TAG_PATH % tag
         ensure_dir(tagfile)
         with open(tagfile, "w") as f:
             f.write(html)
@@ -55,16 +54,24 @@ def tag_index(posts, out, root):
 
 def landing_page(posts):
     recent = sorted(posts, key=posted_datetime, reverse=True)[0:MAX_POSTS]
-    ctx = { "title": "Index", "posts": recent }
-    add_generated_templates(ctx)
-    env = Environment(loader=FileSystemLoader("templates"))
+    ctx = make_context({ "title": "Index", "posts": recent })
     print env.get_template("index.html").render(ctx).encode("utf-8")
 
+def feed(posts, out):
+    posts = sorted(posts, key=posted_datetime, reverse=True)
+    ctx = make_context({ "posts": posts, "url": config.BLOG["feed"] })
+    # use the most recent post's post time as the feed's update time
+    ctx["posted"] = posts[0]["posted"]["datetime"]
+    html = env.get_template("atom.xml").render(ctx).encode("utf-8")
+    with open(out + config.FEED_PATH, "w") as f:
+        f.write(html)
 
-def render_index(srcs, urls, out, root):
+
+def render_index(srcs, urls, out):
     posts = [read_post(src, url) for src, url in zip(srcs, urls)]
 
-    tag_index(posts, out, root)
+    tag_index(posts, out)
+    feed(posts, out)
     landing_page(posts)
 
 
@@ -72,5 +79,4 @@ if __name__ == "__main__":
     srcs = os.environ['SRC'].split()
     urls = os.environ['URL'].split()
     out = os.environ['OUT']
-    root = os.environ['ROOT']
-    render_index(srcs, urls, out, root)
+    render_index(srcs, urls, out)

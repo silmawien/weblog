@@ -4,13 +4,12 @@ from jinja2 import Environment, FileSystemLoader
 from post import read_post
 import sys
 import os
-from common import add_generated_templates
+from common import make_context
 
 def render_post(src, url):
-    ctx = read_post(src, url)
+    ctx = make_context(read_post(src, url))
 
     env = Environment(loader=FileSystemLoader("templates"))
-    add_generated_templates(ctx)
     print env.get_template("single_post.html").render(ctx).encode("utf-8")
 
 
