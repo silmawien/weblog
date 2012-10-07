@@ -140,6 +140,12 @@ body {
     background: $base03;
 }
 
+#header-container {
+    background: linear-gradient(0deg, $magenta, $base03);
+    background: -moz-linear-gradient(0deg, $magenta, $base03);
+    background: -webkit-gradient(radial, 10 10,50,20 20,1420,from($magenta),color-stop(25%, $base03),to($base02));
+}
+
 header {
     padding: 50px $normal-padding $normal-padding $normal-padding;
     max-width: $max-width;
@@ -157,7 +163,12 @@ header img {
     background: #eee;
 }
 
-#content img.shadow {
+#content img {
+    margin: 0 auto;
+    display: block;
+}
+
+img.shadow {
     @include box-shadow(2px, 2px, 6px);
 }
 
@@ -206,8 +217,9 @@ nav {
         margin: 0 auto;
     }
 
-    header, footer {
-        border-left: 1px solid $base02;
+    header, footer, article {
+        border-left: 1px solid rgba(0, 0, 0, 0.1);
+        border-right: 1px solid rgba(0, 0, 0, 0.1);
     }
 
     .main {
@@ -228,7 +240,6 @@ nav {
 
     article {
         margin-right: $nav-width;
-        border-left: 1px solid $gray;
         border-right: 1px solid $gray;
         /* empty pages makes footer look horrible */
         min-height: 500px;

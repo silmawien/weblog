@@ -4,9 +4,13 @@
         <a class="plain-link" href="{{ url }}">{{ title }}</a>
     </h1>
     <div class="post-date">
-        Posted on <time datetime="{{ posted.datetime }}">
+        {% if posted is defined %}
+            Posted on <time datetime="{{ posted.datetime }}">
             {{ posted.display }}
         </time>
+        {% else %}
+            Not yet posted
+        {% endif %}
         {% for tag in tags %}
             {% if loop.first %}in {% endif %}
             <a href="{{ tag.href }}">{{ tag.text }}</a>

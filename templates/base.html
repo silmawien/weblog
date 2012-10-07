@@ -15,10 +15,12 @@
         {% endblock %}
     </head>
     <body>
-        <header>
-            <span><a class="plain-link" href="{{ blog.root }}">Some blog</a></span>
-            <img id="doodle" src="/mattias/image/doodle3.png" />
-        </header>
+        <div id="header-container">
+            <header>
+                <span><a class="plain-link" href="{{ blog.root }}">{{ blog.title }}</a></span>
+                <img id="doodle" src="/mattias/image/doodle3.png" />
+            </header>
+        </div>
         <div id="content">
             <div class="main">
                 <article>

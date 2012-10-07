@@ -1,0 +1,94 @@
+Title: Fixed Aspect Layout
+Created: 2012-10-03
+Posted: 2012-10-07
+Tags: android layout
+
+`ImageView.ScaleType` offers a flexible way to scale and align
+images without changing their aspect ratio. One day I was building a side-bar
+whose shape would vary depending on screen size, and I thought "hey,
+it would be nice if I could have the same flexibility, not with images but
+with **layouts**". So I wrote this simple custom layout which has proven to be
+a valuable asset in my toolkit. 
+
+    public class FixedAspectLayout extends FrameLayout {
+
+        private float aspect = 1.0f;
+
+        // .. alternative constructors omitted
+
+        public FixedAspectLayout(Context context, AttributeSet attrs) {
+            super(context, attrs);
+            init(context, attrs);
+        }
+
+        private void init(Context context, AttributeSet attrs) {
+            TypedArray a = context.obtainStyledAttributes(attrs,
+                    R.styleable.FixedAspectLayout);
+            aspect = a.getFloat(R.styleable.FixedAspectLayout_aspectRatio, 1.0f);
+        }
+
+        @Override
+        protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+            int w = MeasureSpec.getSize(widthMeasureSpec);
+            int h = MeasureSpec.getSize(heightMeasureSpec);
+
+            if (w == 0) {
+                h = 0;
+            } else if (h / w < aspect) {
+                w = (int)(h / aspect);
+            } else {
+                h = (int)(w * aspect);
+            }
+
+            super.onMeasure(
+                    MeasureSpec.makeMeasureSpec(w,
+                            MeasureSpec.getMode(widthMeasureSpec)),
+                    MeasureSpec.makeMeasureSpec(h,
+                            MeasureSpec.getMode(heightMeasureSpec)));
+        }
+    }
+
+This version of the code has a bugfix that I borrowed from user TalL's [answer
+on SO][so-answer], which solves the exact same problem. Thanks!
+
+[so-answer]: http://stackoverflow.com/a/10772572
+
+The code in `init()` relies on a new styleable that you define by adding the
+following resource to `res/values/attrs.xml`.
+
+    <?xml version="1.0" encoding="utf-8"?>
+    <resources>
+        <declare-styleable name="FixedAspectLayout">
+            <attr name="aspectRatio" format="float"/>
+        </declare-styleable>
+    </resources>
+
+Custom styleables are defined in an app-specific namespace which you need to
+import. Here is an example of how to do that. Replace *com.example.layouttest*
+with the package name of your app.
+
+    xmlns:app="http://schemas.android.com/apk/res/com.example.layouttest"
+
+    ...
+
+    <com.example.layouttest.FixedAspectLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        app:aspectRatio="1.0" >
+
+        ... child layout ...
+
+    </com.example.layouttest.FixedAspectLayout>
+
+The child layout can be a single view or a complex layout. The
+FixedAspectLayout itself can be positioned as any other view, so you might
+for instance use a gravity to center it within its parent. Keep in mind that if
+your layout is dynamic like mine was, you may not know in advance if there is
+going to be excess horizontal or vertical space, so you may want to specify
+both a horizontal and vertical alignment.
+
+Here is a screenshot that shows the layout in action with various values for `app:aspect` (a) and `android:gravity` (g). Note how the aspect ratio stays constant despite the varying shape of the container. 
+
+<img class="shadow" src="/mattias/image/aspects.png" />
+

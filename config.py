@@ -11,7 +11,7 @@ BLOG["root"] = "/mattias"
 BLOG["base"] = "http://blog.niklewski.com"
 
 # Title
-BLOG["title"] = "Some Blog"
+BLOG["title"] = "My Blog"
 
 # Output tag-specific index here.
 TAG_PATH = "/tags/%s.html"

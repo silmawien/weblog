@@ -26,9 +26,7 @@ few views.
 It is often enough to see if that unintentional gap between views is caused by
 a margin, a padding, or perhaps an incorrect gravity value.
 
-<!-- TODO: drawing displaying an unknown gap, and another with background that
-     shows it's the padding? -->
-<img src="/mattias/image/layout-gap.png" />
+<img class="shadow" src="/mattias/image/layout-gap.png" />
 
 Background colors help when talking to designers, too. A designer may tell you
 to "use a 16dp margin around this list" but forget to take the parent's padding
