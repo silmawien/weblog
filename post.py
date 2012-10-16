@@ -10,6 +10,7 @@ import sys
 import os.path
 from itertools import takewhile
 import config
+from datetime import datetime
 
 # number of paragraphs in abstracts
 ABSTRACT_SIZE = 1
@@ -28,26 +29,21 @@ def markdown(source):
 
 def make_tag_link(tag):
     "Create href, display-name from a tag name."
-    return { "href": config.TAG_URL % tag, "text": tag }
+    return { "url": config.TAG_URL % tag, "text": tag }
 
 
-english_months = ['january', 'february', 'march', 'april', 'may', 'june',
-        'july', 'august', 'september', 'october', 'november', 'december']
-
-
-def pretty_date(datestr):
-    "Convert 2012-09-10 to August 10, 2012."
-    (year, month, day) = datestr.split("-")
-    try:
-        month = english_months[int(month) - 1].capitalize()
-    except IndexError:
-        sys.exit("Invalid date string: " + datestr)
-    return "{0} {1}, {2}".format(month, int(day), year)
+def pretty_date(datetime):
+    "Convert 2012-09-10 to August 10[, 2012]."
+    thisyear = datetime.now().year
+    format = "%b %d" if datetime.year == thisyear else "%b %d, %Y"
+    return datetime.strftime(format)
 
 
 def make_date(datestr):
-    "Create datetime and display time for a html5 <time> element."
-    return { "datetime": datestr, "display": pretty_date(datestr) }
+    "Parse datestr and create datetime, display time, html5 <time> string."
+    dt = datetime.strptime(datestr, "%Y-%m-%d")
+    return { "datetime": dt, "display": pretty_date(dt),
+            "htmltime": datestr }
 
 def paragraph_counter(num):
     "Count empty lines and return False after num such lines."

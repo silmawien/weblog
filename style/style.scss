@@ -1,7 +1,8 @@
-$max-width: 700px;
+$max-width: 740px;
 $nav-width: 260px;
 
-$normal-padding: 40px;
+$v-padding: 20px;
+$h-padding: 40px;
 
 /*
  * colors
@@ -10,14 +11,6 @@ $normal-padding: 40px;
 $gray: #ccc;
 
 /* http://ethanschoonover.com/solarized */
-$base03: #002b36;
-$base02: #073642;
-$base01: #586e75;
-$base00: #657b83;
-$base0: #839496;
-$base1: #93a1a1;
-$base2: #eee8d5;
-$base3: #fdf6e3;
 $yellow: #b58900;
 $orange: #cb4b16;
 $red: #dc322f;
@@ -45,7 +38,7 @@ $green: #859900;
             box-shadow: $dx $dy $blur;
 }
 
-@import url(http://fonts.googleapis.com/css?family=Average);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
 @import url(http://fonts.googleapis.com/css?family=Ubuntu);
 
 /* Use the more sane border-box model. */
@@ -74,23 +67,22 @@ h2 {
 
 body {
     /* Default body text */
-    font-family: Georgia, serif;
+    font-family: Open Sans, sans-serif;
     line-height: 1.4;
     font-size: 14px;
     color: #444;
 }
 
 p, li {
-    margin: 0 0 1.5em 0;
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.7;
 }
 
 header {
     font-family: Georgia, serif;
-    font-size: 82px;
+    font-size: 22px;
     line-height: 1.0;
-    color: #ccc;
+    color: $gray;
 }
 
 .post-header h1 {
@@ -101,6 +93,12 @@ footer {
     color: $gray;
 }
 
+ul {
+    list-style-type: circle;
+    /* Stop identing lists like crazy */
+    padding: 0 0 0 1.5em;
+}
+
 /* Code needs to be a little denser than body text to look good */
 pre {
     line-height: 1.3em;
@@ -108,8 +106,8 @@ pre {
 }
 
 .post-date {
-    color: $base01;
     margin-bottom: 1.5em;
+    font-size: 13px;
 }
 
 /*
@@ -119,6 +117,15 @@ pre {
 a {
     color: $blue;
     text-decoration: none;
+}
+
+footer a {
+    color: hsl(205, 59%, 60%);
+}
+
+#recent-header {
+    color: #666;
+    font-size: 1.3em;
 }
 
 a:hover {
@@ -137,17 +144,11 @@ a:hover {
 body {
     margin: 3px 0 0 0;
     padding: 0;
-    background: $base03;
-}
-
-#header-container {
-    background: linear-gradient(0deg, $magenta, $base03);
-    background: -moz-linear-gradient(0deg, $magenta, $base03);
-    background: -webkit-gradient(radial, 10 10,50,20 20,1420,from($magenta),color-stop(25%, $base03),to($base02));
+    background: black;
 }
 
 header {
-    padding: 50px $normal-padding $normal-padding $normal-padding;
+    padding: $v-padding $h-padding;
     max-width: $max-width;
 }
 
@@ -156,7 +157,7 @@ header img {
 }
 
 #doodle {
-    vertical-align: bottom;
+    float: right;
 }
 
 #content {
@@ -181,26 +182,27 @@ img.shadow {
 
 article {
     overflow: hidden;
-    background: #e8e8e8;
 }
 
 /* Avoid overflowing on narrow displays. */
 article pre {
     overflow: auto;
-    background: #ddd;
+    @include border-radius(8px);
+    background: hsl(214, 36%, 92%);
+    border: 1px solid hsl(214, 36%, 82%);
     padding: 15px;
 }
 
 /* Standard padding for text containers. */
 article, nav, footer {
-    padding: $normal-padding;
+    padding: $v-padding $h-padding;
     /*max-width: $max-width;*/ /* make resizing a little smoother */
 }
 
 nav {
     /*background: $base03;*/
     @include border-radius(8px);
-    padding: $normal-padding;
+    padding: $v-padding $h-padding;
 }
 
 /*
@@ -216,9 +218,8 @@ nav {
         margin: 0 auto;
     }
 
-    header, footer, article {
-        border-left: 1px solid rgba(0, 0, 0, 0.1);
-        border-right: 1px solid rgba(0, 0, 0, 0.1);
+    header, footer {
+        padding-right: $nav-width;
     }
 
     .main {
@@ -232,15 +233,19 @@ nav {
         top: 0;
         right: 0;
         width: $nav-width;
-        padding: $normal-padding;
+        padding: $v-padding $h-padding;
+        margin-top: 25px;
         @include box-sizing(margin-box);
     }
 
     article {
         margin-right: $nav-width;
-        border-right: 1px solid $gray;
         /* empty pages makes footer look horrible */
         min-height: 500px;
+    }
+
+    article p {
+        text-align: justify;
     }
 }
 

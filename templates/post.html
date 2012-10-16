@@ -5,7 +5,7 @@
     </h1>
     <div class="post-date">
         {% if posted is defined %}
-            Posted on <time datetime="{{ posted.datetime }}">
+            Posted on <time datetime="{{ posted.htmltime }}">
             {{ posted.display }}
         </time>
         {% else %}
@@ -13,7 +13,7 @@
         {% endif %}
         {% for tag in tags %}
             {% if loop.first %}in {% endif %}
-            <a href="{{ tag.href }}">{{ tag.text }}</a>
+            <a href="{{ tag.url }}">{{ tag.text }}</a>
             {%- if not loop.last %},{% endif %}
         {% else %}
             with no tags

@@ -26,7 +26,7 @@ def ensure_dir(path):
 
 
 def posted_datetime(post):
-    return datetime.strptime(post["posted"]["datetime"], "%Y-%m-%d")
+    return post["posted"]["datetime"]
 
 
 def tag_index(posts, out):
