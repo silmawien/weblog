@@ -2,15 +2,22 @@ Title: The rotation matrix
 Posted: 2012-08-16
 Tags: programming pascal
 
-When I was around 14, a friend lent me a [Pascal book](http://books.google.se/books/about/Turbov%C3%A4gen_till_Pascal.html?id=dRf2MAAACAAJ&redir_esc=y). Pascal was used in Swedish schools and this copy came from his mom who was a teacher. He also lent me a copy of Turbo Pascal, a brilliant IDE for MSDOS that was way ahead of it's time.
+When I was 13, a friend lent me a [Pascal book](http://books.google.se/books/about/Turbov%C3%A4gen_till_Pascal.html?id=dRf2MAAACAAJ&redir_esc=y). Pascal was used in Swedish schools and this copy came from his mom who was a teacher. He also lent me a copy of Turbo Pascal, a brilliant IDE for MSDOS that was way ahead of it's time.
 
-Soon I had picked up enough Pascal to start writing simple programs. Not sure what exactly to do yet, we devoured whatever [documentation](http://www.cs.cmu.edu/~ralf/files.html) we could find on the x86 / DOS environment.
+Soon I had picked up enough Pascal to start writing simple programs. Not sure
+what exactly to do yet, together we devoured whatever [documentation](http://www.cs.cmu.edu/~ralf/files.html) we could find on the x86 / DOS environment.
 
 At this time, pirated computer games used to come bundled with an 'intro', a small program that displayed game info and presented the members of the release group. Some intros featured graphics, ranging from minimalist side-scrolling text to fullblown 3D scenes like something out of the demo scene. I wasn't familiar with the demo scene yet, but I thought graphics seemed really neat, so why not try that?
 
 The standard way to do graphics in Pascal was through something called the Borland Graphics Interface (BGI). Great for your average desktop app I'm sure, but for intro-style stuff you might need to do full-screen updates at high framerates. BGI was too slow for that.
 
-Fortunately, there was a [tutorial](http://www.textfiles.com/programming/astrainer.txt) floating around on local BBSs, written by this guy named Denthor from a South African demo group called Asphyxia. It explained how to do graphics in MCGA (a.k.a. 'mode 13h'), which was a 320x200 graphics mode with 256 indexed colors. Turbo Pascal had inline assembler, so swapping modes via BIOS services was a trivial affair.
+Fortunately, there was a
+[tutorial](http://www.textfiles.com/programming/astrainer.txt) floating around
+our local BBSs. It was written by this guy named Denthor from a South African
+demo group called Asphyxia, and it explained how to do graphics in MCGA
+-- also known as *mode 13h* -- which was a 320x200 graphics mode with 256 indexed
+colors. Turbo Pascal had inline assembler, so swapping modes via BIOS services
+was trivial.
 
     Procedure SetMCGA;
     BEGIN
@@ -30,11 +37,13 @@ The tutorial was well written and full of useful tricks. In the first few chapte
 
 With 2D out of the way, it moved on to 3D. Rasterizing triangles, back-face culling. So far so good. Rotation in 3D space. This was where I got stuck. Linear algebra isn't taught until undergrad level in Sweden, and the tutorial didn't go into much details beyond serving up a bunch of 3D rotation matrices. It was too dense for me. I copy/pasted what I needed but promised myself that I would some day get to the bottom of this matrix wizardry. 
 
-Fast forward about 6 years. I am in the lecture room at the university, watching my professor scribble equations on the black board. This is the introduction to Linear Algebra, and the course is wrapping up. Suddenly I recognize the rotation matrix on the black board. It's in 2D this time, but doesn't that `-sin (a)` term look awefully familiar?
+Fast forward about 6 years. I am in the lecture room at the university, watching my professor scribble equations on the black board. This is the introduction to Linear Algebra, and the course is wrapping up. Suddenly I recognize the rotation matrix on the black board. It's in 2D this time, but doesn't that `-sin(a)` term look awefully familiar?
 
 <img src="/mattias/image/blackboard.png" />
 
-And then it hits me: This is where I got stuck all those years ago. Only this time it all makes perfect sense. The matrix, this omnious shadow from the past, can be derived easily - just check what the transform does to the x-y axes and [that's that](http://mathforum.org/library/drmath/view/74063.html).
+And then it hits me. This is where I got stuck all those years ago. Only this time it all makes perfect sense. The matrix, this omnious shadow from the past, can be derived easily - just check what the transform does to the x-y axes and [that's that](http://mathforum.org/library/drmath/view/74063.html).
 
-I know many people who seemed destined to take up programming. Maybe they got an Apple II in their hands at age 5, or maybe their parents were C hackers and taught them first hand. I'm not one of those kids. Our first internet connection was still a few years away, and Wikipedia a few years more. If Denthor hadn't written his tutorial and if it hadn't by some chance ended up in my hands at the perfect time, I may have given up on Pascal. I am grateful that I didn't.
+I know many people who seemed destined to take up programming. Maybe they got
+an Apple II in their hands at age 5, or maybe their parents were C hackers and
+taught them first hand. I'm not one of those kids. In 1993, our first internet connection was still a few years away, and Wikipedia a few years more. If Denthor hadn't written his tutorial and if it hadn't by some chance ended up in my hands at the perfect time, I may have given up on Pascal. I am grateful that I didn't.
 

@@ -74,7 +74,8 @@ background, but you can pass `overwrite = true` to override.
 Here is a simple layout with some alignment problems. The right side shows the
 same layout after `dbgColorize` is through with it.
 
-![result](/mattias/image/color-result.png)
+<img class="shadow inline" style="margin-right: 20px;" src="/mattias/image/color-orig.png" />
+<img class="shadow inline" src="/mattias/image/color-result.png" />
 
 In the colorized version, we can start to understand what is going on. The
 `Button` is in fact left-aligned with the "Header", but has a large

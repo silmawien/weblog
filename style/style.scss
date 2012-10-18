@@ -169,6 +169,10 @@ header img {
     display: block;
 }
 
+#content img.inline {
+    display: inline;
+}
+
 img.shadow {
     @include box-shadow(2px, 2px, 6px);
 }
