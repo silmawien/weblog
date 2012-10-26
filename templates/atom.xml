@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <author>J Random Hacker</author>
+    <author>
+        <name>J Random Hacker</name>
+    </author>
     <title>{{ blog.title }}</title>
     <link href="{{ blog.base ~ blog.feed }}" rel="self" />
     <link href="{{ blog.base ~ blog.root }}" />
@@ -11,9 +13,13 @@
         <title>{{ post.title }}</title>
         <link href="{{ blog.base ~ post.url }}"/>
         <id>{{ blog.base ~ post.url }}</id>
-        <updated>{{ post.posted.datetime }}</updated>
-        <summary>{{ post.abstract }}</summary>
-        <content type="html">{{ post.content }}</content>
+        <updated>{{ post.posted.isotime }}</updated>
+        <summary type="html">
+            {{ post.abstract }}
+        </summary>
+        <content type="html">
+            {{ post.content }}
+        </content>
     </entry>
     {% endfor %}
 </feed>

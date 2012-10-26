@@ -57,11 +57,21 @@ def landing_page(posts):
     ctx = make_context({ "title": "Index", "posts": recent })
     print env.get_template("index.html").render(ctx).encode("utf-8")
 
+
+def escape_html(html):
+    "Escape html to make it suitable for an atom <content type='html'> tag."
+    return html.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+
 def feed(posts, out):
     posts = sorted(posts, key=posted_datetime, reverse=True)
+    # escape html
+    for post in posts:
+        post["content"] = escape_html(post["content"])
+        post["abstract"] = escape_html(post["abstract"])
     ctx = make_context({ "posts": posts, "url": config.BLOG["feed"] })
     # use the most recent post's post time as the feed's update time
-    ctx["posted"] = posts[0]["posted"]["datetime"]
+    ctx["posted"] = posts[0]["posted"]["isotime"]
     html = env.get_template("atom.xml").render(ctx).encode("utf-8")
     with open(out + config.FEED_PATH, "w") as f:
         f.write(html)
@@ -71,9 +81,10 @@ def render_index(srcs, urls, out):
     posts = [read_post(src, url) for src, url in zip(srcs, urls)]
 
     tag_index(posts, out)
-    feed(posts, out)
     landing_page(posts)
 
+    # mutates posts in-place!
+    feed(posts, out)
 
 if __name__ == "__main__":
     srcs = os.environ['SRC'].split()

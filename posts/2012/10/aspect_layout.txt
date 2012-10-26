@@ -7,8 +7,8 @@ Tags: android layout
 images without changing their aspect ratio. One day I was building a side-bar
 whose shape would vary depending on screen size, and I thought "hey,
 it would be nice if I could have the same flexibility, not with images but
-with **layouts**". So I wrote this simple custom layout which has proven to be
-a valuable asset in my toolkit. 
+with **layouts**". So I wrote this simple custom layout which has been
+a valuable asset in my toolkit ever since. 
 
     public class FixedAspectLayout extends FrameLayout {
 
@@ -88,7 +88,10 @@ your layout is dynamic like mine was, you may not know in advance if there is
 going to be excess horizontal or vertical space, so you may want to specify
 both a horizontal and vertical alignment.
 
-Here is a screenshot that shows the layout in action with various values for `app:aspect` (a) and `android:gravity` (g). Note how the aspect ratio stays constant despite the varying shape of the container. 
+Here is a screenshot that shows the layout in action with various values for
+`app:aspect` (a) and `android:gravity` (g). Note how the aspect ratio (not the
+size) stays
+constant despite the varying shape of the container.
 
 <img class="shadow" src="/mattias/image/aspects.png" />
 

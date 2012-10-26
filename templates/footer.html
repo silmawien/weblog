@@ -1,13 +1,15 @@
 {# Footer template. #}
-<img id="doodle" src="/mattias/image/doodle3.png" />
-<div id="recent-header">Recent posts</div>
-<ul>
-    {% for post in posts %}
-    <li>
-        <a href="{{ post.url }}">{{ post.title }}</a>
-        <time datetime="{{ post.posted.htmltime }}">
-            {{- post.posted.display -}}
-        </time>
-    </li>
-    {% endfor %}
-</ul>
+<div id="footer-content">
+    <img id="doodle" src="/mattias/image/doodle4.png" />
+    <div id="recent-header">Recent posts</div>
+    <ul>
+        {% for post in posts %}
+        <li>
+            <a href="{{ post.url }}">{{ post.title }}</a>
+            <time datetime="{{ post.posted.htmltime }}">
+                {{- post.posted.display -}}
+            </time>
+        </li>
+        {% endfor %}
+    </ul>
+</div>

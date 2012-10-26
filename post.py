@@ -38,12 +38,15 @@ def pretty_date(datetime):
     format = "%b %d" if datetime.year == thisyear else "%b %d, %Y"
     return datetime.strftime(format)
 
+def iso_time(datetime):
+    "Mock ISO timestamp with timezone (utc)."
+    return datetime.isoformat() + "Z"
 
 def make_date(datestr):
     "Parse datestr and create datetime, display time, html5 <time> string."
     dt = datetime.strptime(datestr, "%Y-%m-%d")
     return { "datetime": dt, "display": pretty_date(dt),
-            "htmltime": datestr }
+            "htmltime": datestr, "isotime": iso_time(dt)}
 
 def paragraph_counter(num):
     "Count empty lines and return False after num such lines."

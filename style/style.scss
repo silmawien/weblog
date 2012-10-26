@@ -79,8 +79,7 @@ p, li {
 }
 
 header {
-    font-family: Georgia, serif;
-    font-size: 22px;
+    font-family: Open Sans, sans-serif;
     line-height: 1.0;
     color: $gray;
 }
@@ -148,7 +147,7 @@ body {
 }
 
 header {
-    padding: $v-padding $h-padding;
+    padding: 15px $h-padding;
     max-width: $max-width;
 }
 
@@ -222,7 +221,7 @@ nav {
         margin: 0 auto;
     }
 
-    header, footer {
+    header {
         padding-right: $nav-width;
     }
 
@@ -242,8 +241,11 @@ nav {
         @include box-sizing(margin-box);
     }
 
-    article {
+    article, #footer-content {
         margin-right: $nav-width;
+    }
+
+    article {
         /* empty pages makes footer look horrible */
         min-height: 500px;
     }

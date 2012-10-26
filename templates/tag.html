@@ -5,7 +5,7 @@
     {{ super() }}
 {% endblock %}
 {% block content %}
-    <h1>Category: '{{ tag }}'</h1>
+    <h1>Category: {{ tag }}</h1>
     <ul>
         {% for post in posts %}
             <li>
