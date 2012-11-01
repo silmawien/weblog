@@ -1,24 +1,9 @@
-$max-width: 740px;
-$nav-width: 260px;
+$max-width: 850px;
 
 $v-padding: 20px;
 $h-padding: 40px;
 
-/*
- * colors
- */
-
 $gray: #ccc;
-
-/* http://ethanschoonover.com/solarized */
-$yellow: #b58900;
-$orange: #cb4b16;
-$red: #dc322f;
-$magenta: #d33682;
-$violet: #6c71c4;
-$blue: #268bd2;
-$cyan: #2aa198;
-$green: #859900;
 
 @mixin box-sizing($model) {
     -webkit-box-sizing: $model;
@@ -38,7 +23,7 @@ $green: #859900;
             box-shadow: $dx $dy $blur;
 }
 
-@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300);
 @import url(http://fonts.googleapis.com/css?family=Ubuntu);
 
 /* Use the more sane border-box model. */
@@ -51,14 +36,16 @@ $green: #859900;
  */
 
 h1, h2, h3 {
-    font-family: Ubuntu, sans-serif;
+    font-family: Open Sans, sans-serif;
     line-height: 1.0;
     color: #444;
-    margin-bottom: 0.5em;
+    padding-top: 0.83em;
+    margin-top: 0;
 }
 
 h1 {
-    font-size: 2.4em;
+    font-size: 42px;
+    font-weight: 300;
 }
 
 h2 {
@@ -68,14 +55,9 @@ h2 {
 body {
     /* Default body text */
     font-family: Open Sans, sans-serif;
-    line-height: 1.4;
-    font-size: 14px;
-    color: #444;
-}
-
-p, li {
     font-size: 15px;
-    line-height: 1.7;
+    line-height: 1.6;
+    color: #444;
 }
 
 header {
@@ -89,7 +71,11 @@ header {
 }
 
 footer {
-    color: $gray;
+    color: #777;
+}
+
+#recent-header {
+    font-size: 1.3em;
 }
 
 ul {
@@ -98,8 +84,8 @@ ul {
     padding: 0 0 0 1.5em;
 }
 
-/* Code needs to be a little denser than body text to look good */
 pre {
+    font-size: 14px;
     line-height: 1.3em;
     color: #444;
 }
@@ -114,17 +100,12 @@ pre {
  */
 
 a {
-    color: $blue;
+    color: #268bd2;
     text-decoration: none;
 }
 
 footer a {
     color: hsl(205, 59%, 60%);
-}
-
-#recent-header {
-    color: #666;
-    font-size: 1.3em;
 }
 
 a:hover {
@@ -148,11 +129,24 @@ body {
 
 header {
     padding: 15px $h-padding;
-    max-width: $max-width;
 }
 
 header img {
     margin: 0 20px;
+}
+
+#category-list {
+    background: #eee;
+}
+
+/* Standard padding for text containers. */
+article, footer > div {
+    padding: $v-padding $h-padding;
+}
+
+header, footer > div, article {
+    max-width: $max-width;
+    margin: 0 auto;
 }
 
 #doodle {
@@ -163,12 +157,12 @@ header img {
     background: #eee;
 }
 
-#content img {
+article img {
     margin: 0 auto;
     display: block;
 }
 
-#content img.inline {
+article img.inline {
     display: inline;
 }
 
@@ -176,7 +170,7 @@ img.shadow {
     @include box-shadow(2px, 2px, 6px);
 }
 
-#content:after, #content:before {
+footer:before, #content:before {
     content: "";
     display: block;
     height: 1px;
@@ -185,6 +179,8 @@ img.shadow {
 
 article {
     overflow: hidden;
+    /* empty pages makes footer too large */
+    min-height: 500px;
 }
 
 /* Avoid overflowing on narrow displays. */
@@ -196,70 +192,14 @@ article pre {
     padding: 15px;
 }
 
-/* Standard padding for text containers. */
-article, nav, footer {
-    padding: $v-padding $h-padding;
-    /*max-width: $max-width;*/ /* make resizing a little smoother */
-}
-
-nav {
-    /*background: $base03;*/
-    @include border-radius(8px);
-    padding: $v-padding $h-padding;
-}
-
-/*
- * Move the nav bar to the side.
- * Max-width.
- */
-
-@media (min-width: $max-width + $nav-width) {
-
-    header, footer, .main {
-        width: $max-width + $nav-width;
-        min-width: $max-width + $nav-width;
-        margin: 0 auto;
-    }
-
-    header {
-        padding-right: $nav-width;
-    }
-
-    .main {
-        /* hack: cut out the nav bar to prevent scrollbars
-           just above cut-off width */
-        position: relative;
-    }
-
-    nav {
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: $nav-width;
-        padding: $v-padding $h-padding;
-        margin-top: 25px;
-        @include box-sizing(margin-box);
-    }
-
-    article, #footer-content {
-        margin-right: $nav-width;
-    }
-
-    article {
-        /* empty pages makes footer look horrible */
-        min-height: 500px;
-    }
-
-    article p {
-        text-align: justify;
-    }
-}
-
 hr {
     width: 100%;
     color: $gray;
     background-color: $gray;
     height: 1px;
     border: 0px;
-    margin-top: 40px;
+}
+
+blockquote {
+    font-style: italic;
 }

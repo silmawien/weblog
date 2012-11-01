@@ -24,21 +24,19 @@
             </span>
         </header>
         <div id="content">
-            <div class="main">
-                <article>
-                {% block content %}{% endblock %}
-                </article>
-                <nav>
-                    {% include nav %}
-                </nav>
-            </div>
+            <article>
+            {% block content %}{% endblock %}
+            </article>
         </div>
+        <footer id="category-list">
+            {% include nav %}
+        </footer>
         <footer>
             {% include footer %}
         </footer>
         <script>
-            // prettify code with google-code-prettify
             $(function() {
+                // prettify code with google-code-prettify
                 $("article > pre > code").addClass("prettyprint");
                 prettyPrint();
             });

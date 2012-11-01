@@ -35,7 +35,7 @@ def make_tag_link(tag):
 def pretty_date(datetime):
     "Convert 2012-09-10 to August 10[, 2012]."
     thisyear = datetime.now().year
-    format = "%b %d" if datetime.year == thisyear else "%b %d, %Y"
+    format = "%B %d" if datetime.year == thisyear else "%B %d, %Y"
     return datetime.strftime(format)
 
 def iso_time(datetime):
@@ -70,7 +70,7 @@ def read_post(src, dst):
             # Metadata section ends with an empty line
             if not line.strip(): break
             # Metadata has the format "key: value"
-            key, value = re.split(u"\s*:\s*", unicode(line, "utf-8"))
+            key, value = re.split(u"\s*:\s*", unicode(line, "utf-8"), 1)
             key = key.lower()
             value = value.strip()
 
