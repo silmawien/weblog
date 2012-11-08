@@ -19,7 +19,7 @@ SCSS=$(patsubst %.scss,${OUT}/%.css,${SCSS_SRC})
 
 TEMPLATES=$(wildcard templates/*)
 
-GEN_TEMPLATES=gen/footer.html gen/nav.html
+GEN_TEMPLATES=gen/footer.html
 
 IDX_SCRIPT=render_index.py
 SCRIPTS=$(filter-out ${IDX_SCRIPT},$(wildcard *.py))

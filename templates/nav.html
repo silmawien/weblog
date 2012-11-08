@@ -1,7 +1,0 @@
-{# Nav bar template. #}
-<div>
-    {% for tag in tags %}
-        <a style="font-size: {{ tag.scale }}em;"
-            href="{{ tag.url }}">{{ tag.text }}({{ tag.weight }})</a>
-    {% endfor %}
-</div>

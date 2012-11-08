@@ -1,7 +1,7 @@
-$max-width: 850px;
+$max-width: 750px;
 
 $v-padding: 20px;
-$h-padding: 40px;
+$h-padding: 20px;
 
 $gray: #ccc;
 
@@ -17,10 +17,10 @@ $gray: #ccc;
             border-radius: $radius;
 }
 
-@mixin box-shadow($dx, $dy, $blur) {
-    -webkit-box-shadow: $dx $dy $blur;
-       -moz-box-shadow: $dx $dy $blur;
-            box-shadow: $dx $dy $blur;
+@mixin box-shadow($color, $dx, $dy, $blur) {
+    -webkit-box-shadow: $color $dx $dy $blur;
+       -moz-box-shadow: $color $dx $dy $blur;
+            box-shadow: $color $dx $dy $blur;
 }
 
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300);
@@ -29,6 +29,10 @@ $gray: #ccc;
 /* Use the more sane border-box model. */
 * {
   @include box-sizing(border-box);
+}
+
+header, article, footer, section {
+    display: block;
 }
 
 /*
@@ -74,7 +78,7 @@ footer {
     color: #777;
 }
 
-#recent-header {
+footer #column-header {
     font-size: 1.3em;
 }
 
@@ -140,8 +144,18 @@ header img {
 }
 
 /* Standard padding for text containers. */
-article, footer > div {
+header, article, footer > div {
     padding: $v-padding $h-padding;
+
+    @media (max-width: 500px) {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+header {
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 header, footer > div, article {
@@ -149,8 +163,33 @@ header, footer > div, article {
     margin: 0 auto;
 }
 
-#doodle {
-    float: right;
+#footer-content {
+    display: -webkit-flex;
+    -webkit-align-items: flex-start;
+
+    @media (min-width: 551px) {
+        -webkit-justify-content: center;
+
+        > div {
+            margin-right: $h-padding;
+        }
+    }
+
+    @media (max-width: 550px) {
+        -webkit-flex-flow: column;
+
+        img {
+            margin-top: $v-padding;
+        }
+    }
+
+    #tags {
+        -webkit-flex-basis: 0;
+    }
+
+    > div {
+        -webkit-flex-grow: 1;
+    }
 }
 
 #content {
@@ -160,6 +199,8 @@ header, footer > div, article {
 article img {
     margin: 0 auto;
     display: block;
+    width: auto;
+    max-width: 100%;
 }
 
 article img.inline {
@@ -167,7 +208,7 @@ article img.inline {
 }
 
 img.shadow {
-    @include box-shadow(2px, 2px, 6px);
+    @include box-shadow(#999, 1px, 1px, 6px);
 }
 
 footer:before, #content:before {
