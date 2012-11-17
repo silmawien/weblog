@@ -35,6 +35,11 @@ header, article, footer, section {
     display: block;
 }
 
+::selection {
+    background: pink;
+    color: black;
+}
+
 /*
  * Text
  */
@@ -59,7 +64,7 @@ h2 {
 body {
     /* Default body text */
     font-family: Open Sans, sans-serif;
-    font-size: 15px;
+    font-size: 14px;
     line-height: 1.6;
     color: #444;
 }
@@ -89,13 +94,12 @@ ul {
 }
 
 pre {
-    font-size: 14px;
     line-height: 1.3em;
     color: #444;
 }
 
 .post-date {
-    margin-bottom: 1.5em;
+    margin-bottom: 2.5em;
     font-size: 13px;
 }
 
@@ -132,11 +136,7 @@ body {
 }
 
 header {
-    padding: 15px $h-padding;
-}
-
-header img {
-    margin: 0 20px;
+    padding: 12px $h-padding;
 }
 
 #category-list {
@@ -144,7 +144,7 @@ header img {
 }
 
 /* Standard padding for text containers. */
-header, article, footer > div {
+article, footer > div {
     padding: $v-padding $h-padding;
 
     @media (max-width: 500px) {
@@ -153,43 +153,40 @@ header, article, footer > div {
     }
 }
 
-header {
-    padding-top: 15px;
-    padding-bottom: 15px;
-}
-
 header, footer > div, article {
     max-width: $max-width;
     margin: 0 auto;
 }
 
 #footer-content {
-    display: -webkit-flex;
-    -webkit-align-items: flex-start;
+    position: relative;
+    #doodle {
+        position: absolute;
+        right: $h-padding;
+        top: $v-padding;
+    }
 
-    @media (min-width: 551px) {
-        -webkit-justify-content: center;
-
+    @media (min-width: 500px) {
         > div {
-            margin-right: $h-padding;
+            float: left;
+            width: 30%;
+            margin-left: 15px;
+            margin-bottom: 10px;
+        }
+
+        :first-child {
+            margin-left: 0px;
+            width: 50%;
         }
     }
 
-    @media (max-width: 550px) {
-        -webkit-flex-flow: column;
-
-        img {
-            margin-top: $v-padding;
-        }
+    #column-header {
+        margin-bottom: 0.5em;
     }
+}
 
-    #tags {
-        -webkit-flex-basis: 0;
-    }
-
-    > div {
-        -webkit-flex-grow: 1;
-    }
+#tags a {
+    line-height: 22px; /* See MAX_SCALE in gen_footer.py */
 }
 
 #content {

@@ -53,7 +53,7 @@ def tag_index(posts, out):
 
 
 def landing_page(posts):
-    recent = sorted(posts, key=posted_datetime, reverse=True)[0:MAX_POSTS]
+    recent = sorted(posts, key=posted_datetime, reverse=True)#[0:MAX_POSTS]
     ctx = make_context({ "title": "Index", "posts": recent })
     print env.get_template("index.html").render(ctx).encode("utf-8")
 
