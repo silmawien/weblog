@@ -90,6 +90,6 @@ too far in.
 
 I have been using `dbgColorize` for a few months now. So far the only downside
 is having to manually hook up and remove the debug code. With git though, you
-can do it once and keep the result on a local branch. That way it is always
-just a cherry-pick away.
+can do it once and keep the result on a local branch. Then it is always just a
+cherry-pick away.
 

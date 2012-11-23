@@ -1,0 +1,295 @@
+Title: Strange Loops: Asynchronous Testing on Android
+Created: 2012-11-05
+Posted: 2012-11-21
+Tags: android testing
+
+Everyone has an opinion on testing. That's fine. But opinions are cheap
+compared to experience from the trenches. And on the Android platform, the
+trenches are deep and filled with surprises. Let's jump in and see what
+we can find.
+
+## Android ♥ Async
+
+The Android framework is fundamentally event-driven and asynchronous,
+something that traditional unit tests do not manage very well. To cope, you
+have to either divide your app into small chunks and test each chunk
+separately, or you figure something else out. (Even with the chunked approach,
+you probably want to test how chunks work together.)
+
+## Tutorial vs Reality
+
+The first "something else" you are likely to try is
+`ActivityInstrumentationTestCase2`.  There is a [tutorial][] on it, and it
+seems to support hooking into your activity from test code. In reality this
+support is limited. Yes, you can reach into the view tree and retrieve views
+by their ID. Yes, you can inject key events to the app with
+[sendKeys()][sendkeys] , and touch events with [TouchUtils][touchutils].
+
+[tutorial]: http://developer.android.com/tools/testing/activity_test.html
+[sendkeys]: http://developer.android.com/reference/android/test/InstrumentationTestCase.html#sendKeys%28int...%29
+[touchutils]: http://developer.android.com/reference/android/test/TouchUtils.html
+
+But there are problems. If your app contains a dialog box, you cannot easily
+interact with its contents from test code. (The ID's that you would need are
+hidden in the SDK). `TouchUtils` is flaky, especially when it comes to
+scrolling.
+
+The asynchronous stuff also gets in the way. After you simulate a click on a
+button, you have to give the framework time to launch that dialog, connect to
+that service, or download that file. It is hard to know how long to wait
+before failing the test. The time to create a dialog is fairly predictible,
+but, but anything touching the file system or the network will be slower. It's
+not uncommon to see latency jump between 100ms and 1000ms. So you have to
+either probe periodically, or wire up a mechanism to be notified when it is
+ready. More about that later.
+
+What's frustrating is not that the support is lacking, it's that the idea you
+get from the documentation does not match reality. I doubt that **anyone** who
+is using `Act..TestCase2` for serious testing is very happy about it. I'd be
+curious to hear contrary opinions.
+
+Brittle tests are worse than no tests at all, in my opinion. And tests based on
+`Act..TestCase2` will be brittle, unless you invest a lot of time into
+understanding the internals of the framework. A good investment,
+doubtless, but as you struggle along, you will ask yourself if this is what
+it's like for everyone, or if maybe you just missed something.
+
+I'm not picking on Android, by the way. Debugging is fun and it *builds
+character*. It's great that the developer docs are updated regularly. Just add
+a footnote about how testing whole activities is not well supported (yet).
+
+## An Example From Reality
+
+Here's an Android class that calculates factorials asynchronously. Silly, I
+know. The point is, it is asynchronous and uses the event loop to post
+results.
+
+    public class FactorialTask extends AsyncTask<Integer, Void, Integer> {
+
+        private Listener listener;
+
+        public interface Listener {
+            void onComplete(int result);
+        }
+        
+        public FactorialTask(Listener listener) {
+            this.listener = listener;
+        }
+
+        @Override
+        protected Integer doInBackground(Integer... params) {
+            return factorial(params[0]);
+        }
+
+        private Integer factorial(Integer n) {
+            if (n == 1) {
+                return 1;
+            } else {
+                return n * factorial(n - 1);
+            }
+        }
+
+        @Override
+        protected void onPostExecute(Integer result) {
+            listener.onComplete(result);
+        }
+    }
+
+We should be able to test this, right? Here is an initial attempt.
+
+    public void testFactorial() {
+        
+        FactorialTask myTask = new FactorialTask(new FactorialTask.Listener() {
+            @Override
+            public void onComplete(int result) {
+                assertEquals(120, result);
+            }
+        });
+
+        myTask.execute(5);
+        
+        // TODO how to wait for onComplete?
+    }
+
+This has a few problems. First off, we are not allowed to call `execute()`
+from any thread but the UI thread. Remember that `Act..TestCase2` by
+default runs on something called the *instrumentation thread*. But more
+importantly, we need a way to be notified when the task completes.
+
+There are at least two solutions. 
+
+## Using Concurrency
+
+We can use standard concurrency primitives to wait for the result.
+
+    public void testFactorial1() {
+        final CountDownLatch latch = new CountDownLatch(1);
+        
+        final Listener listener = new FactorialTask.Listener() {
+            @Override
+            public void onComplete(int result) {
+                assertEquals(120, result);
+                latch.countDown();
+            }
+        };
+        
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                FactorialTask myTask = new FactorialTask(listener);
+                myTask.execute(5);
+            }
+        });
+        
+        latch.await();
+    }
+
+The `CountdownLatch` is our notification that the result has arrived. We also
+moved the call to `execute()` to the UI thread with `runOnMainSync()`.
+
+One subtle thing about this. `AsyncTask` has this requirement that it must be
+initialized on the UI thread.  I'm talking about [initialization][vminit] in
+the VM sense of the word. The thread that causes AsyncTask's static
+initializers to run, is where results are posted to. Better make sure
+this is the UI Thread, or you're in trouble. What kind of trouble? If we move
+the line
+
+[vminit]: http://docs.oracle.com/javase/specs/jvms/se7/html/jvms-5.html#jvms-5.5
+
+    FactorialTask myTask = new FactorialTask(listener);
+
+outside `runOnMainSync()`, we trick AsyncTask into posting results to
+the instrumentation thread instead of the UI thread. But by the time the
+result from `FactorialTask` is posted, the instrumentation thread will be
+stuck in `CountdownLatch.await()`, so the result will never be processed,
+and the test deadlocks.
+
+I explained how handlers work in my [event loop post][eventloop].  But to be
+honest, I only found out about this particular deadlock as I was writing this
+post. That illustrates why testing on Android is difficult. If you don't have
+a good understanding of the internals of AsyncTask, there's no real chance to
+debug this particular deadlock. You might wiggle your way past it by copying
+code from [stackoverflow][SO], but you won't understand why it works.
+
+[eventloop]: /mattias/2012/09/android_event_loop.html
+[SO]: http://stackoverflow.com/questions/9774792/asynctask-onpostexecute-not-called-in-unit-test-case
+
+## Using Modal Loop
+
+There is another way to write this test, without using concurrency.
+
+    @UiThreadTest
+    public void testFactorial2() throws InterruptedException {
+        final ModalLooper modal = new ModalLooper();
+        
+        FactorialTask myTask = new FactorialTask(new FactorialTask.Listener() {
+            @Override
+            public void onComplete(int result) {
+                assertEquals(120, result);
+                modal.stop();
+            }
+        });
+
+        myTask.execute(5);
+        modal.loop();
+    }
+
+Note the `@UiThreadTest` annotation. Since we run the test on the UI thread,
+there is no need for `runOnUiSync()`.
+
+Wait a second now. This should deadlock too? If our test occupies the UI thread, how does `onComplete()` get to run?
+
+Think about it. We need to process messages on **some** thread. There is only
+one thread in play, the UI thread, and it already has a message loop. In fact,
+this message loop is busy handling the request to run the test on the UI
+thread:
+
+       TestFactorial.testFactorial2() line: 69 
+       Method.invoke(Object, Object...) line: 511  
+       TestFactorial(Instr...TestCase).runMethod(Method, int, boolean) line: 214 
+       InstrumentationTestCase$2.run() line: 189   
+       Instrumentation$SyncRunnable.run() line: 1569   
+       ActivityThread$H(Handler).handleCallback(Message) line: 605 
+       ActivityThread$H(Handler).dispatchMessage(Message) line: 92 
+    -> Looper.loop() line: 214 
+
+What if we run a second message loop inside the first? The idea of nested
+message loops is not new. In Win32, this was the mechanism behind *modal
+dialog boxes*.  You know - those somewhat annoying dialogs that blocked you
+from interacting with their parent window. Modal dialogs fell out of favor due
+to usability concerns, but they are still <a href="javascript:void(0)"
+onClick="alert('Try to click outside me!')">around</a>.
+
+There are a few problems left to work out.
+
+If `ModalLooper.loop()` starts a new message loop, how can we escape from it
+once we receive the `onComplete()`? Strictly speaking, Android's Looper
+has no support for reentrancy. If we `quit()` the message loop properly, things
+will break. A `MessageQueue` only expects to quit once. So instead
+`ModalLooper.stop()` posts a private quit notification that, when handled, 
+throws an exception. Once the exception propagates past
+Looper's stack frame, it is caught and converted to a clean return.
+
+Yeah, it's a hack alright. Not even this stylish ascii drawing can make
+it seem legit. Sorry.
+
+    (e)  ModalLooper$1.handleMessage(Message) line: 17   
+     |   ModalLooper$1(Handler).dispatchMessage(Message) line: 99    
+     |   Looper.loop() line: 214 
+     |   ModalLooper.loop(int) line: 28  
+     \-> ModalLooper.loop() line: 37 
+         TestFactorial.testFactorial2() line: 74 
+
+The same hack is used to implement a timeout mechanism, to give us the option
+of failing a hung test without blocking subsequent tests.
+
+Here is the code for ModalLooper.
+
+    public class ModalLooper {
+
+        public class ReturnException extends RuntimeException {}
+        public class TimeoutException extends RuntimeException {}
+
+        private Handler handler = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                switch (msg.what) {
+                case 0:
+                    throw new ReturnException();
+                case 1:
+                    throw new TimeoutException();
+                }
+            }
+        };
+
+        public boolean loop(int timeout) {
+            try {
+                if (timeout > 0)
+                    handler.sendEmptyMessageDelayed(1, timeout);
+                Looper.loop();
+            } catch (ReturnException e) {
+                // normal exit
+            } catch (TimeoutException e) {
+                return false;
+            }
+            return true;
+        }
+
+        public boolean loop() {
+            return loop(0);
+        }
+
+        public void stop() {
+            handler.sendEmptyMessage(0);
+        }
+    }
+
+You can use it in any situation where you need to wait for events to be
+processed by the framework.
+
+It's not fool-proof. Dealing with reentrancy is tricky in itself. But it is
+tricky in a deterministic way, unlike concurrency primitives. What do you
+prefer - a game of chess or a game of russian roulette?
+
+In either case, good luck.
+
