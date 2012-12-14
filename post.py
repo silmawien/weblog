@@ -51,10 +51,15 @@ def make_date(datestr):
 def paragraph_counter(num):
     "Count empty lines and return False after num such lines."
     count = [num] # workaround for strange scoping rules in python 2.x
+    done = [False] 
     def counter(line):
-        if not line.strip():
+        line = line.strip()
+        if not line:
             count[0] -= 1
-        return count[0] > 0
+        # include trailing links, ie. [foo]: http://foo.com
+        if count[0] <= 0 and line and line[0] != '[':
+            done[0] = True
+        return not done[0]
     return counter
 
 

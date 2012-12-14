@@ -206,7 +206,8 @@ No references to the main thread here either, but it fetches a looper called
 Here is the relevant part of the [Looper][] class.
 
     public class Looper {
-        static final ThreadLocal<Looper> sThreadLocal = new ThreadLocal<Looper>();
+        static final ThreadLocal<Looper> sThreadLocal =
+                new ThreadLocal<Looper>();
         final MessageQueue mQueue;
 
         private static void prepare(...) {

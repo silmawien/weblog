@@ -3,6 +3,10 @@ Posted: 2012-09-22
 Posted: 2012-09-28
 Tags: android layout
 
+> Update 2012-12-02: In Jelly Bean there is a new developer option called
+> "Show layout bounds" that shows view bounds + margins. It's awesome and
+> all but obsoletes this technique.
+
 Despite the SDK developer's best intentions, creating and debugging Android
 layouts is something of an art. In this post I show a crude but useful utility
 that applies random background colors to quickly find layout bugs.

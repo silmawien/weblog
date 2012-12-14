@@ -1,4 +1,4 @@
-$max-width: 750px;
+$max-width: 680px;
 
 $v-padding: 20px;
 $h-padding: 20px;
@@ -37,7 +37,12 @@ header, article, footer, section {
 }
 
 ::selection {
-    background: pink;
+    background: #ffbb88;
+    color: black;
+}
+
+::-moz-selection {
+    background: #ffbb88;
     color: black;
 }
 
@@ -132,6 +137,12 @@ a:hover {
     text-decoration: none;
 }
 
+dfn {
+    border-bottom-style: dotted;
+    border-bottom-width: 1px;
+    font-style: normal;
+}
+
 /*
  * Layout
  */
@@ -139,7 +150,7 @@ a:hover {
 body {
     margin: 3px 0 0 0;
     padding: 0;
-    background: #333;
+    background: #222;
 }
 
 #category-list {
@@ -198,11 +209,12 @@ header, footer > div, article {
 }
 
 #content {
-    background: #eee;
+    background-color: #eee;
+    background-image: url(/mattias/image/bgnoise.png);
 }
 
 article img {
-    margin: 0 auto;
+    margin: 40px auto;
     display: block;
     width: auto;
     max-width: 100%;
@@ -233,11 +245,25 @@ article {
 article pre {
     overflow: auto;
     @include border-radius(8px);
-    font-size: 15px;
     background: hsl(214, 36%, 92%);
     border: 1px solid hsl(214, 36%, 82%);
     padding: 15px 0 15px 15px;
 }
+
+article code {
+    padding: 0 0.1em;
+    font-size: 14px;
+    font-family: Inconsolata, Consolas, monospace;
+}
+
+article code.kb {
+    color: white;
+    padding: 0 0.3em;
+    font-size: 15px;
+    background: hsl(214, 36%, 65%);
+    @include border-radius(4px);
+}
+
 
 hr {
     width: 100%;
