@@ -54,12 +54,12 @@ the commands were all different.
 Linux was a huge leap forward compared do MSDOS. It ran in 32-bit protected
 mode. It had native TCP/IP networking. But Bash felt like an almost as great
 leap *backwards* from Norton Commander. Miguel de Icaza (of later Gnome and
-Mono fame) seemed to agree, because he was alreayd working on a port called
+Mono fame) seemed to agree, because he was already working on a port called
 **midnight commander**. The port was great, but the keyboard shortcuts were
 not quite the same, and a lot of Norton Commander's usability advantage was in
-the keyboard shortcuts. So I mainly used Bash for exploring `/etc/rc.d`. I
-read so many HOWTO's and man pages, from Samba to BIND, but somehow it never
-occured to me to properly learn Bash.
+the keyboard shortcuts. So for exploring `/etc/rc.d` on my Slackware system I
+mainly used Bash. I read so many HOWTO's and man pages, from Samba to BIND,
+but somehow it never occured to me to properly learn about the shell.
 
 After 15 years of running a home server on Linux, I had picked up a bunch of
 tips and tricks, but some of the shell concepts had passed completely over my
@@ -83,10 +83,10 @@ know about input / output redirection but not pipes, you might "pipe" programs
 by storing output in a temporary file. Or write lots of single-line shell
 scripts instead of using the history search feature.
 
-You can also pick up a clever trick at a time from one of thousands of blog
-posts that sing Bash's praise, hoping that eventually they will coalesce into
-an understanding. But that's inefficient. In my opinion, for the basic
-concepts, you are better off learning them from the manual.
+You can do what I did and pick up a clever trick at a time from one of
+thousands of blog posts that sing Bash's praise, hoping that eventually they
+will coalesce into an understanding. But that's inefficient. In my opinion,
+for the basic concepts, you are better off learning them from the manual.
 
 So what are those concepts? The rest of this post is an attempt to summarize
 them.

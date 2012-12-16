@@ -36,7 +36,7 @@ def pretty_date(datetime):
     "Convert 2012-09-10 to August 10[, 2012]."
     thisyear = datetime.now().year
     format = "%B %d" if datetime.year == thisyear else "%B %d, %Y"
-    return datetime.strftime(format)
+    return datetime.strftime(format).replace(' 0', ' ')
 
 def iso_time(datetime):
     "Mock ISO timestamp with timezone (utc)."
