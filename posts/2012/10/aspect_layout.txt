@@ -8,7 +8,7 @@ images without changing their aspect ratio. One day I was building a side-bar
 whose shape would vary depending on screen size, and I thought "hey,
 it would be nice if I could have the same flexibility, not with images but
 with **layouts**". So I wrote this simple custom layout which has been
-a valuable asset in my toolkit ever since. 
+a valuable asset in my toolkit ever since.
 
     public class FixedAspectLayout extends FrameLayout {
 

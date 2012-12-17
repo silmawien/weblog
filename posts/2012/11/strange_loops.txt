@@ -71,7 +71,7 @@ results.
         public interface Listener {
             void onComplete(int result);
         }
-        
+
         public FactorialTask(Listener listener) {
             this.listener = listener;
         }
@@ -98,7 +98,7 @@ results.
 We should be able to test this, right? Here is an initial attempt.
 
     public void testFactorial() {
-        
+
         FactorialTask myTask = new FactorialTask(new FactorialTask.Listener() {
             @Override
             public void onComplete(int result) {
@@ -107,7 +107,7 @@ We should be able to test this, right? Here is an initial attempt.
         });
 
         myTask.execute(5);
-        
+
         // TODO how to wait for onComplete?
     }
 
@@ -116,7 +116,7 @@ from any thread but the UI thread. Remember that `Act..TestCase2` by
 default runs on something called the *instrumentation thread*. But more
 importantly, we need a way to be notified when the task completes.
 
-There are at least two solutions. 
+There are at least two solutions.
 
 ## Using Concurrency
 
@@ -124,7 +124,7 @@ We can use standard concurrency primitives to wait for the result.
 
     public void testFactorial1() {
         final CountDownLatch latch = new CountDownLatch(1);
-        
+
         final Listener listener = new FactorialTask.Listener() {
             @Override
             public void onComplete(int result) {
@@ -132,7 +132,7 @@ We can use standard concurrency primitives to wait for the result.
                 latch.countDown();
             }
         };
-        
+
         getInstrumentation().runOnMainSync(new Runnable() {
             @Override
             public void run() {
@@ -140,7 +140,7 @@ We can use standard concurrency primitives to wait for the result.
                 myTask.execute(5);
             }
         });
-        
+
         latch.await();
     }
 
@@ -181,7 +181,7 @@ There is another way to write this test, without using concurrency.
     @UiThreadTest
     public void testFactorial2() throws InterruptedException {
         final ModalLooper modal = new ModalLooper();
-        
+
         FactorialTask myTask = new FactorialTask(new FactorialTask.Listener() {
             @Override
             public void onComplete(int result) {
@@ -204,14 +204,14 @@ one thread in play, the UI thread, and it already has a message loop. In fact,
 this message loop is busy handling the request to run the test on the UI
 thread:
 
-       TestFactorial.testFactorial2() line: 69 
-       Method.invoke(Object, Object...) line: 511  
-       TestFactorial(Instr...TestCase).runMethod(Method, int, boolean) line: 214 
-       InstrumentationTestCase$2.run() line: 189   
-       Instrumentation$SyncRunnable.run() line: 1569   
-       ActivityThread$H(Handler).handleCallback(Message) line: 605 
-       ActivityThread$H(Handler).dispatchMessage(Message) line: 92 
-    -> Looper.loop() line: 214 
+       TestFactorial.testFactorial2() line: 69
+       Method.invoke(Object, Object...) line: 511
+       TestFactorial(Instr...TestCase).runMethod(Method, int, boolean) line: 214
+       InstrumentationTestCase$2.run() line: 189
+       Instrumentation$SyncRunnable.run() line: 1569
+       ActivityThread$H(Handler).handleCallback(Message) line: 605
+       ActivityThread$H(Handler).dispatchMessage(Message) line: 92
+    -> Looper.loop() line: 214
 
 What if we run a second message loop inside the first? The idea of nested
 message loops is not new. In Win32, this was the mechanism behind *modal
@@ -226,19 +226,19 @@ If `ModalLooper.loop()` starts a new message loop, how can we escape from it
 once we receive the `onComplete()`? Strictly speaking, Android's Looper
 has no support for reentrancy. If we `quit()` the message loop properly, things
 will break. A `MessageQueue` only expects to quit once. So instead
-`ModalLooper.stop()` posts a private quit notification that, when handled, 
+`ModalLooper.stop()` posts a private quit notification that, when handled,
 throws an exception. Once the exception propagates past
 Looper's stack frame, it is caught and converted to a clean return.
 
 Yeah, it's a hack alright. Not even this stylish ascii drawing can make
 it seem legit. Sorry.
 
-    (e)  ModalLooper$1.handleMessage(Message) line: 17   
-     |   ModalLooper$1(Handler).dispatchMessage(Message) line: 99    
-     |   Looper.loop() line: 214 
-     |   ModalLooper.loop(int) line: 28  
-     \-> ModalLooper.loop() line: 37 
-         TestFactorial.testFactorial2() line: 74 
+    (e)  ModalLooper$1.handleMessage(Message) line: 17
+     |   ModalLooper$1(Handler).dispatchMessage(Message) line: 99
+     |   Looper.loop() line: 214
+     |   ModalLooper.loop(int) line: 28
+     \-> ModalLooper.loop() line: 37
+         TestFactorial.testFactorial2() line: 74
 
 The same hack is used to implement a timeout mechanism, to give us the option
 of failing a hung test without blocking subsequent tests.

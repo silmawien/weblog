@@ -64,7 +64,7 @@ Android you extend the [Handler][] class and implement
 `handleMessage(Message)`.  Here is a handler for the message we just sent.
 
     class HelloWorldHandler extends Handler {
-    
+
         public void handleMessage(Message msg) {
             switch (msg.what) {
             case MSG_HELLO_WORLD:
@@ -143,9 +143,9 @@ care. Some time later this thread delivers a result by calling
 forbids all threads but the main thread from modifying the view hierarchy, so
 the callback must be router over to the main thread. One way to do this is
 with a Handler.
-    
+
     class MyLibraryWrapper {
-        
+
         private static final int COMPUTATION_DONE = 1;
 
         private Handler myHandler = new MyHandler();
@@ -173,7 +173,7 @@ with a Handler.
          * thread that is managed by the native library.
          */
         public void onResult(Object result) {
-            Message msg = Message.obtain(); 
+            Message msg = Message.obtain();
 
             msg.setTarget(myHandler);
             msg.what = COMPUTATION_DONE;
@@ -181,7 +181,7 @@ with a Handler.
 
             msg.sendToTarget();
         }
-        
+
         ...
     }
 

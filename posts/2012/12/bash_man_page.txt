@@ -126,7 +126,7 @@ The positional parameters contain the command line arguments that were passed
 to a script. They are accessed with `$0`, `$1`, etc.
 
 Special parameters is where Bash stores things like `$?`, the exit status of the
-previous command. 
+previous command.
 
 Named parameters are `NAME=value` pairs. They are also called variables, and
 are used to hold values e.g. inside a script. An example would be `$BASHPID`,
@@ -148,7 +148,7 @@ Further reading: [Environment][], [Shell Parameters][shell-params]
 ## Execution Environment
 
 The execution environment is the *state* of bash, and consists of all
-the current shell parameters, functions, aliases, open files and shell options. 
+the current shell parameters, functions, aliases, open files and shell options.
 
 This section of the manual explains how programs are started and what parts of
 the environment they inherit. Just like the grammar, it will be hard to digest
@@ -235,9 +235,9 @@ Commands][bindable-rl]
 ## Builtin Commands
 
 Not really a concept, but a bunch of internal Bash commands. You know the most
-important of these already, like `cd` and `.` (dot a.k.a. `source`). 
+important of these already, like `cd` and `.` (dot a.k.a. `source`).
 
-Further reading: [Shell Builtin Commands][shell-builtins] 
+Further reading: [Shell Builtin Commands][shell-builtins]
 
 [shell-builtins]: http://www.gnu.org/software/bash/manual/bashref.html#Shell-Builtin-Commands
 

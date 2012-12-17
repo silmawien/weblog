@@ -8,19 +8,19 @@ might be an interesting experience to share. In short, it was a lot less work
 than I expected and it taught me useful things about `ViewGroup`, the
 heart of Android's widget framework.
 
-## A Curious Optimization
+## Curious Optimizations
 
 I remember reading [Android Layout Tricks #1][tricks] on the developer's blog a
 couple of years ago and thinking "hey, that's premature optimization if I ever
-saw it". 
+saw it".
 
 [tricks]: http://android-developers.blogspot.se/2009/02/android-layout-tricks-1.html
 
 Much has changed since 2009. Hardware acceleration is standard now, and the
 Android team has put lots of effort into enabling smooth, 60 fps drawing.  Is
-there still a market for layout tricks? Yes! Creating
-working, fast, maintainable layouts is an art. Clever tricks are a great way
-to practice this art.
+there still a market for layout tricks? Yes! Creating working, fast,
+maintainable layouts is an art. Learning more about the classes that make up
+the view framework is a great way to practice this art.
 
 This will take a few paragraphs to explain though, even if we make it a TV
 chef-style introduction with lots of cut corners. So snuggle down in
@@ -32,7 +32,7 @@ following requirements.
 <img class="shadow" src="/mattias/image/listitem.png" />
 
 - It has an image on the left
-- Several rows of text on the right 
+- Several rows of text on the right
 - Automatic height
 - Both columns centered vertically if there is extra space
 - Supports scalable font sizes (sp)
@@ -50,32 +50,32 @@ Here's an example of the kind of XML we aim for.
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:padding="8dp" >
-        
-        <ImageView 
+
+        <ImageView
             android:id="@+id/image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="8dp"
             android:src="@drawable/ic_menu_star" />
-        
+
         <TextView
-            android:id="@+id/text1" 
+            android:id="@+id/text1"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:text="Primary text" />
-        
+
         <TextView
-            android:id="@+id/text2" 
+            android:id="@+id/text2"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:text="Details" />
-        
+
     </com.custom.ListItemLayout>
 
 ## ViewGroup
 
 [ViewGroup][vg] is a <dfn title="also known as the Composite pattern">magic</dfn> class that enables nesting of Views. It has the same responsibilities as
-any other view, but in addition it has a bunch of child views to manage. 
+any other view, but in addition it has a bunch of child views to manage.
 
 A custom layout is just a subclass of ViewGroup.
 
@@ -95,7 +95,7 @@ A custom layout is just a subclass of ViewGroup.
 
 The first constructor is for creating a view from Java. The second one makes
 the view inflatable from XML. There is a third version (not shown here) that
-provides style extension and can be skipped. 
+provides style extension and can be skipped.
 
 ## Layout Params
 
@@ -178,14 +178,14 @@ Let's make an [iterable][] for the text views, so we can use the abbreviated
             // convention, use first child as the image
             return getChildAt(0);
         }
-        
+
         private Iterable<View> textViews = new Iterable<View> () {
-            // the remaining views are assumed to be text lines 
+            // the remaining views are assumed to be text lines
             @Override
             public Iterator<View> iterator() {
                 return new Iterator<View>() {
                     private int current = 1;
-                    
+
                     @Override
                     public boolean hasNext() {
                         return current < getChildCount();
@@ -205,7 +205,7 @@ Let's make an [iterable][] for the text views, so we can use the abbreviated
                 };
             }
         };
-        
+
 ## Measure
 
 Layout on Android is a two-step process. First comes the measuring step, where
@@ -225,7 +225,7 @@ specifies one of three constraints:
 A view has complete freedom in how the measurement is done. For instance, in
 response to `onMeasure(AT_MOST 200, UNSPECIFIED)`, a `TextView` may run a
 word-wrap algorithm. An `ImageView` may scale the image while preserving its
-aspect ratio, etc. 
+aspect ratio, etc.
 
 ViewGroups typically handle `onMeasure()` by measuring each child view over one
 or several passes. A LinearLayout, for instance does a first pass to figure
@@ -262,7 +262,7 @@ run a single pass over the texts to sum up their total height.
             measureChildWithMargins(image, widthMeasureSpec, widthUsed,
                     heightMeasureSpec, heightUsed);
             widthUsed += widthWithMargins(image);
-            
+
             // Use remaining space to stack the text views vertically.
             int textWidth = 0;
             for (View child : textViews) {
@@ -272,13 +272,13 @@ run a single pass over the texts to sum up their total height.
                 textWidth = Math.max(textWidth, widthWithMargins(child));
             }
             widthUsed += textWidth;
-            
+
             // handle the case where the image is taller than the texts combined
             heightUsed = Math.max(heightWithMargins(image), heightUsed);
-                
+
             widthUsed += getPaddingLeft() + getPaddingRight();
             heightUsed += getPaddingTop() + getPaddingBottom();
-            
+
             setMeasuredDimension(
                     resolveSize(widthUsed, widthMeasureSpec),
                     resolveSize(heightUsed, heightMeasureSpec));
@@ -300,7 +300,7 @@ so `widthUsed=100`. If one of the text views has a width of `wrap_content` and
 our `MeasureSpec` says `EXACTLY 300px`, then measureChildWithMargins calls the
 child's `onMeasure` with a widthMeasureSpec of `AT_MOST 200px`. There are such
 9 combinations in total.  Have a look at [getChildMeasureSpec()][gcms] to see
-how each one is handled. 
+how each one is handled.
 
 [gcms]: https://github.com/android/platform_frameworks_base/blob/jb-release/core/java/android/view/ViewGroup.java#L4836
 
@@ -323,14 +323,14 @@ what remains is to position the child views.
         protected void onLayout(boolean changed, int l, int t, int r, int b) {
             int x = getPaddingLeft();
             int y = getPaddingTop();
-            
+
             int innerHeight = getHeight() - getPaddingTop() - getPaddingBottom();
 
             // center image vertically
             View image = imageView();
             int dy = Math.max(0, (innerHeight - heightWithMargins(image)) / 2);
             placeChild(image, x, y + dy);
-            
+
             x += widthWithMargins(image);
 
             // center texts as a group
@@ -338,9 +338,9 @@ what remains is to position the child views.
             for (View child : textViews) {
                 textHeight += heightWithMargins(child);
             }
-            
+
             y += Math.max(0, (innerHeight - textHeight) / 2);
-            
+
             for (View child : textViews) {
                 placeChild(child, x, y);
                 y += heightWithMargins(child);
