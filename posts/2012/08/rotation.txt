@@ -39,7 +39,7 @@ With 2D out of the way, it moved on to 3D. Rasterizing triangles, back-face cull
 
 Fast forward about 6 years. I am in the lecture room at the university, watching my professor scribble equations on the black board. This is the introduction to Linear Algebra, and the course is wrapping up. Suddenly I recognize the rotation matrix on the black board. It's in 2D this time, but doesn't that `-sin(a)` term look awefully familiar?
 
-<img src="/mattias/image/blackboard.png" />
+<img src="/image/blackboard.png" />
 
 And then it hits me. This is where I got stuck all those years ago. Only this time it all makes perfect sense. The matrix, this omnious shadow from the past, can be derived easily - just check what the transform does to the x-y axes and [that's that](http://mathforum.org/library/drmath/view/74063.html).
 

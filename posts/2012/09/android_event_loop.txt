@@ -9,7 +9,7 @@ biggest strength of an event loop is that it avoid concurrency altogether.
 The documentation is sparse around the `android.os` package so we'll need to
 do visit the frameworks/base github repo as we go along.
 
-![Thread Looper Handler](/mattias/image/looper.png)
+![Thread Looper Handler](/image/looper.png)
 
 At the heart of an event driven framework is the [event loop][]. In Win32 it
 is explicit and part of your program. In Android or Java/Swing it is implicit

@@ -29,7 +29,7 @@ your chair and get ready.
 We're going to build a somewhat generic `ListItemLayout` that meets the
 following requirements.
 
-<img class="shadow" src="/mattias/image/listitem.png" />
+<img class="shadow" src="/image/listitem.png" />
 
 - It has an image on the left
 - Several rows of text on the right
@@ -374,7 +374,7 @@ do not exist.
 With a fix in place, the texts will automatically stay centered as the
 visibility changes. Here are some examples of how that might look:
 
-<img class="shadow" src="/mattias/image/listitem_variants.png" />
+<img class="shadow" src="/image/listitem_variants.png" />
 
 ## Drawbacks
 

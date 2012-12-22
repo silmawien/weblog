@@ -1,6 +1,6 @@
 # Create site in ${OUT}
-OUT=/home/mattias/sandbox/stage
-DEPLOY=/home/mattias/sandbox/blog
+OUT=/home/mattias/sandbox/stage.niklewski.com
+DEPLOY=/home/mattias/sandbox/mattias.niklewski.com
 
 # import config variables from python
 ROOT=`python -c "import config; print config.BLOG['root']"`

@@ -93,5 +93,5 @@ Here is a screenshot that shows the layout in action with various values for
 size) stays
 constant despite the varying shape of the container.
 
-<img class="shadow" src="/mattias/image/aspects.png" />
+<img class="shadow" src="/image/aspects.png" />
 

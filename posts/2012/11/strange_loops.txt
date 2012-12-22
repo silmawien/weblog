@@ -171,7 +171,7 @@ a good understanding of the internals of AsyncTask, there's no real chance to
 debug this particular deadlock. You might wiggle your way past it by copying
 code from [stackoverflow][SO], but you won't understand why it works.
 
-[eventloop]: /mattias/2012/09/android_event_loop.html
+[eventloop]: /2012/09/android_event_loop.html
 [SO]: http://stackoverflow.com/questions/9774792/asynctask-onpostexecute-not-called-in-unit-test-case
 
 ## Using Modal Loop

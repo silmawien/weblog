@@ -5,10 +5,10 @@
         <meta charset="utf-8" />
         <title>{{ blog.title }} - {% block title %}{% endblock %}</title>
         <meta name="viewport" content="target-densitydpi=1.0,width=device-width,user-scalable=no, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0" />
-        <link rel="stylesheet" href="/mattias/style/style.css" />
+        <link rel="stylesheet" href="/style/style.css" />
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-        <link href="/mattias/js/gcp/prettify.css" type="text/css" rel="stylesheet" />
-        <script type="text/javascript" src="/mattias/js/gcp/prettify.js"></script>
+        <link href="/js/gcp/prettify.css" type="text/css" rel="stylesheet" />
+        <script type="text/javascript" src="/js/gcp/prettify.js"></script>
         <link href="{{ blog.feed }}" type="application/atom+xml" rel="alternate" title="ATOM Feed">
         {% endblock %}
     </head>
@@ -16,7 +16,7 @@
         <header>
             <span>
                 <a class="plain-link home" href="http://www.niklewski.com">niklewski.com</a> |
-                <a class="plain-link" href="{{ blog.root }}">
+                <a class="plain-link" href="{{ blog.root }}/">
                     {{ blog.title }}
                 </a>
             </span>

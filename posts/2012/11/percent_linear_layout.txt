@@ -43,7 +43,7 @@ the children to occupy 30, 50 and 20 percent of the available width. The
 
     </LinearLayout>
 
-<img class="shadow" src="/mattias/image/percent1.png" />
+<img class="shadow" src="/image/percent1.png" />
 
 This looks almost right, but if you measure carefully you'll see that it's off
 by a small amount. This is because `layout_weight` distributes only the
@@ -51,7 +51,7 @@ by a small amount. This is because `layout_weight` distributes only the
 
 The difference becomes more noticable if we vary the text lengths.
 
-<img class="shadow" src="/mattias/image/percent2.png" />
+<img class="shadow" src="/image/percent2.png" />
 
 As one view grows, there is less excess space to distribute and the remaining
 views shrink. Note that although unhelpful to us right now, this is
@@ -89,7 +89,7 @@ weight algoritm? Just set the width of each button to 0dp.
 
     </LinearLayout>
 
-<img class="shadow" src="/mattias/image/percent3.png" />
+<img class="shadow" src="/image/percent3.png" />
 
 This tells `LinearLayout` to allocate no space at all to the children to begin
 with. All the available space becomes excess space. And since the excess space
@@ -112,14 +112,14 @@ difficult for it.
 If we tweak the font sizes a little bit, we can appreciate the baseline
 alignment when it's working as intended.
 
-<img class="shadow" src="/mattias/image/percent4.png" />
+<img class="shadow" src="/image/percent4.png" />
 
 Baseline alignment is a beautiful thing, when you need it. Which turns out to
 be not very often. The rest of the time it is annoying, messing up your layout
 often in subtle ways. Luckily it can be turned off by setting
 `baselineAligned` to `false`.
 
-<img class="shadow" src="/mattias/image/percent5.png" />
+<img class="shadow" src="/image/percent5.png" />
 
 This is the final version of the xml.
 

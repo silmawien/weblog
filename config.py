@@ -4,11 +4,11 @@
 BLOG = {}
 
 # Root path, to create links.
-BLOG["root"] = "/mattias"
+BLOG["root"] = ""
 
 # Blog url without root path. Can be concatenated with a relative URL to form
 # an absolute URL (see atom.xml).
-BLOG["base"] = "http://blog.niklewski.com"
+BLOG["base"] = "http://mattias.niklewski.com"
 
 # Title
 BLOG["title"] = "mattias"
