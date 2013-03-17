@@ -101,7 +101,7 @@ The split is perfect, but the text no longer fits on one line. And what's with
 the misaligned pink view?
 
 Look at that last image again, and pay attention to the vertical alignment.
-The word "first" is perfectly aligned with "2nd" and "3rd". This is no
+The word "thirty" is perfectly aligned with "50%" and "20%". This is no
 coincidence. When `LinearLayout` is in horizontal mode, it uses
 [getBaseline()][4] on its children and tries to *baseline align* them.  The
 algorithm did its best, but our uncooperative 2-line text is making life

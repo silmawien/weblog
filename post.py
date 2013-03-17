@@ -11,6 +11,7 @@ import os.path
 from itertools import takewhile
 import config
 from datetime import datetime
+from urllib import quote
 
 # number of paragraphs in abstracts
 ABSTRACT_SIZE = 1
@@ -29,7 +30,15 @@ def markdown(source):
 
 def make_tag_link(tag):
     "Create href, display-name from a tag name."
-    return { "url": config.TAG_URL % tag, "text": tag }
+    return { "url": config.TAG_URL % quote(tag), "text": tag }
+
+
+def tagsplit(tags):
+    """Split a tag string on either ',' or ' ' as appropriate."""
+    if tags.find(",") != -1:
+        return [s.strip() for s in tags.split(",")]
+    else:
+        return tags.split()
 
 
 def pretty_date(datetime):
@@ -81,7 +90,7 @@ def read_post(src, dst):
 
             # linkify tags "tags: tag1 tag2"
             if key == "tags":
-                post[key] = map(make_tag_link, value.split())
+                post[key] = map(make_tag_link, tagsplit(value))
             elif key == "posted" or key == "created":
                 post[key] = make_date(value)
             else:
