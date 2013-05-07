@@ -141,7 +141,7 @@ thread that does the background work. Maybe over the network. We don't really
 care. Some time later this thread delivers a result by calling
 `onResult(Object)`. We need to display the result on screen, but Android
 forbids all threads but the main thread from modifying the view hierarchy, so
-the callback must be router over to the main thread. One way to do this is
+the callback must be routed over to the main thread. One way to do this is
 with a Handler.
 
     class MyLibraryWrapper {
