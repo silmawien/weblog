@@ -1,0 +1,192 @@
+Title: Quakeworld Air Physics
+Created: 2012-12-18
+Tags: quake game-physics
+Posted: 2013-01-23
+
+Quake is one of my favorite computer games of all time. I played it for more
+hours than I want to think about. After the source code was released, I used
+it to look for new ways to improve my game. That's how I stumbled on
+`PM_AirAccelerate()` and found the code behind the game's most abused
+mechanic - speed jumping.
+
+> Disclaimer: This may be the narrowest technical article of all time. The
+> point of it all is buried near the end, so feel free to skip ahead.
+
+Speed jumping is possible thanks to some odd characteristics of the in-game physics.
+
+- Changing direction in midair is allowed
+- Doing so causes the player to accelerate (!)
+- Jumping continously completely negates ground friction
+
+Quake with speed jumping is an absurdly fast-paced game. Here's a
+[video][] that shows some gameplay. Note how players start bouncing around
+like on pogo sticks whenever they need to go someplace in a hurry.
+
+[video]: http://www.youtube.com/watch?v=6lVW7WGwj7s
+
+## A Seed
+
+Everyone who plays Quake knows how to speed jump. Before I saw the code I
+didn't understand how something like this could be unintended. Either you
+allow wacky air acrobatics or you don't. But reality is humbling sometimes.
+See if you can spot the problem in [the code][airaccel].
+
+[airaccel]: https://github.com/id-Software/Quake/blob/master/QW/client/pmove.c#L412
+
+    void PM_AirAccelerate (vec3_t wishdir, float wishspeed, float accel)
+    {
+        int i;
+        float   addspeed, accelspeed, currentspeed, wishspd = wishspeed;
+
+        ...
+
+        if (wishspd > 30)
+            wishspd = 30;
+        currentspeed = DotProduct (pmove.velocity, wishdir);
+        addspeed = wishspd - currentspeed;
+        if (addspeed <= 0)
+            return;
+        accelspeed = accel * wishspeed * frametime;
+        if (accelspeed > addspeed)
+            accelspeed = addspeed;
+
+        for (i=0 ; i<3 ; i++)
+            pmove.velocity[i] += accelspeed*wishdir[i]; 
+    }
+
+This function updates a player's current velocity by considering the "desired
+velocity". It comes from the client as a vector split up into a normalized
+direction `wishdir` and a magnitude `wishspeed`. The values for `accel` and
+`frametime` are not important, but for completeness they are normally `10` and
+~`0.013`.
+
+This is some fancy vector footwork. I have just two basic tips for how to
+understand vector math. First, some operations can be interpreted
+geometrically. So when you see `dot(x, v)` where v is of unit length, it means
+"find the length of x in the direction of v". When this fails, you can apply
+the second and more primitive technique of putting in some sample values and
+see what comes out. Put enough values in, and hopefully you can synthesize the
+results into some kind of intuition. Yes, that means writing
+[code](/code/accel.c).
+
+From playing the game I already knew what happens in some special cases.
+If you press forward in mid-air,
+nothing happens, you keep going forward. If you press backwards, you break to a stand-still, then you
+fall down while going very slightly backwards. It's as if the game wants to
+allow some minimum form of air control (up to 30 units of velocity, which is
+about 1/10 of run speed). That turns out to be the problem.
+
+Observe what happens to a player who is moving forward through the air and
+presses left strafe. That results in a `wishdir` perpendicular to the current
+velocity.
+
+1. `wishspd` is clamped to 30
+2. The DotProduct evaluates to 0 (perpendicular vectors)
+3. `addspeed` is 30
+4. wishdir is scaled by some factor `accelspeed` and added to the velocity
+
+The scaling in step 4 matters less, since the same thing repeats in each
+frame, until the dot product becomes 30 and the velocity has
+reached a new steady state.
+
+In the following picture, `v` is the initial velocity, `w` is the
+desired velocity clamped to 30, and `v'` is
+the final velocity. Note how `|v|' > |v|`. In other words, we're accelerating.
+
+<img src="/image/vel1.png" />
+
+That's a small amount of acceleration. But if the player now adjusts viewing
+angle in the direction of `v'`, the move can be repeated. In practice it
+is easy to do - just hold down the left strafe button while you slide the
+mouse left. Keep doing this and keep building up more speed.
+
+<img src="/image/vel2.png" />
+
+This explains two of the three physics quirks. The last one is about avoiding ground
+friction. In the original version of Quake, speed jumping didn't really work
+because even if you could stay in the air 99% of the time by jumping
+continuously, there would be a very
+short time between jumps (a single frame) where ground friction would be
+applied, and that slowed you down far more than whatever speed you could gain
+from the strafe-turning.
+
+## An Update
+
+But the original game wasn't playable over the Internet. It ran the ancient
+IPX protocol and was optimized for low latency LAN play. A new version came
+out that added Internet Protocol support. But the Internet is not a LAN.
+Latencies tend to vary a lot, and gameplay would suffer as a result -
+when latency goes up, the player moves as if drunk. So the Internet version
+also included player prediction, a feature meant to reduce the
+perceived latency of a network connection, and a [fascinating][predintro]
+topic of it's [own][lagcomp].
+
+[predintro]: http://gafferongames.com/networking-for-game-programmers/what-every-programmer-needs-to-know-about-game-networking/
+[lagcomp]: https://developer.valvesoftware.com/wiki/Latency_Compensating_Methods_in_Client/Server_In-game_Protocol_Design_and_Optimization
+
+Now, player prediction was a major change. The Quake client was designed as a
+dumb terminal. It would record user input, pass it to the server, receive
+updated positions and draw the world. With prediction, the client takes the
+latest known state of the world and extrapolates a few frames into the future.
+It makes the network latency seem smaller, at the cost of paradoxes when the
+results from extrapolation diverges from reality.  Prediction requires at
+least some physics code to be present on the client.  You can imagine that the
+client grew quite a bit in complexity from this.
+
+## A Side Effect
+
+More changes were needed. Some physics-like calculations, like player jumps,
+were actually done in Quake-C, Quake's own compiled custom mod language. Now
+this too would have to run on the client - possible but hardly convenient. It
+was already extra work to make sure that the client and server kept their
+physics configurations in sync.
+
+A simpler solution was to move those pieces of Quake-C code that were needed
+for simulation back into the engine. Said and done. But this caused a subtle
+change in the order of execution. It just so happened that the code that
+detected the jump key went in before the friction calculations. So now if the
+player held down the jump key on landing from a previous jump, he would bounce
+back into the air before friction was applied. This subtle reordering made
+speed jumping possible, and the rest is history.
+
+## Payoff
+
+Debugging the Quake code didn't make me a better player. Not by any stretch of
+the imagination. But there were good results on the programming side. It
+taught me how to dig into a large and unfamiliar codebase. Many programmers
+are afraid of this, and I understand them. But it happens to be one of the
+fastest ways to learn, whether you're diving into the Linux kernel, the Android framework,
+or Quake.
+
+## Trainwreck
+
+It has a downside though. Recently I tried [OpenTTD](http://www.openttd.org),
+which is a port of the classic MicroProse game Transport Tycoon. If Quake was
+fun to debug, OpenTTD was addictive. When I played the original game, I was
+forced to tediously discover the game rules by experimenting. Now I could just
+look them up!
+
+It felt like cheating, and just like cheating tends to do, it destroyed my patience with the game. Once you open up the doors to debugging, be
+ready to give up the joys of the innocent newbie. Before you know it you'll be
+doing vector math in your sleep. I speak from experience.
+
+## Game Code
+
+Quake was released under the GPL a long time ago. You can fetch the code from
+github [here][q1source]. For a quick high-level introduction, check out Fabien
+Sanglar'd wonderful [Quake Engine Code Review][qecr].
+
+[q1source]: https://github.com/id-Software/Quake
+[qecr]: http://fabiensanglard.net/quakeSource/
+
+My thoughts on the code? It's great. Many parts are
+interesting in their own right.
+
+- Client/server communciation is a mixture of reliable and unreliable data over UDP.
+- Dual rendering pipelines: Software and OpenGL
+- One of the first games to support "True 3D" level design.
+- Server-side embedded language for customizing gameplay (eg. Capture the Flag).
+
+Yet the whole thing is small enough for one person to dig into. If you are an
+aspiring game developer, I can't recommend it enough.
+

@@ -12,20 +12,11 @@ from itertools import takewhile
 import config
 from datetime import datetime
 from urllib import quote
+from markdown import markdown
+import codecs
 
 # number of paragraphs in abstracts
 ABSTRACT_SIZE = 1
-
-def filter(program, source):
-    "Run program on source and return the resulting output."
-    p = Popen([program], stdin=PIPE, stdout=PIPE, stderr=PIPE)
-    stdoutdata, stderrdata = p.communicate(source)
-    return stdoutdata
-
-
-def markdown(source):
-    "Run markdown + smartypants on source and return the output."
-    return filter("SmartyPants.pl", filter("markdown", source))
 
 
 def make_tag_link(tag):
@@ -47,15 +38,18 @@ def pretty_date(datetime):
     format = "%B %d" if datetime.year == thisyear else "%B %d, %Y"
     return datetime.strftime(format).replace(' 0', ' ')
 
+
 def iso_time(datetime):
     "Mock ISO timestamp with timezone (utc)."
     return datetime.isoformat() + "Z"
+
 
 def make_date(datestr):
     "Parse datestr and create datetime, display time, html5 <time> string."
     dt = datetime.strptime(datestr, "%Y-%m-%d")
     return { "datetime": dt, "display": pretty_date(dt),
             "htmltime": datestr, "isotime": iso_time(dt)}
+
 
 def paragraph_counter(num):
     "Count empty lines and return False after num such lines."
@@ -79,12 +73,12 @@ def read_post(src, dst):
     dst is the web-root relative path to view a single post
     """
     post = dict()
-    with open(src) as f:
+    with codecs.open(src, "r", "utf-8") as f:
         for line in f:
             # Metadata section ends with an empty line
             if not line.strip(): break
             # Metadata has the format "key: value"
-            key, value = re.split(u"\s*:\s*", unicode(line, "utf-8"), 1)
+            key, value = re.split(u"\s*:\s*", line, 1)
             key = key.lower()
             value = value.strip()
 
@@ -104,9 +98,9 @@ def read_post(src, dst):
 
         # Format with markdown
         md = "".join(body)
-        post["content"] = unicode(markdown(md), "utf-8")
+        post["content"] = markdown(md)
 
         # Make a nice abstract, also with markdown
         abstract = "".join(takewhile(paragraph_counter(ABSTRACT_SIZE), body))
-        post["abstract"] = unicode(markdown(abstract), "utf-8")
+        post["abstract"] = markdown(abstract)
     return post
