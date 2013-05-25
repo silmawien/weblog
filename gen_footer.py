@@ -10,9 +10,6 @@ MAX_POSTS = 5
 MAX_SCALE = 1.6
 MIN_SCALE = 0.75
 
-env = Environment(loader=FileSystemLoader("templates"))
-
-
 def posted_datetime(post):
     return post["posted"]["datetime"]
 
@@ -42,6 +39,9 @@ def make_tags(posts):
 
     return tags
 
+def short_title(title):
+    '''Strips the subtitle from a title'''
+    return title.split(":", 1)[0]
 
 def render_footer(srcs, urls):
     posts = [read_post(src, url) for src, url in zip(srcs, urls)]
@@ -49,6 +49,8 @@ def render_footer(srcs, urls):
     tags = make_tags(posts)
 
     ctx = make_context({ "posts": recent, "tags": tags }, False)
+    env = Environment(loader=FileSystemLoader("templates"))
+    env.filters['shorttitle'] = short_title
     print env.get_template("footer.html").render(ctx).encode("utf-8")
 
 
