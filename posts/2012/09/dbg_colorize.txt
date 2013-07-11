@@ -11,6 +11,8 @@ Despite the SDK developer's best intentions, creating and debugging Android
 layouts is something of an art. In this post I show a crude but useful utility
 that applies random background colors to quickly find layout bugs.
 
+<!-- abstract -->
+
 I will assume that you have done your [homework][] and that you understand how
 `View` and `ViewGroup` objects combine to form a view tree.
 

@@ -8,6 +8,8 @@ Android does not support percent values for the `layout_height` and
 curiously silent on the topic, there is a trick involving LinearLayout that
 works more or less like you would expect.
 
+<!-- abstract -->
+
 The trick is described [on][1] [Stackoverflow][2] and [elsewhere][3]. Let's
 see how it works, and also why it sometimes isn't exactly what you need.
 

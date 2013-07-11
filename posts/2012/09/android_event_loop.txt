@@ -6,6 +6,8 @@ Android apps are event driven, and this post explores the nitty-gritty of the
 event loop. It is not about concurrent programming. In fact, perhaps the
 biggest strength of an event loop is that it avoid concurrency altogether.
 
+<!-- abstract -->
+
 The documentation is sparse around the `android.os` package so we'll need to
 do visit the frameworks/base github repo as we go along.
 

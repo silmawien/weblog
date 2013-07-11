@@ -8,6 +8,8 @@ compared to experience from the trenches. And on the Android platform, the
 trenches are deep and filled with surprises. Let's jump in and see what
 we can find.
 
+<!-- abstract -->
+
 ## Android ♥ Async
 
 The Android framework is fundamentally event-driven and asynchronous,

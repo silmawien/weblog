@@ -13,6 +13,8 @@ weeks. This had some unexpected results.
 [cynophobia]: http://en.wikipedia.org/wiki/Cynophobia
 [manual]: http://www.gnu.org/software/bash/manual/
 
+<!-- abstract -->
+
 The main result? I am now a huge fan of Bash. The shell is still an odd beast
 in some ways. But we have established a few [house rules][rules]. Now me and
 Bash are best friends.

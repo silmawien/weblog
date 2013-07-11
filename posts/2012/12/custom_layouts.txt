@@ -8,6 +8,8 @@ might be an interesting experience to share. In short, it was a lot less work
 than I expected and it taught me useful things about `ViewGroup`, the
 heart of Android's widget framework.
 
+<!-- abstract -->
+
 ## Curious Optimizations
 
 I remember reading [Android Layout Tricks #1][tricks] on the developer's blog a

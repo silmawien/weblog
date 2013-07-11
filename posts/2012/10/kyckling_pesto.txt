@@ -6,6 +6,8 @@ Tags: mat
 I förra veckan fick jag ett recept på kyckling av min syster. Så här gick det
 till när jag gav mig i kast med det.
 
+<!-- abstract -->
+
 ## Recette
 
     5 port

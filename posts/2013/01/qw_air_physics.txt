@@ -9,6 +9,8 @@ it to look for new ways to improve my game. That's how I stumbled on
 `PM_AirAccelerate()` and found the code behind the game's most abused
 mechanic - speed jumping.
 
+<!-- abstract -->
+
 > Disclaimer: This may be the narrowest technical article of all time. The
 > point of it all is buried near the end, so feel free to skip ahead.
 

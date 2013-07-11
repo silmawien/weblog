@@ -4,6 +4,8 @@ Tags: programming pascal
 
 When I was 13, a friend lent me a [Pascal book](http://books.google.se/books/about/Turbov%C3%A4gen_till_Pascal.html?id=dRf2MAAACAAJ&redir_esc=y). Pascal was used in Swedish schools and this copy came from his mom who was a teacher. He also lent me a copy of Turbo Pascal, a brilliant IDE for MSDOS that was way ahead of it's time.
 
+<!-- abstract -->
+
 Soon I had picked up enough Pascal to start writing simple programs. Not sure
 what exactly to do yet, together we devoured whatever [documentation](http://www.cs.cmu.edu/~ralf/files.html) we could find on the x86 / DOS environment.
 
