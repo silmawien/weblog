@@ -26,6 +26,7 @@ $gray: #ccc;
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300);
 @import url(http://fonts.googleapis.com/css?family=PT+Sans);
 @import url(http://fonts.googleapis.com/css?family=Droid+Sans);
+@import url(http://fonts.googleapis.com/css?family=Merriweather);
 
 /* Use the more sane border-box model. */
 * {
@@ -70,8 +71,8 @@ h2 {
 
 body {
     /* Default body text */
-    font-family: Open Sans, sans-serif;
-    font-size: 14px;
+    font-family: Merriweather, Open Sans, sans-serif;
+    font-size: 16px;
     line-height: 1.6;
     color: #444;
 }
@@ -111,8 +112,8 @@ pre {
 }
 
 .post-date {
-    margin-bottom: 2.5em;
-    font-size: 13px;
+    margin-bottom: 1.5em;
+    color: #aaa;
 }
 
 /*
@@ -262,15 +263,6 @@ article code.kb {
     font-size: 15px;
     background: hsl(214, 36%, 65%);
     @include border-radius(4px);
-}
-
-
-hr {
-    width: 100%;
-    color: $gray;
-    background-color: $gray;
-    height: 1px;
-    border: 0px;
 }
 
 blockquote {

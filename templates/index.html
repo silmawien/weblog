@@ -13,7 +13,6 @@
         {% set url     = p.url %}
         {% include "post.html" %}
         <p><a href="{{ p.url }}">[&nbsp;&hellip;&nbsp;]</a></p>
-        {%- if not loop.last %}<hr />{% endif %}
     {% endfor %}
 {% endblock %}
 

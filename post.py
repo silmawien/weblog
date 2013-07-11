@@ -32,7 +32,7 @@ def tagsplit(tags):
 def pretty_date(datetime):
     "Convert 2012-09-10 to August 10[, 2012]."
     thisyear = datetime.now().year
-    format = "%B %d" if datetime.year == thisyear else "%B %d, %Y"
+    format = "%b %d" if datetime.year == thisyear else "%b %d, %Y"
     return datetime.strftime(format).replace(' 0', ' ')
 
 

@@ -5,19 +5,12 @@
     </h1>
     <div class="post-date">
         {% if posted is defined %}
-            Posted on <time datetime="{{ posted.htmltime }}">
+            <time datetime="{{ posted.htmltime }}">
             {{ posted.display }}
         </time>
         {% else %}
-            Not yet posted
+            Draft
         {% endif %}
-        {% for tag in tags %}
-            {% if loop.first %}in {% endif %}
-            <a href="{{ tag.url }}">{{ tag.text }}</a>
-            {%- if not loop.last %},{% endif %}
-        {% else %}
-            with no tags
-        {% endfor %}
     </div>
 </div>
 {{ content }}
