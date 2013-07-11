@@ -39,9 +39,19 @@ The tutorial was well written and full of useful tricks. In the first few chapte
 
 With 2D out of the way, it moved on to 3D. Rasterizing triangles, back-face culling. So far so good. Rotation in 3D space. This was where I got stuck. Linear algebra isn't taught until undergrad level in Sweden, and the tutorial didn't go into much details beyond serving up a bunch of 3D rotation matrices. It was too dense for me. I copy/pasted what I needed but promised myself that I would some day get to the bottom of this matrix wizardry.
 
-Fast forward about 6 years. I am in the lecture room at the university, watching my professor scribble equations on the black board. This is the introduction to Linear Algebra, and the course is wrapping up. Suddenly I recognize the rotation matrix on the black board. It's in 2D this time, but doesn't that `-sin(a)` term look awefully familiar?
+Fast forward about 6 years. I am in the lecture room at the university, watching my professor scribble equations on the black board. This is the introduction to Linear Algebra, and the course is wrapping up. Suddenly I recognize the rotation matrix on the black board. It's in 2D this time, but doesn't that \\(-\sin\alpha\\) term look awefully familiar?
 
-<img src="/image/blackboard.png" />
+$$
+  \left(\begin{array}{r}
+    \cos \alpha & -\sin \alpha \\\\
+    \sin \alpha & \cos \alpha
+  \end{array}\right)
+  \times
+  \left(\begin{array}{c}
+    x \\\\
+    y
+  \end{array}\right)
+$$
 
 And then it hits me. This is where I got stuck all those years ago. Only this time it all makes perfect sense. The matrix, this omnious shadow from the past, can be derived easily - just check what the transform does to the x-y axes and [that's that](http://mathforum.org/library/drmath/view/74063.html).
 
@@ -49,3 +59,11 @@ I know many people who seemed destined to take up programming. Maybe they got
 an Apple II in their hands at age 5, or maybe their parents were C hackers and
 taught them first hand. I'm not one of those kids. In 1993, our first internet connection was still a few years away, and Wikipedia a few years more. If Denthor hadn't written his tutorial and if it hadn't by some chance ended up in my hands at the perfect time, I may have given up on Pascal. I am grateful that I didn't.
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
