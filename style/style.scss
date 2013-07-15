@@ -1,9 +1,7 @@
-$max-width: 680px;
+$max-width: 780px;
 
 $v-padding: 20px;
 $h-padding: 20px;
-
-$gray: #ccc;
 
 @mixin box-sizing($model) {
     -webkit-box-sizing: $model;
@@ -33,10 +31,6 @@ $gray: #ccc;
   @include box-sizing(border-box);
 }
 
-header, article, footer, section {
-    display: block;
-}
-
 ::selection {
     background: #ffbb88;
     color: black;
@@ -60,12 +54,12 @@ h1, h2, h3 {
 }
 
 h1 {
-    font-size: 42px;
+    font-size: 52px;
     font-weight: 300;
 }
 
 h2 {
-    font-size: 1.5em;
+    font-size: 1.9em;
     font-weight: normal;
 }
 
@@ -73,15 +67,14 @@ body {
     /* Default body text */
     font-family: Merriweather, Open Sans, sans-serif;
     font-size: 16px;
-    line-height: 1.6;
+    line-height: 1.7;
     color: #444;
 }
 
 header {
     font-family: Open Sans, sans-serif;
     line-height: 1.0;
-    font-size: 14px;
-    color: $gray;
+    color: #ddd;
 }
 
 header .home {
@@ -242,27 +235,24 @@ article {
     min-height: 500px;
 }
 
-/* Avoid overflowing on narrow displays. */
 article pre {
+    /* Avoid overflowing on narrow displays. */
     overflow: auto;
     @include border-radius(8px);
-    background: hsl(214, 36%, 92%);
-    border: 1px solid hsl(214, 36%, 82%);
+    background: #fff;
     padding: 15px 0 15px 15px;
 }
 
 article code {
     padding: 0 0.1em;
-    font-size: 14px;
     font-family: Inconsolata, Consolas, monospace;
 }
 
 article code.kb {
     color: white;
     padding: 0 0.3em;
-    font-size: 15px;
     background: hsl(214, 36%, 65%);
-    @include border-radius(4px);
+    @include border-radius(3px);
 }
 
 blockquote {
