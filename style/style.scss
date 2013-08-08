@@ -54,7 +54,7 @@ h1, h2, h3 {
 }
 
 h1 {
-    font-size: 52px;
+    font-size: 3.25em;
     font-weight: 300;
 }
 
@@ -74,7 +74,6 @@ body {
 header {
     font-family: Open Sans, sans-serif;
     line-height: 1.0;
-    color: #ddd;
 }
 
 header .home {
@@ -86,7 +85,6 @@ header .home {
 }
 
 footer {
-    color: #aaa;
 }
 
 footer #column-header {
@@ -105,7 +103,6 @@ pre {
 }
 
 .post-date {
-    margin-bottom: 1.5em;
     color: #999;
 }
 
@@ -119,7 +116,6 @@ a {
 }
 
 footer a {
-    color: hsl(205, 59%, 60%);
 }
 
 a:hover {
@@ -144,7 +140,6 @@ dfn {
 body {
     margin: 3px 0 0 0;
     padding: 0;
-    background: #222;
 }
 
 #category-list {
@@ -182,8 +177,8 @@ header, footer > div, article {
     @media (min-width: 500px) {
         > div {
             float: left;
-            width: 20%;
-            margin-left: 15px;
+            width: 30%;
+            margin-left: 4%;
             margin-bottom: 10px;
         }
 
@@ -203,7 +198,6 @@ header, footer > div, article {
 }
 
 #content {
-    background-color: #eee;
     background-image: url(/image/bgnoise.png);
 }
 
@@ -226,7 +220,7 @@ footer:before, #content:before {
     content: "";
     display: block;
     height: 1px;
-    background: hsl(220, 20%, 70%);
+    background: hsl(220, 20%, 85%);
 }
 
 article {

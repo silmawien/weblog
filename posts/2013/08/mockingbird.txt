@@ -1,0 +1,39 @@
+Title: To Mock a Mockingbird
+Created: 2013-08-06
+Posted: 2013-08-08
+
+By Raymond M. Smullyan.
+
+This clever book is divided into two parts. The first is a collection of logic puzzles. We learn the psychology of knights (truth-tellers) and knaves (liars) and how to coax the truth from them with propositional calculus.
+
+<!-- abstract -->
+
+You're accompanied on your quest by Inspector Craig of the Scotland Yard, who happens to be somewhat of an authority in the field. 
+
+The puzzles are surprisingly varied, considering the simple rules they are built from.
+
+Meta puzzles
+---
+
+A meta-logic puzzle is curious thing. It is a story about a character - Inspector Craig in this case - who is confronted with an ordinary logic puzzle. As he interrogates the subjects, their answers are not revealed to you, but based on the Inspector's conclusion (or inability to find one!), you can infer enough information to reach a solution. It's like trying to understand a video by watching somebody's reaction to it.
+
+Combinatory logic
+---
+
+Soon we say goodbye to the knights and knaves, and the book switches gears. A field of mathematics called [combinatory logic][] is introduced via a clever bird metaphor. A great deal of time is spent becoming familiar with the various kinds of birds, where each bird represents a combinator. Because of the close relationship of combinatory logic to lambda calculus, I was hoping to come away with some fresh insight on programming. However, this relationship is not discussed much; just briefly at the very end.
+
+[combinatory logic]: http://en.wikipedia.org/wiki/Combinatory_logic
+
+The characters are wonderfully written, and are given just the right amount of personality to break the monotony of some of the exercises.
+
+Yes, exercises. There are a lot of them, and some are very difficult. That's not surprising, given that it took some of the 20th century's brightest mathematicians to discover these ideas. On that topic, I would have loved it if the book spent some time on the lives of Schönfinkel, Curry, Church, Turing, Gödel and the other mathematicians / logicians. I'll be sure to hunt down some biographies at the library.
+
+Since each chapter builds on the previous one, you really must understand the solutions to the problems in the order they are presented. There is no free lunch, but there's a real treat waiting at the end, in the form of a proof of Gödel's incompleteness theorem. In fact, this proof is presented as the book's last exercise. Even with all the hand-holding in the later chapters, I won't deny a certain sense of accomplishment from seeing it through. It is armchair adventuring of a theoretical kind!
+
+Gödel's theorem is also a main focus point in Douglas Hofstadter's book [Gödel, Escher Bach][geb]. I'm not going to compare it to Mockingbird in any detail; they are very different books, but I would argue that Raymond M. Smullyan offers a quicker path for the math-savvy reader while also expecting a great deal more *from* him.
+
+[geb]: http://en.wikipedia.org/wiki/G%C3%B6del,_Escher,_Bach
+
+So was there anything I didn't like? Nitpicks first. In my edition there were a few typos in the later half, which surely made the exercises more interesting. A slightly bigger issue was the way in which the solutions to many exercises were presented backwards. Once I caught on to this, I could sometimes glimpse the last few steps of a derivation to see if I was on the right track - without spoiling all of the fun.
+
+Read this book if you are curious about combinatorial logic. If you're not sure, read it for the pleasure of finding out! Bring your pen and paper, and prepare to spend upwards of 10 hours thinking, scribbling and stumbling in the footsteps of titans.

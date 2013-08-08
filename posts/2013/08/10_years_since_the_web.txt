@@ -1,0 +1,106 @@
+Title: 10 Years Since the Web
+Created: 2012-09-1
+Posted: 2013-08-08
+Tags: web
+
+I took a break from web development from the early '00s until last year. Since then I've managed to become reasonably up-to-date again. It has been a refreshing ride. Let me tell you about the view through my Web 1.0-tinted glasses.
+
+<!-- abstract -->
+
+First some things that have not changed. There's still the browser / server separation - [for now][1]. On the server side we still use databases, although MySQL has lost its place as the de facto standard. HTTP requests are still going over the wire, but we're sending a whole lot more of them. And on the client side there's still JavaScript - this shy little language that in a twist of fate was elected president of the web universe.
+
+[1]: https://github.com/meteor/meteor
+
+No Love for <?php ?>
+---
+
+It's funny when '00s programmers discuss PHP. First, someone lays it on thick when he speaks of syntax bugs and XSS-embracing design. Someone else sings the praise of practicality and gentle learning curves. Then voices lower as nostalgic memories occupy everyone's minds.
+
+They are all right, of course. It was glorious and horrible and there will never be a time quite like it again.
+
+Web Servers
+---
+
+So with PHP out of the picture, what's left of the [L][][A][][M][][P][] stack?
+
+Linux is still there, looking strong as ever.
+
+Apache is also around, although it's being squeezed by competition from two sides. For static content there is [nginx][], powerhouse asynchronous web server and reverse proxy. For dynamic content, where there used to be CGI and apache modules, there's now a whole ecosystem of servers that you connect to your app via standard, language-dependent interfaces like [WSGI][], [Rack][] and [Ring][].
+
+[WSGI]: http://wsgi.readthedocs.org/en/latest/
+[Rack]: http://rack.github.io/
+[Ring]: https://github.com/ring-clojure/ring
+
+While this is clearly an improvement for the [performance minded][2], the choice is somewhat overwhelming to a hobbyist. Fortunately, your framework almost certainly includes a development server that you can use until you have figured out what you need.
+
+[L]: http://www.linux.org/
+[A]: http://www.apache.org/
+[M]: http://www.mysql.com/
+[P]: http://www.php.net/
+[nginx]: http://nginx.org/
+[2]: https://github.com/blog/517-unicorn
+
+Databases
+---
+
+SQL is still alive and well. Businesses with high scalability requirements have been forced to move away from general purpose DBMSs towards key-value stores and document stores (NoSql). Essentially they buy horizontal scalability (which means more servers instead of beefier ones) by giving up the expressiveness of a relational system. As a result, if you deploy your app on a [PaaS][] provider, you may not have a choice of SQL at all.
+
+[PaaS]: http://en.wikipedia.org/wiki/Platform_as_a_service
+
+SQL may not be the trendy choice today, but the rumors of it's death are somewhat exaggerated. If you host on your own server, it's just a matter of preference. 
+
+Frameworks
+---
+
+This area has seen significantly more fragmentation than the others. The mainstream choices used to be Perl, PHP or one of the more enterprisey ASP / JSP. You
+picked your favorite language and maybe a templating library.
+The app was externally visible through a single URL, such as
+`/app.aspx?page=index`.
+
+Then [Rails][] et al. came along and changed the expectations of what a framework was.
+
+A modern framework provides URL routing, which means it binds a function or a
+class `posts(id)` to the URL `/posts/<id>`. Database access is abstracted
+through some sort of object mapping. Templating is baked in. 
+
+If any of these components are missing, you are probably dealing with a *micro-framework*. I'm currently using [Flask][], which is really cute but doesn't do object mapping.
+
+[Rails]: http://rubyonrails.org/
+[Flask]: http://flask.pocoo.org/
+
+If your service exposes an API, its structure is likely going to be based on [REST][], although you may not go all the way.
+
+[REST]: http://en.wikipedia.org/wiki/Representational_state_transfer
+
+Meet the browser
+---
+
+The server side may be swinging, but the real party is happening in the
+browser. When I left the scene, JavaScript was a misunderstood gem of a
+language. Today it's grown up and, partly due to intense lobbying from Douglas
+Crockford and others, is not afraid to rub its noble Scheme heritage in your
+face. Object-orientation aficionados may end up questioning their sanity. Personally I like sharp tools, but there are plans for the next ECMAScript version (Harmony) to soften some of the syntactic edges to make everyone feel at home. 
+
+You don't have to wait though. Web developers have discovered the wonders of pre-processing, so what used to be painstakingly hand-written HTML/CSS/JS can now be generated from the syntactically refined counterparts [HAML][]/[SASS][]/[CoffeeScript][].
+
+[HAML]: http://haml.info/
+[SASS]: http://sass-lang.com/
+[CoffeeScript]: http://coffeescript.org/
+
+JavaScript has become the machine code of the web. There's a back-end to [LLVM][emscripten] that outputs JavaScript, which opens up some interesting possibilities. Many languages [compile][jslangs] to JavaScript without such crazy tricks. Google's V8 implementation brought performance up to par, so running for instance a python interpreter inside a JS interpreter is no big deal. Google's [Native Client][] is the odd one out since it bypasses JavaScript entirely. Instead it creates a native sandbox inside the browser.
+
+[emscripten]: https://github.com/kripken/emscripten/wiki
+[jslangs]: https://github.com/jashkenas/coffee-script/wiki/List-of-languages-that-compile-to-JS
+[Native Client]: https://developers.google.com/native-client/
+
+If you can imagine a cross-compiler that would be useful for web apps, it probably already exists.
+
+Conclusion
+---
+
+If I have any regrets, it is that I didn't try to stay up-to-date while the web was being reinvented. When you are not directly involved, it's easy to shut off entirely.
+
+There were benefits. I did avoid some [failed experiments][silverlight]. In the end I'm glad to have ended my hiatus. It's a really exciting time to get back to the web.
+
+[silverlight]: http://www.microsoft.com/silverlight/
+
