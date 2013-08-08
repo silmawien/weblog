@@ -19,47 +19,40 @@ SCSS=$(patsubst %.scss,${OUT}/%.css,${SCSS_SRC})
 
 TEMPLATES=$(wildcard templates/*)
 
-GEN_TEMPLATES=gen/footer.html
+SSI_SRC=footer.html
+SSI=$(addprefix ${OUT}/ssi/,${SSI_SRC})
 
 IDX_SCRIPT=render_index.py
 SCRIPTS=$(filter-out ${IDX_SCRIPT},$(wildcard *.py))
 
 INDEX=${OUT}/index.html
 
-# parameters for single-post scripts
-POST_ENV=TMP="${GEN_TEMPLATES}"
-
 # parameters for multi-post scripts
-FULL_ENV=SRC="${POSTS_SRC}" URL="$(subst ${OUT},${ROOT},${POSTS})" TMP="${GEN_TEMPLATES}" OUT=${OUT}
+FULL_ENV=SRC="${POSTS_SRC}" URL="$(subst ${OUT},${ROOT},${POSTS})" OUT=${OUT}
 
 # delete incomplete output files
 .DELETE_ON_ERROR:
 
-#debugenv:
-#	${FULL_ENV} python
-
 default: stage
 
-# Generated templates. This extra step allows us to generate common pieces
-# once, and include the result from many pages. A generated template can itself
-# use templates. E.g. "gen/footer.html" is rendered with "gen_footer.py" and
-# included from render_post.py.
-${GEN_TEMPLATES}: ${SCRIPTS} ${POSTS_SRC} ${TEMPLATES}
+# Generated chunks. These are included via SSI to avoid rebuilding all pages
+# when e.g. the footer changes.
+${SSI}: ${OUT}/%.html: ${SCRIPTS} ${POSTS_SRC} ${TEMPLATES}
 	@echo $@
 	@mkdir -p ${@D}
-	@${FULL_ENV} python $(patsubst gen/%.html,gen_%.py,$@) > $@
+	@${FULL_ENV} python gen_$(notdir $*).py > $@
 
 # run markdown on txt files under posts/
-${POSTS}: ${OUT}/%.html: posts/%.txt ${TEMPLATES} ${SCRIPTS} ${GEN_TEMPLATES}
+${POSTS}: ${OUT}/%.html: posts/%.txt ${TEMPLATES} ${SCRIPTS}
 	@echo $@
 	@mkdir -p $(@D)
-	@${POST_ENV} URL=$(subst ${OUT},${ROOT},$@) python render_post.py $< > $@
+	@URL=$(subst ${OUT},${ROOT},$@) python render_post.py $< > $@
 
 # same for drafts (but see deploy rule)
-${DRAFTS}: ${OUT}/drafts/%.html: drafts/%.txt ${TEMPLATES} ${SCRIPTS} | ${GEN_TEMPLATES}
+${DRAFTS}: ${OUT}/drafts/%.html: drafts/%.txt ${TEMPLATES} ${SCRIPTS}
 	@echo $@
 	@mkdir -p $(@D)
-	@${POST_ENV} URL=$(subst ${OUT},${ROOT},$@) python render_post.py $< > $@
+	@URL=$(subst ${OUT},${ROOT},$@) python render_post.py $< > $@
 
 # run sass on scss files
 ${SCSS}: ${OUT}/%.css: %.scss
@@ -75,12 +68,12 @@ ${STATIC}: ${OUT}/%: static/%
 
 # Render front page. This script reads every single post, so other index pages
 # (tags, by-date index) are generated here too, to keep things fast.
-${INDEX}: ${POSTS} ${TEMPLATES} ${SCRIPTS} ${IDX_SCRIPT} ${GEN_TEMPLATES}
+${INDEX}: ${POSTS} ${TEMPLATES} ${SCRIPTS} ${IDX_SCRIPT}
 	@echo $@
 	@${FULL_ENV} python render_index.py > $@
 
 # generate site to staging directory
-stage: ${POSTS} ${DRAFTS} ${STATIC} ${SCSS} ${INDEX}
+stage: ${POSTS} ${DRAFTS} ${STATIC} ${SCSS} ${INDEX} ${SSI}
 
 clean:
 	rm -rf ${OUT}

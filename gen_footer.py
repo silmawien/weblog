@@ -48,7 +48,7 @@ def render_footer(srcs, urls):
     recent = sorted(posts, key=posted_datetime, reverse=True)[0:MAX_POSTS]
     tags = make_tags(posts)
 
-    ctx = make_context({ "posts": recent, "tags": tags }, False)
+    ctx = make_context({ "posts": recent, "tags": tags })
     env = Environment(loader=FileSystemLoader("templates"))
     env.filters['shorttitle'] = short_title
     print env.get_template("footer.html").render(ctx).encode("utf-8")
