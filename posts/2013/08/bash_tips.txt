@@ -1,0 +1,219 @@
+Title: Bash Tips
+Created: 2012-11-28
+Posted: 2013-08-31
+Tags: shell unix
+
+Today I'd like to share a few tips and tricks for Bash. These are things I discovered from [reading the manual][manual]. Clever one-liners are not my thing; the goal is to showcase useful features of the shell.
+
+[manual]: /2012/12/bash_man_page.html
+
+<!-- abstract -->
+
+A word of caution: Bash isn't the most forgiving language. The expansion rules in particular are tricky. Also don't mistake Bash for a general purpose scripting
+language. It runs commands, and it does it well. That's all you [should][] be using it for.
+
+[should]: https://www.google.com/search?q="a+*+implemented+in+bash"
+
+## On Syntax
+
+Shell syntax is terse and uses arbitrary symbols, as most DSLs tend to do.
+
+Here's a *list*, or complex command. It runs programs `a` and `b` in parallel (feeding `a`'s output to `b`), then checks `b`'s exit status, and finally runs program `c` if there was no error.
+
+    $ (a | b) && c
+
+Commands are baked into Bash just like arithmetic expressions are in most
+other programming languages. Imagine C without arithmetic expressions.
+
+    int average(int a, int b) {
+        return div(add(a, b), 2);
+    }
+
+Arithmetic expressions have universal appeal because they match the language of mathematics, but don't fool yourself; the choice of + and - for addition and subtraction is just as arbitrary as the choice of | and & by the shell. You can view arithmetic expressions as a small DSL tacked on to C for convenience.
+
+Unix pipes are not as widely useful as arithmatic. And so it is less convenient to launch processes from most languages, like with Python's [subprocess][] library. Efforts to improve the experience tend to end up reinventing a subset of Bash's syntax *inside the host language*. That's approximately what [envoy][] or [iterpipes][] do, both for Python.
+
+[subprocess]: http://docs.python.org/2/library/subprocess.html
+
+There are other, [more][sh] [ambitious][Shell] efforts to bridge the gap, but
+I mention them as a curiosity. They both involve some level of
+meta-programming.
+
+The point is that DSLs are niche by definition. Wait until it makes sense to pick up shell syntax, but don't wait your whole life. If you program for a living, especially on a Unix system, there's a good chance you will type enough shell commands to make it worthwhile.
+
+[envoy]: https://github.com/kennethreitz/envoy
+[iterpipes]: http://pypi.python.org/pypi/iterpipes
+[sh]: http://pypi.python.org/pypi/sh/0.107
+[Shell]: https://metacpan.org/module/Shell
+
+## Exit status
+
+When a Unix program terminates, it leaves an exit status behind; 0 for
+success, non-zero for failure. Bash stores the previous command's exist status
+in the shell parameter `$?`. You can add it to the prompt for easier
+debugging.
+
+    $ PS1="\$?\n$PS1" # add latest exit status to prompt
+
+Usually you're only interested if the status is non-zero. Here are some ways
+to include [only non-zero statuses][non-zero-prompt] in the prompt.
+
+[non-zero-prompt]: http://stackoverflow.com/questions/5946873/include-non-0-exit-codes-in-the-subsequent-bash-prompt
+
+## Redirection
+
+The pipe operator is one example of redirection. It is a key mechanism in the
+Unix philosophy of many small tools working together.
+
+    $ cat | tr -cs 'a-z' '\n' | sort | uniq | wc -l
+    count unique words in input
+    <C-d>
+    5
+
+Here is how to merge file descriptor 2 (stderr) with file descriptor 1 (stdout):
+
+    $ some-command 2>&1
+
+That turns out to be useful when you need to log program output to file,
+including any error messages. I also use it to disable all output from
+chatty programs like eclipse.
+
+    # avoid random errors messages
+    $ eclipse > /dev/null 2>&1 &
+
+## Shell parameters
+
+You can use shell parameters to hold anything, like a git hash that might be
+needed later.
+
+    $ git log --oneline --graph
+    *   a6534a3 Merge branch 'master' of github.com:silmawien/dotfiles
+    |\
+    | * b79f913 Provide 32-bit tconn to avoid LD errors
+    | * 1d9068f Git log graph alias
+    | * 08b14c6 Transconnect setup for work
+    * | 9f2f7ee Exit status in prompt, vim tabs
+    |/
+    * ee18d8e One more
+    $ base=`git merge-base b79f913 9f2f7ee` # save for later
+    .
+    .
+    .
+    $ echo $base                            # what was that commit again?
+    ee18d8ef3ad9e1c37e3e53293c0e55b3a844ad24
+
+As long as you don't export them, parameters are not visible to programs that
+you run. If you use lower-case names, you won't confuse them with program
+specific variables like `CLASSPATH`.
+
+If you want to temporarily override part of the environment, that's easy too.
+
+    $ HOME=/some/dir python
+    >>> os.environ['HOME']
+    '/some/dir'
+
+The change to `HOME` only affects the environment of Python. Once we return
+to the shell, `HOME` is back to it's old value.
+
+    >>> <CTRL-D>
+    $ echo $HOME
+    /home/mattias
+
+## Expansion
+
+Here's a few examples of history expansion - referring to (part of) an earlier command.
+
+    $ shutdown -h now
+    shutdown: Need to be root
+    $ sudo !!                   # !! = previous command
+    sudo shutdown -h now
+
+    $ git diff -- some/rather/long/filename.txt
+    $ vim !$                    # !$ = last parameter of previous command
+    vim some/rather/long/filename.txt
+
+    $ ls /some/long/and/incorrectly/spelled/path
+    ls: cannot access /some/long/and/incorrectly/spelled/path
+    $ ^incor^cor                # replace in previous command
+    ls /some/long/and/correctly/spelled/path
+
+The first one I use regularly, but only ever with sudo. Up-arrow or
+incremental history search covers most everything else.
+
+Brace notation is nice for managing file extensions.
+
+    $ echo /path/to/image.{png,bak}
+    /path/to/image.png /path/to/image.bak
+
+Parameter expansion is really flexible, and can do similar things.
+`${var%pattern}` expands to the value of `$var`, after removing a suffix that
+matches `pattern`.
+
+    # 'cp file.jpg file.bak' for all jpg files
+    $ for img in *.jpg; do cp $img ${img%jpg}bak; done
+
+## Job Control
+
+Job control is occasionally useful.
+
+    $ eclipse       # oops, forgot to launch in the background with '&'
+    <C-z>           # suspend current process
+    [1]+  Stopped                 eclipse
+    $ bg            # resume current job in the background
+    [1]+ eclipse &
+    $
+
+Just a word of caution. If you want to truly understand job control, you
+need to lean a few things about [signals and terminals][] as well, which
+might be more than you bargained for.
+
+[signals and terminals]: http://www.linusakesson.net/programming/tty/
+
+## History
+
+My favorite Bash feature is the interactive history search, by default on
+<code class="kb">C-r</code>. If you can remember any part of a previous
+command, <code class="kb">C-r</code> will find it.
+
+    # Hmm, what was the command to restart Apache?
+    $ <C-r>
+    (reverse-i-search)'':
+    (reverse-i-search)'ap': sudo service apache2 restart  # found it!
+
+Increase the value of `HISTSIZE` and `HISTFILESIZE` to something really large,
+to avoid losing old commands. 20000 is not unreasonable.
+
+## Command Line Editing
+
+Without the readline library it would be incredibly painful to type in
+commands at the prompt. It is the IDE of Bash, so to speak.
+
+Moving forward <code class="kb">M-f</code> and backward <code
+class="kb">M-b</code> by words might a habit worth picking up.
+
+I also like `yank-last-arg` which copies the last parameter of the previous
+command, just like `!$` does. It is bound to <code class="kb">M-.</code> by
+default.  You can provide a numerical argument to this binding. For instance,
+<code class="kb">M-2</code> <code class="kb">M-.</code> yanks the 2nd
+parameter of the last command.
+
+If readline fails you, <code class="kb">C-x</code> <code class="kb">C-e</code>
+brings up an editor for the current command line. It's the best way to convert a
+one-off command to a script.
+
+## Other Resources
+
+There's a really neat site [catonmat.net][], more or less entirely based on cool things you can do with Bash and the standard Unix utilities. 
+
+[catonmat.net]: http://www.catonmat.net/
+
+## Zsh
+
+If you are serious about the shell, you may want to consider switching to zsh.
+It's slightly more radical than Bash. But don't worry, it's mostly compatible.
+
+Here's a teaser:
+
+    $ find . -name "*.txt" | xargs grep foo   # bash
+    $ grep foo **/*.txt                       # zsh
+

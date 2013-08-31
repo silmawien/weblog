@@ -25,7 +25,7 @@ This is the long and sprawling story of how I came to love my shell, and then
 moved on to dump it for it's prettier cousin. If all you want are the quick
 hits, I wrote down my favorite Bash tips [separately][bash-tips].
 
-[bash-tips]: tbd
+[bash-tips]: /2013/08/bash_tips.html
 
 ## Fun in 640k
 
