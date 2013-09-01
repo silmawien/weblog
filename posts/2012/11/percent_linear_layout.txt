@@ -21,6 +21,7 @@ As an example, let's use a horizontal `LinearLayout` with 3 children. We want
 the children to occupy 30, 50 and 20 percent of the available width. The
 `layout_weight" attribute sounds promising, so here is an initial attempt.
 
+    :::xml
     <LinearLayout
         a:layout_width="match_parent"
         a:layout_height="wrap_content" >
@@ -67,6 +68,7 @@ that there is enough space for the Finnish [translation][].
 Leaving the Scandinavian market aside, how do we override LinearLayouts
 weight algoritm? Just set the width of each button to 0dp.
 
+    :::xml
     <LinearLayout
         a:layout_width="match_parent"
         a:layout_height="wrap_content" >
@@ -125,6 +127,7 @@ often in subtle ways. Luckily it can be turned off by setting
 
 This is the final version of the xml.
 
+    :::xml
     <LinearLayout
         a:layout_width="match_parent"
         a:layout_height="wrap_content"

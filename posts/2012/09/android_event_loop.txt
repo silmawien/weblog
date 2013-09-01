@@ -35,6 +35,7 @@ determined by the curiously named field '`what`'. There are some optional
 parameters, whose values depend on the message type. You can define and send
 your own messages, like this:
 
+    :::java
     static final int MSG_HELLO_WORLD = 1;   // a custom message type
     ...
     Message msg = Message.obtain();
@@ -50,6 +51,7 @@ instance, [here][newintent] is the message that will eventually result in a
 call to `Activity.onNewIntent()`. Put a break point there and you might see
 this callstack.
 
+    :::java
     ...
     Handler.handleMessage(msg)
         ActivityThread.handleNewIntent(data)
@@ -65,6 +67,7 @@ This is usually implemented as a plain switch/case on the message type. In
 Android you extend the [Handler][] class and implement
 `handleMessage(Message)`.  Here is a handler for the message we just sent.
 
+    :::java
     class HelloWorldHandler extends Handler {
 
         public void handleMessage(Message msg) {
@@ -101,12 +104,14 @@ This is the piece of code that fetches incoming messages and hands them over
 to the Handler one at a time. In pseudo code a traditional message loop looks
 something like this:
 
+    :::java
     while message = queue.getNextMessage():
         dispatch(message)
 
 Except in Android, due to the support for multiple handlers, it is really more
 like this:
 
+    :::java
     while message = queue.getNextMessage():
         message.getTarget().dispatchMessage(message)
 
@@ -146,6 +151,7 @@ forbids all threads but the main thread from modifying the view hierarchy, so
 the callback must be routed over to the main thread. One way to do this is
 with a Handler.
 
+    :::java
     class MyLibraryWrapper {
 
         private static final int COMPUTATION_DONE = 1;
@@ -194,6 +200,7 @@ to the correct message queue?
 
 To answer that question we need to peek inside `Handler()`.
 
+    :::java
     public Handler() {
         ...
         mLooper = Looper.myLooper();
@@ -207,6 +214,7 @@ No references to the main thread here either, but it fetches a looper called
 
 Here is the relevant part of the [Looper][] class.
 
+    :::java
     public class Looper {
         static final ThreadLocal<Looper> sThreadLocal =
                 new ThreadLocal<Looper>();
@@ -249,6 +257,7 @@ To send the message, we call `Message.sendToTarget()`. The message knows
 nothing about queues or loopers, it just delegates the call to its target
 handler:
 
+    :::java
     class Message {
         ...
         public void sendToTarget() {
@@ -258,6 +267,7 @@ handler:
 Here's a snapshot of the call stack that shows the enqueue operation in all
 its delegated glory.
 
+    :::java
     <Library Managed Thread>
         MyLibraryWrapper.onResult()
             Message.sendToTarget()
@@ -270,6 +280,7 @@ Now the message is in the queue. Some time later, when the main thread is
 ready, it dequeues and dispatches the message. Here is what
 *that* call stack looks like:
 
+    :::java
     <Main Thread>
         ActivityThread.main()
             Looper.loop()

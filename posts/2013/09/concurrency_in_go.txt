@@ -1,0 +1,111 @@
+Title: Concurrency in Go
+Created: 2013-09-01
+Tags: concurrency, go
+Posted: 2013-09-01
+
+I like magic. Even better, I like having magic explained to me, Penn and Teller style. So after I watched Rob Pike [talk][] about Go ([twice][]) without *really* explaining how the runtime does its magic, I put together this highly prospective FAQ.
+
+[talk]: http://blog.golang.org/concurrency-is-not-parallelism
+[twice]: http://www.youtube.com/watch?v=3DtUzH3zoFo
+
+<!-- abstract -->
+
+The Elusive Free Lunch
+---
+
+In the late 1950s [Jean Hoerni][] developed the planar process for constructing integrated circuits. It set the stage for 50 years of exponential growth in chip performance.
+
+[Jean Hoerni]: http://www.youtube.com/watch?v=VeL4t5bvTj4#t=2460
+
+Gordon Moore famously predicted exponential growth in *transistor count*, and for a long time there was an implicit proportionality symbol (&#x221d;) between the number of transistors on a chip and it's performance. It meant we could write slow programs today and expect them to run fast tomorrow.
+
+Herb Sutter called this a [free lunch][], and in 2005 he explained that it was about to end, and that the future is concurrency. I loved this article, but it was not clear to me at the time just how widely applicable it was.
+
+[free lunch]: http://www.gotw.ca/publications/concurrency-ddj.htm
+
+> The vast majority of programmers today don’t grok concurrency [...]. But the
+> concurrent programming model is learnable, particularly if we stick to
+> message- and lock-based programming, and once grokked it isn’t that much
+> harder than OO and hopefully can become just as natural.
+
+Now, almost a decade later, concurrency primitives have found their way into some languages. Go of course has goroutines. Clojure provides core.async. C# has `async` and `await`. I want to include ES6 generators too, even though I'm unsure what status the current draft has.
+
+Processes
+---
+
+What is the problem that these constructs mean to solve?
+
+Locks turned out to be unlearnable by non-kernel developers. Message-based concurrency is the model that humans can understand. So one way to get our free lunch back is to decompose our programs into the [communicating sequential processes][] that Rob talks about. These are abstract processes, by the way, not Linux processes. But we need lots of them. A server app would typically create one per active connection. An ant hill simulator would have one process per ant.
+
+Now we have a problem. If we try to map these abstract things to operating system processes, it won't work. The OS is not designed to run thousands of threads, let alone processes.
+
+If our language is powerful enough we can try to implement green threads, or coroutines, or some other abstraction for a call stack. For most languages this won't work either.
+
+Our program is then forced to keep track of call stacks explicitly as heap objects. The supposedly sequential processes degenerate into a bunch of event handlers, loosely stitched together by callbacks. The model works, as evident from the popularity of Node.js and friends. But it makes concurrency harder than it should be.
+
+[communicating sequential processes]: http://www.youtube.com/watch?v=3DtUzH3zoFo
+
+The concurrency constructs solve this problem. They preserve the illusion of sequential processes at the source code level, yet somehow avoid paying the cost of OS threads. The various languages do it in slightly different ways. Today we are only discussing Go.
+
+Magic
+---
+
+As Arthur C. Clarke said, any sufficiently advanced technology is indistinguishable from magic. Go is often pitched as if magic.
+
+- you can launch 1000s of goroutines
+- goroutines may block
+- performance is great (benchmarks included)
+- by the way, very few OS threads are used
+- see you in wonderland!
+
+I believe this is smart. First, it makes sense to focus on high-level concepts, and Go introduces a few new ones, like channels. Second, the implementation may change, which would make the details invalid anyway. Third, the code is publicly available. Anyone who is curious can just go read it.
+
+FAQ
+---
+
+**If a goroutine blocks on Conn.Read, how can the current OS thread be reused?**
+
+Conn.Read() blocks the *goroutine*, but the runtime parks the goroutine and uses [async IO][] (e.g. epoll on linux). Meanwhile, the OS thread is free to run other goroutines. In fact, when the "blocking" call returns, the original goroutine may be mapped to a different OS thread!
+
+[async IO]: https://groups.google.com/forum/#!topic/golang-nuts/AQ8JOHxm9jA
+
+**How many OS threads will my go program use?**
+
+It [depends][]. The runtime spins up new threads on demand. GOMAXPROCS (default=1) limits the number of threads that are allowed to run user level go code. Threads blocked in syscalls do not count towards this limit.
+
+[depends]: http://golang.org/pkg/runtime/
+
+**Does this mean I should strive to limit the # of goroutines?**
+
+On the contrary, start as many as makes sense. In most practical situations they are very cheap.
+
+**What about Sleep()? Will it force new OS threads?**
+
+Time.Sleep() just [sets a timer][] and parks the goroutine. If you bypass the runtime and sleep with a syscall *and* another goroutine is waiting, then yes, a new OS thread is spawned.
+
+[sets a timer]: http://code.google.com/p/go/source/browse/src/pkg/runtime/time.goc?name=release-branch.go1.1#61
+
+**What about accessing the file system?**
+
+Currently uses blocking IO, but [could be made async][] where there is OS support.
+
+[could be made async]: https://groups.google.com/forum/#!topic/golang-nuts/j51G7ieoKh4
+
+**Is the go runtime an operating system built on top of an operating system?**
+
+In a sense, yes. Rob Pike even [said so][]. Once it gets a preemptive scheduler it will be harder to argue against it.
+
+[said so]: http://www.youtube.com/watch?v=sln-gJaURzk&feature=player_detailpage#t=480
+
+**How are goroutines scheduled?**
+
+The runtime currently uses cooperative scheduling, triggered by calls to library functions. If a goroutine is stuck in a loop with no library calls, it will run forever.
+
+**How does all this compare to "monkey patching" as in python's Gevent?**
+
+It's the same thing, except the Go runtime supports it out of the box; no patching is necessary.
+
+Summary
+---
+
+Hopefully it's now clear why you should concern yourself with goroutines and let the runtime handle the mapping of them onto OS threads. ٩◔̯◔۶

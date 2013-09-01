@@ -20,11 +20,13 @@ Shell syntax is terse and uses arbitrary symbols, as most DSLs tend to do.
 
 Here's a *list*, or complex command. It runs programs `a` and `b` in parallel (feeding `a`'s output to `b`), then checks `b`'s exit status, and finally runs program `c` if there was no error.
 
+    :::bash
     $ (a | b) && c
 
 Commands are baked into Bash just like arithmetic expressions are in most
 other programming languages. Imagine C without arithmetic expressions.
 
+    :::c
     int average(int a, int b) {
         return div(add(a, b), 2);
     }
@@ -49,10 +51,11 @@ The point is that DSLs are niche by definition. Wait until it makes sense to pic
 ## Exit status
 
 When a Unix program terminates, it leaves an exit status behind; 0 for
-success, non-zero for failure. Bash stores the previous command's exist status
+success, non-zero for failure. Bash stores the previous command's exit status
 in the shell parameter `$?`. You can add it to the prompt for easier
 debugging.
 
+    :::bash
     $ PS1="\$?\n$PS1" # add latest exit status to prompt
 
 Usually you're only interested if the status is non-zero. Here are some ways
@@ -65,6 +68,7 @@ to include [only non-zero statuses][non-zero-prompt] in the prompt.
 The pipe operator is one example of redirection. It is a key mechanism in the
 Unix philosophy of many small tools working together.
 
+    :::bash
     $ cat | tr -cs 'a-z' '\n' | sort | uniq | wc -l
     count unique words in input
     <C-d>
@@ -72,12 +76,14 @@ Unix philosophy of many small tools working together.
 
 Here is how to merge file descriptor 2 (stderr) with file descriptor 1 (stdout):
 
+    :::bash
     $ some-command 2>&1
 
 That turns out to be useful when you need to log program output to file,
 including any error messages. I also use it to disable all output from
 chatty programs like eclipse.
 
+    :::bash
     # avoid random errors messages
     $ eclipse > /dev/null 2>&1 &
 
@@ -86,6 +92,7 @@ chatty programs like eclipse.
 You can use shell parameters to hold anything, like a git hash that might be
 needed later.
 
+    :::bash
     $ git log --oneline --graph
     *   a6534a3 Merge branch 'master' of github.com:silmawien/dotfiles
     |\
@@ -108,6 +115,7 @@ specific variables like `CLASSPATH`.
 
 If you want to temporarily override part of the environment, that's easy too.
 
+    :::bash
     $ HOME=/some/dir python
     >>> os.environ['HOME']
     '/some/dir'
@@ -115,6 +123,7 @@ If you want to temporarily override part of the environment, that's easy too.
 The change to `HOME` only affects the environment of Python. Once we return
 to the shell, `HOME` is back to it's old value.
 
+    :::bash
     >>> <CTRL-D>
     $ echo $HOME
     /home/mattias
@@ -123,6 +132,7 @@ to the shell, `HOME` is back to it's old value.
 
 Here's a few examples of history expansion - referring to (part of) an earlier command.
 
+    :::bash
     $ shutdown -h now
     shutdown: Need to be root
     $ sudo !!                   # !! = previous command
@@ -142,6 +152,7 @@ incremental history search covers most everything else.
 
 Brace notation is nice for managing file extensions.
 
+    :::bash
     $ echo /path/to/image.{png,bak}
     /path/to/image.png /path/to/image.bak
 
@@ -149,6 +160,7 @@ Parameter expansion is really flexible, and can do similar things.
 `${var%pattern}` expands to the value of `$var`, after removing a suffix that
 matches `pattern`.
 
+    :::bash
     # 'cp file.jpg file.bak' for all jpg files
     $ for img in *.jpg; do cp $img ${img%jpg}bak; done
 
@@ -156,12 +168,11 @@ matches `pattern`.
 
 Job control is occasionally useful.
 
+    :::bash
     $ eclipse       # oops, forgot to launch in the background with '&'
-    <C-z>           # suspend current process
-    [1]+  Stopped                 eclipse
-    $ bg            # resume current job in the background
-    [1]+ eclipse &
-    $
+    <C-z>           # suspend current job
+    [1]+  Stopped eclipse
+    $ bg            # resume in the background
 
 Just a word of caution. If you want to truly understand job control, you
 need to lean a few things about [signals and terminals][] as well, which
@@ -175,6 +186,7 @@ My favorite Bash feature is the interactive history search, by default on
 <code class="kb">C-r</code>. If you can remember any part of a previous
 command, <code class="kb">C-r</code> will find it.
 
+    :::bash
     # Hmm, what was the command to restart Apache?
     $ <C-r>
     (reverse-i-search)'':
@@ -214,6 +226,7 @@ It's slightly more radical than Bash. But don't worry, it's mostly compatible.
 
 Here's a teaser:
 
+    :::bash
     $ find . -name "*.txt" | xargs grep foo   # bash
     $ grep foo **/*.txt                       # zsh
 

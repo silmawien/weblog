@@ -12,6 +12,7 @@ a valuable asset in my toolkit ever since.
 
 <!-- abstract -->
 
+    :::java
     public class FixedAspectLayout extends FrameLayout {
 
         private float aspect = 1.0f;
@@ -58,6 +59,7 @@ on SO][so-answer], which solves the exact same problem. Thanks!
 The code in `init()` relies on a new styleable that you define by adding the
 following resource to `res/values/attrs.xml`.
 
+    :::xml
     <?xml version="1.0" encoding="utf-8"?>
     <resources>
         <declare-styleable name="FixedAspectLayout">
@@ -69,6 +71,7 @@ Custom styleables are defined in an app-specific namespace which you need to
 import. Here is an example of how to do that. Replace *com.example.layouttest*
 with the package name of your app.
 
+    :::xml
     xmlns:app="http://schemas.android.com/apk/res/com.example.layouttest"
 
     ...

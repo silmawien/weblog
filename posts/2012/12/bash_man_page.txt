@@ -256,6 +256,7 @@ replacement to Bash, which means you can learn about its features as you go.
 Does `zsh` have a man page? It has several, actually, but `man zshall` will
 show them combined into one large blob.
 
+    :::bash
     $ man bash | wc -l
     5459
     $ man zshall | wc -l

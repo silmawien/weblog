@@ -21,6 +21,7 @@ demo group called Asphyxia, and it explained how to do graphics in MCGA
 colors. Turbo Pascal had inline assembler, so swapping modes via BIOS services
 was trivial.
 
+    :::pascal
     Procedure SetMCGA;
     BEGIN
       asm
@@ -31,6 +32,7 @@ was trivial.
 
 In a few lines of code, you could leave the dull 80x25 grey-on-black DOS world behind. Mode 13h was awesome because it was simple. It used 64000 bytes of video memory (320x200x8 bits), all of which fit in a single 64k real-mode segment. VGA memory was mapped at a fixed adress (0xa0000) and Pascal makes memory available as a byte vector 'mem'. So putting a pixel on the screen could be done by assigning a color to a memory slot.
 
+    :::pascal
     mem[$A000:320*y+x] := color;
 
 Oh, and by the way - the 256-color palette was customizable. Each of the palette entries could be replaced by any color from the 32-bit color space. A few pages into the tutorial, and already you had complete control over *everything* that was shown on screen. This was a mind-blowing experience for someone who up until now had been restricted to reading and printing text to the console. Mode 13h represented a blank canvas and a Spaceship of the Imagination.

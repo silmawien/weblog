@@ -76,7 +76,7 @@ def read_post(src, dst):
     post["url"] = dst
 
     # Format with markdown
-    post["content"] = markdown(body)
+    post["content"] = markdown(body, extensions=['footnotes', 'codehilite(guess_lang=False)'])
 
     # Make a nice abstract, also with markdown
     abstract = body.split('<!-- abstract -->', 1)[0]

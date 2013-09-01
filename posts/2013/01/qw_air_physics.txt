@@ -35,6 +35,7 @@ See if you can spot the problem in [the code][airaccel].
 
 [airaccel]: https://github.com/id-Software/Quake/blob/master/QW/client/pmove.c#L412
 
+    :::c
     void PM_AirAccelerate (vec3_t wishdir, float wishspeed, float accel)
     {
         int i;

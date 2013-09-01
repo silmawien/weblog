@@ -235,6 +235,7 @@ article pre {
     @include border-radius(8px);
     background: #fff;
     padding: 15px 0 15px 15px;
+    font-family: Inconsolata, Consolas, monospace;
 }
 
 article code {
@@ -251,4 +252,13 @@ article code.kb {
 
 blockquote {
     font-style: italic;
+}
+
+hr {
+    margin-top: 3em;
+    border: 0px;
+    height: 1px;
+    background-color: #ddd;
+    color: #f00;
+    width: 100%;
 }

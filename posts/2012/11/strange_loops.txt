@@ -66,6 +66,7 @@ Here's an Android class that calculates factorials asynchronously. Silly, I
 know. The point is, it is asynchronous and uses the event loop to post
 results.
 
+    :::java
     public class FactorialTask extends AsyncTask<Integer, Void, Integer> {
 
         private Listener listener;
@@ -99,6 +100,7 @@ results.
 
 We should be able to test this, right? Here is an initial attempt.
 
+    :::java
     public void testFactorial() {
 
         FactorialTask myTask = new FactorialTask(new FactorialTask.Listener() {
@@ -124,6 +126,7 @@ There are at least two solutions.
 
 We can use standard concurrency primitives to wait for the result.
 
+    :::java
     public void testFactorial1() {
         final CountDownLatch latch = new CountDownLatch(1);
 
@@ -158,6 +161,7 @@ the line
 
 [vminit]: http://docs.oracle.com/javase/specs/jvms/se7/html/jvms-5.html#jvms-5.5
 
+    :::java
     FactorialTask myTask = new FactorialTask(listener);
 
 outside `runOnMainSync()`, we trick AsyncTask into posting results to
@@ -180,6 +184,7 @@ code from [stackoverflow][SO], but you won't understand why it works.
 
 There is another way to write this test, without using concurrency.
 
+    :::java
     @UiThreadTest
     public void testFactorial2() throws InterruptedException {
         final ModalLooper modal = new ModalLooper();
@@ -206,6 +211,7 @@ one thread in play, the UI thread, and it already has a message loop. In fact,
 this message loop is busy handling the request to run the test on the UI
 thread:
 
+    :::java
        TestFactorial.testFactorial2() line: 69
        Method.invoke(Object, Object...) line: 511
        TestFactorial(Instr...TestCase).runMethod(Method, int, boolean) line: 214
@@ -235,6 +241,7 @@ Looper's stack frame, it is caught and converted to a clean return.
 Yeah, it's a hack alright. Not even this stylish ascii drawing can make
 it seem legit. Sorry.
 
+    :::java
     (e)  ModalLooper$1.handleMessage(Message) line: 17
      |   ModalLooper$1(Handler).dispatchMessage(Message) line: 99
      |   Looper.loop() line: 214
@@ -247,6 +254,7 @@ of failing a hung test without blocking subsequent tests.
 
 Here is the code for ModalLooper.
 
+    :::java
     public class ModalLooper {
 
         public class ReturnException extends RuntimeException {}

@@ -6,9 +6,7 @@
         <title>{{ blog.title }} - {% block title %}{% endblock %}</title>
         <meta name="viewport" content="target-densitydpi=1.0,width=device-width,user-scalable=no, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0" />
         <link rel="stylesheet" href="/style/style.css" />
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-        <link href="/js/gcp/prettify.css" type="text/css" rel="stylesheet" />
-        <script type="text/javascript" src="/js/gcp/prettify.js"></script>
+        <link href="/style/pygments.css" type="text/css" rel="stylesheet" />
         <link href="{{ blog.feed }}" type="application/atom+xml" rel="alternate" title="ATOM Feed">
         {% endblock %}
     </head>
@@ -29,12 +27,5 @@
         <footer>
             <!--#include virtual="/ssi/footer.html" -->
         </footer>
-        <script>
-            $(function() {
-                // prettify code with google-code-prettify
-                $("article > pre > code").addClass("prettyprint");
-                prettyPrint();
-            });
-        </script>
     </body>
 </html>

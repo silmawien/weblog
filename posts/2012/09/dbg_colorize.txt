@@ -26,6 +26,7 @@ surprisingly effective.
 
 This is the first thing I try when I see a layout problem.
 
+    :::xml
     <TextView
         android:background="#ff0000"
         ...
@@ -45,6 +46,7 @@ easy to explain what's going on.
 Adding the colors one view at a time gets tedious. We can do better. Here is a
 method that acts on a whole view tree.
 
+    :::java
     private static Random r = new Random();
 
     private void dbgColorize(View view, boolean overwrite) {
@@ -70,6 +72,7 @@ color, call `setBackgroundColor` with `0x80ffffff` for a monochrome feel.
 
 Set up an entry point and point `dbgColorize` at the root of the view tree you want colorized:
 
+    :::java
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.dbg_colorize) {
