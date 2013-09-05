@@ -9,7 +9,7 @@ biggest strength of an event loop is that it avoid concurrency altogether.
 <!-- abstract -->
 
 The documentation is sparse around the `android.os` package so we'll need to
-do visit the frameworks/base github repo as we go along.
+visit the frameworks/base github repo as we go along.
 
 ![Thread Looper Handler](/image/looper.png)
 
@@ -177,7 +177,7 @@ with a Handler.
         public native void fetchInBackground();
 
         /**
-         * Delivers a result. This is called from a background
+         * Delivers a result. This is called on a background
          * thread that is managed by the native library.
          */
         public void onResult(Object result) {
@@ -238,10 +238,7 @@ Here is the relevant part of the [Looper][] class.
 Calling `prepare()` will deposit a new Looper in `sThreadLocal`, and that is
 what `myLooper()` returns.
 
-So any thread that wants a message loop must call `Looper.prepare()` once, to
-populate `sThreadLocal` with a new Looper instance. From then on, any
-`Handler` instance **created on that thread** is tied to its Looper instance.
-For the main thread, this happens very [early][] in the app's life cycle.
+So any thread that wants a message loop must call `Looper.prepare()` once, to populate `sThreadLocal` with a new Looper instance. For the main thread, this happens very [early][] in the app's life cycle. From then on, any `Handler` instance *created on a thread* is tied to that thread's Looper instance.
 
 It is fairly uncommon for user-created threads to need a message loop.  Still,
 Android provides a Thread subclass called [HandlerThread][] for that purpose.
@@ -250,7 +247,7 @@ message loop.
 
 Returning to the example, what thread is `Handler()` invoked from? Although I did not show where
 MyLibraryWrapper was instantiated, you can assume it was on the main thread.
-That means when `Handler()` runs it receives the main thread's looper and
+That means when `Handler()` runs, it receives the main thread's looper and
 message queue.
 
 To send the message, we call `Message.sendToTarget()`. The message knows

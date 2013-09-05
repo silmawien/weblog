@@ -17,9 +17,9 @@ In the late 1950s [Jean Hoerni][] developed the planar process for constructing 
 
 [Jean Hoerni]: http://www.youtube.com/watch?v=VeL4t5bvTj4#t=2460
 
-Gordon Moore famously predicted exponential growth in *transistor count*, and for a long time there was an implicit proportionality symbol (&#x221d;) between the number of transistors on a chip and it's performance. It meant we could write slow programs today and expect them to run fast tomorrow.
+Gordon Moore famously predicted exponential growth in *transistor count*, and for a long time there was an implicit proportionality symbol (&#x221d;) between the number of transistors on a chip and its performance. It meant we could write slow programs today and expect them to run fast tomorrow.
 
-Herb Sutter called this a [free lunch][], and in 2005 he explained that it was about to end, and that the future is concurrency. I loved this article, but it was not clear to me at the time just how widely applicable it was.
+Herb Sutter called this a [free lunch][], and in 2005 he explained that it was over, and that the future is concurrency. I loved this article, but it was not clear to me at the time just how widely applicable it was.
 
 [free lunch]: http://www.gotw.ca/publications/concurrency-ddj.htm
 
@@ -45,7 +45,7 @@ Our program is then forced to keep track of call stacks explicitly as heap objec
 
 [communicating sequential processes]: http://www.youtube.com/watch?v=3DtUzH3zoFo
 
-The concurrency constructs solve this problem. They preserve the illusion of sequential processes at the source code level, yet somehow avoid paying the cost of OS threads. The various languages do it in slightly different ways. Today we are only discussing Go.
+The concurrency constructs solve this problem. They let us preserve the illusion of sequential processes at the source code level, yet somehow avoid paying the cost of OS threads. The details depend on the language. Today we are only discussing Go.
 
 Magic
 ---
@@ -58,7 +58,7 @@ As Arthur C. Clarke said, any sufficiently advanced technology is indistinguisha
 - by the way, very few OS threads are used
 - see you in wonderland!
 
-I believe this is smart. First, it makes sense to focus on high-level concepts, and Go introduces a few new ones, like channels. Second, the implementation may change, which would make the details invalid anyway. Third, the code is publicly available. Anyone who is curious can just go read it.
+I believe this is smart. First, it makes sense to focus on high-level concepts, and Go introduces a few new ones: goroutines and channels. Second, the implementation may change, which would make the details invalid anyway. Third, the code is publicly available. Anyone who is curious can just go read it.
 
 FAQ
 ---

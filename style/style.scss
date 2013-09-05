@@ -246,12 +246,15 @@ article code {
 article code.kb {
     color: white;
     padding: 0 0.3em;
-    background: hsl(214, 36%, 65%);
+    background: hsl(350, 36%, 75%);
     @include border-radius(3px);
 }
 
 blockquote {
     font-style: italic;
+    padding-left: 1em;
+    border-left: 2px solid #ccc;
+    color: #888;
 }
 
 hr {

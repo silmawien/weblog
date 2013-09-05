@@ -205,7 +205,7 @@ class="kb">M-b</code> by words might a habit worth picking up.
 
 I also like `yank-last-arg` which copies the last parameter of the previous
 command, just like `!$` does. It is bound to <code class="kb">M-.</code> by
-default.  You can provide a numerical argument to this binding. For instance,
+default.  You can provide a numerical argument to this command. For instance,
 <code class="kb">M-2</code> <code class="kb">M-.</code> yanks the 2nd
 parameter of the last command.
 

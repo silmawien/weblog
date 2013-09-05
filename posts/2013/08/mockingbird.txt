@@ -8,7 +8,7 @@ This clever book is divided into two parts. The first is a collection of logic p
 
 <!-- abstract -->
 
-You're accompanied on your quest by Inspector Craig of the Scotland Yard, who happens to be somewhat of an authority in the field. 
+We're accompanied on our quest by Inspector Craig of the Scotland Yard, who happens to be somewhat of an authority in the field. 
 
 The puzzles are surprisingly varied, considering the simple rules they are built from.
 
