@@ -1,0 +1,111 @@
+Title: Touch Typing for Programmers
+Created: 2012-12-26
+Posted: 2013-11-09
+Tags: typing, practice
+
+I have been playing [Type Racer](http://www.typeracer.com) quite a lot recently. In the first few weeks I increased my typing speed by 20% or so, before hitting a major plateau. The following struggle has been an experiment in deliberate practice.
+
+<img src="/image/racingcar.png" />
+
+<!-- abstract -->
+
+## Deliberate Practice
+
+Back in the days of wine and roses, my guitar teacher told me the following story about a Bach piece he was working on.
+
+After maybe a month of intense practice, he was making good progress. There was just one section, of maybe half a page, which he just could not play at speed. He isolated the problem to his weak left pinky. As a rock guitarists you might get away with a withered and useless pinky, but in classical music, not so much.
+
+So he put the Bach score away, and focused entirely on improving the strength
+and dexterity of the pinky, devising new exercises tailored to this one
+section. This took maybe 3-4 weeks.
+
+When he told me about it, he had just returned to the score. The problematic
+section was now one of the easier ones, and he was working on stitching
+the whole piece together.
+
+This is the essence of [deliberate practice][dp], as described by psychologist K. Anders Ericsson[^ericsson].
+
+[^ericsson]: Link to the original (44-page) [paper](http://graphics8.nytimes.com/images/blogs/freakonomics/pdf/DeliberatePractice%28PsychologicalReview%29.pdf) on deliberate practice, and a shorter [follow-up](http://www.legacyweb.rcm.ac.uk/cache/fl0020313.pdf) that also mentions typing.
+
+Another example would be rock climber [Wolfgang Güllich][gullich] who invented the campus board to improve finger strength in preparation for his first ascent of the route [Action Directe][ad].
+
+[dp]: http://en.wikipedia.org/wiki/Practice_%28learning_method%29#Deliberate_practice
+[gullich]: http://www.youtube.com/watch?v=NmRKmeII6xY
+[ad]: http://www.youtube.com/watch?v=mNMtwNe92h0
+
+Deliberate practice is as much about inventing new exercises as it is about practice. I found this meta-learning business interesting. What kind of training methods are there for touch typing?
+
+## Keyboard Layouts
+
+Let's start with layouts, not because I recommend switching, but because
+if you decide to try a new keyboard layout, you should do it right away, not
+wasting time fine-tuning the old layout.
+
+I know of two [alternative layouts][al]: Colemak and Dvorak. I taught myself
+Dvorak during my studies, but abandoned it again after just a few months. The
+main drawback for me was that it breaks your keyboard shortcuts. I admit it
+felt very comfortable. But that could be because I forced myself to learn it
+correctly; I didn't bring any of my bad Qwerty habits with me.
+
+I have not tried Colemak. Instead, I used to switch between a Swedish and a US layout. Today I use a tweaked US layout, with the Swedish characters added on <code class="kb">Alt-[';</code>. The US layout is superior for coding, because the punctuation characters are easy to reach. The Swedish layout has some uncomfortable stretches, like <code class="kb">Alt-8</code> and <code class="kb">Alt-9</code> for `[` and `]`. 
+
+[al]: http://en.wikipedia.org/wiki/Keyboard_layout#Non-QWERTY_keyboards_for_Latin_scripts
+
+## Bad Habits
+
+After you decide on a layout, identify your bad habits. Here's an easy way to get started. Recognize words that feel uncomfortable to type, and look at your hands while you type them.
+
+I used to type 'p' with my right ring finger. That makes the word 'hope' (index, middle, ring) uncomfortable to reach. It is better to use (index, ring, pinky). I also type the 'bl' in 'comfortaBLe' with my right index and ring fingers, which is quite a stretch. It might be faster to type the 'b' with the left index finger.
+
+Sometimes it's the combination of two words that produce long reaches. There are many of these, so even if each one only occurs once in a while, it would probably make a difference to go through and fix them.
+
+Another bad habit is using the wrong Shift key. Ignore the rule you may have heard, that the right shift key should be used for all letters on the left side, and vice versa. Do what feels best. Often this depends on the following character. Right shift works well for 'Art', but not for 'Foyer' because it moves your right hand out of position.
+
+## Making it Stick
+
+Once you identify a weakness and a solution, you must practice enough so that
+the change will stick. This is boring, but necessary. It could mean typing the problematic word a few times, starting slowly. Or you might need a more elaborate exercise.
+
+Worst case, you could collect a bunch of problematic words in a text file and practice them now and then. I'm too lazy to do this, but that doesn't mean its a bad idea.
+
+You can see that it takes willpower to go through with this step. That's why experts from all sorts of motor skill-related fields (i.e. piano teachers) will warn you not to develop bad habits to begin with.
+
+## Varying Speed
+
+Go slow enough to keep accuracy high. What is high? On Type Racer I'd say anything below 95% is too sloppy. I'm not even sure how the game measures the rate, so that figure is just from my experience.
+
+Some people advocate going fast once in a while, to accustom your fingers to the idea. I think you should be careful. Going fast blocks the more important ability to reflect on your mistakes.
+
+When Professor Ericsson filmed typists with a high-speed camera, he noticed that the good ones tend to read ahead and move their fingers in anticipation of the next letters. When vision was restricted to a single word at a time, their speed deteriorated. This tells us something of the goal we are aiming at, but not what's the most efficient way there.
+
+## Unorthodox Methods
+
+The normal home row with US Qwerty is `asdf-jkl;`. Try `sdfg-nm,.` for a change.
+
+My right pinky can reach P, but not really 0 or anything else on the top row, including backspace. I keep my right wrist planted down and use my ring finger for those keys, but it can mess up your right hand position. To see what I mean, just touch type some C code.
+
+    char *p = a;
+    while (*p++ != 0)
+        ;
+
+Pointers can be hard to understand, but to me the bigger problem is how to type them. This might be a good place to experiment with custom layouts.
+
+## Moving on
+
+Once you have learned the rules, it's time to break them. I mentioned this when I discussed the shift key, but it's widely applicable.
+
+- Type the 'u' in 'nun' with your middle finger.
+- Use ring/pinky for '[]' and '{}'.
+- Any other technique that brings your hands out of position temporarily.
+
+If I ever wrote an educational game around touch typing, the exercises would include a bunch of tricks like these to encourage out-of-the-box thinking.
+
+## Lessons learned
+
+- Don't forget to learn the numbers.
+- Same thing for punctuation.
+- Make sure your hand position is comfortable. Favor comfort over "correct" positioning.
+- Focus on reducing errors. It has a huge impact on speed, and makes typing more comfortable.
+
+Good luck in your typing endeavors.
+
