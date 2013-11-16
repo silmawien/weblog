@@ -141,7 +141,7 @@ let's find out how they fit together.
 A complete example
 ---
 
-Here is a minimal example just to highlights a few points. Pretend we have a C
+Here is a minimal example just to highlight a few points. Pretend we have a C
 library with a method `fetchInBackground()`. This method is asynchronous,
 which means it returns right away. Presumably the C library has an internal
 thread that does the background work. Maybe over the network. We don't really
@@ -163,9 +163,8 @@ with a Handler.
             public void handleMessage(Message msg) {
                 switch (msg.what) {
                 case COMPUTATION_DONE:
-                    Log.w(TAG, "Computation done! Result: " + msg.obj);
+                    updateViewWithResult(msg.obj);
                     break;
-                ...
                 }
             }
         };

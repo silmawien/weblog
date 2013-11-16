@@ -3,7 +3,7 @@ Created: 2012-12-26
 Posted: 2013-11-09
 Tags: typing, practice
 
-I have been playing [Type Racer](http://www.typeracer.com) quite a lot recently. In the first few weeks I increased my typing speed by 20% or so, before hitting a major plateau. The following struggle has been an experiment in deliberate practice.
+I have been playing [Type Racer](http://www.typeracer.com) quite a lot recently. In the first few weeks I increased my typing speed by 20% or so, before hitting a major plateau. The struggle that followed has been an experiment in deliberate practice.
 
 <img src="/image/racingcar.png" />
 
@@ -11,17 +11,14 @@ I have been playing [Type Racer](http://www.typeracer.com) quite a lot recently.
 
 ## Deliberate Practice
 
-Back in the days of wine and roses, my guitar teacher told me the following story about a Bach piece he was working on.
+Back in the days of wine and roses, my guitar teacher told me about a Bach piece he was working on.
 
-After maybe a month of intense practice, he was making good progress. There was just one section, of maybe half a page, which he just could not play at speed. He isolated the problem to his weak left pinky. As a rock guitarists you might get away with a withered and useless pinky, but in classical music, not so much.
+After maybe a month of intense practice, he was making good progress. There was just one section, of maybe half a page, which he just could not play at speed. He isolated the problem to his weak left pinky. This was a real problem. As a rock guitarists you might get away with a withered and useless pinky, but in classical music, not so much.
 
 So he put the Bach score away, and focused entirely on improving the strength
-and dexterity of the pinky, devising new exercises tailored to this one
-section. This took maybe 3-4 weeks.
+and dexterity of the pinky, devising new exercises for the difficult section. This took maybe 3-4 weeks.
 
-When he told me about it, he had just returned to the score. The problematic
-section was now one of the easier ones, and he was working on stitching
-the whole piece together.
+When he told me about it, he had just returned to the score. The section that used to be problematic was now one of the easier ones, and he was working on stitching the whole piece together.
 
 This is the essence of [deliberate practice][dp], as described by psychologist K. Anders Ericsson[^ericsson].
 
@@ -33,7 +30,7 @@ Another example would be rock climber [Wolfgang Güllich][gullich] who invented 
 [gullich]: http://www.youtube.com/watch?v=NmRKmeII6xY
 [ad]: http://www.youtube.com/watch?v=mNMtwNe92h0
 
-Deliberate practice is as much about inventing new exercises as it is about practice. I found this meta-learning business interesting. What kind of training methods are there for touch typing?
+Deliberate practice is as much about inventing new exercises as it is about practice. I found this meta-learning business interesting. The paper mentions typing as an example of a highly specialized activity. So how can we get better?
 
 ## Keyboard Layouts
 
@@ -64,9 +61,9 @@ Another bad habit is using the wrong Shift key. Ignore the rule you may have hea
 ## Making it Stick
 
 Once you identify a weakness and a solution, you must practice enough so that
-the change will stick. This is boring, but necessary. It could mean typing the problematic word a few times, starting slowly. Or you might need a more elaborate exercise.
+the change will stick. This is boring, but necessary. It could mean typing the word or sequence a few times, starting slowly. Or you might need a more elaborate exercise.
 
-Worst case, you could collect a bunch of problematic words in a text file and practice them now and then. I'm too lazy to do this, but that doesn't mean its a bad idea.
+Worst case, you could collect a bunch of problematic words in a text file and practice them now and then. A rule of thumb: if it feels like you're overdoing it, you are on the right track.
 
 You can see that it takes willpower to go through with this step. That's why experts from all sorts of motor skill-related fields (i.e. piano teachers) will warn you not to develop bad habits to begin with.
 
@@ -88,7 +85,7 @@ My right pinky can reach P, but not really 0 or anything else on the top row, in
     while (*p++ != 0)
         ;
 
-Pointers can be hard to understand, but to me the bigger problem is how to type them. This might be a good place to experiment with custom layouts.
+Pointers can be hard to understand, but to me the bigger problem is how to type them! This might be a good place to experiment with custom layouts.
 
 ## Moving on
 
@@ -102,8 +99,7 @@ If I ever wrote an educational game around touch typing, the exercises would inc
 
 ## Lessons learned
 
-- Don't forget to learn the numbers.
-- Same thing for punctuation.
+- Don't forget to learn the numbers and punctuation.
 - Make sure your hand position is comfortable. Favor comfort over "correct" positioning.
 - Focus on reducing errors. It has a huge impact on speed, and makes typing more comfortable.
 
