@@ -239,8 +239,7 @@ or several passes. A LinearLayout, for instance does a first pass to figure
 out how big each child wants to be, and a second pass to distribute or reclaim
 any excess space.
 
-The only absolute requirement is that before `onMeasure()` returns, a view must
-call `setMeasuredDimensions()` to report the its preferred size.
+The only absolute requirement is that before `onMeasure()` returns, it must call `setMeasuredDimensions()` to report its preferred size.
 
 Compared to `LinearLayout`, our implementation of `onMeasure()` is simple.
 First a couple of utility methods to fetch the measured size of a child,
@@ -380,7 +379,9 @@ the texts.
 The flexibility of this layout would be greatly increased by correctly
 handling children with visibility set to `GONE`. It's not difficult to account
 for. Just modify `onMeasure` and `onLayout` to treat such children as if they
-do not exist.
+do not exist. The result is available [here][].
+
+[here]: /code/ListItemLayout.java
 
 With a fix in place, the texts will automatically stay centered as the
 visibility changes. Here are some examples of how that might look:
@@ -396,13 +397,12 @@ perhaps at the cost of some clutter in the view hierarchy.
 I recommend trying it anyway, because it opens your eyes to what's possible.
 For instance, my main gripe with `RelativeLayout` is that it tends to act more
 like an `UnpredictableLayout` when you start to stretch it's limits. Then it
-is comforting to know that there is an escape hatch with a [map][] of the
-surrounding terrain.
+is comforting to know that there is a [well documented][map] escape hatch.
 
 Besides, there is nothing strange about custom layouts. They are officially
 [encouraged][tlawd] for "unique or otherwise tricky layouts". Sounds like the
 kind of layout that could make an app fun to use! The next time you need
-such a layout, the answer could be to write it yourself.
+one, the answer could be to write it yourself.
 
 [map]: https://github.com/android/platform_frameworks_base/tree/master/core/java/android/view
 [tlawd]: http://android-developers.blogspot.se/2011/09/thinking-like-web-designer.html

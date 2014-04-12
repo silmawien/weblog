@@ -23,7 +23,7 @@ $h-padding: 20px;
 
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300);
 @import url(http://fonts.googleapis.com/css?family=PT+Sans);
-@import url(http://fonts.googleapis.com/css?family=Droid+Sans);
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300);
 @import url(http://fonts.googleapis.com/css?family=Merriweather);
 
 /* Use the more sane border-box model. */
@@ -54,30 +54,32 @@ h1, h2, h3 {
 }
 
 h1 {
-    font-size: 3.25em;
+    font-size: 3.45em;
     font-weight: 300;
 }
 
 h2 {
-    font-size: 1.9em;
-    font-weight: normal;
+    font-size: 2.0em;
+    font-weight: 300;
 }
 
 body {
     /* Default body text */
-    font-family: Merriweather, Open Sans, sans-serif;
-    font-size: 16px;
-    line-height: 1.7;
+    font-family: Roboto, Open Sans, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
     color: #444;
+    font-weight: 300;
 }
 
 header {
     font-family: Open Sans, sans-serif;
     line-height: 1.0;
+    font-weight: 400;
 }
 
 header .home {
-    font-weight: 100;
+    font-weight: 300;
 }
 
 .post-header h1 {
@@ -100,6 +102,7 @@ footer ul {
 pre {
     line-height: 1.3em;
     color: #444;
+    font-weight: normal;
 }
 
 .post-date {
@@ -265,3 +268,12 @@ hr {
     color: #f00;
     width: 100%;
 }
+
+/* sup, sub that respect line height */
+sup, sub {
+    position: relative;
+    vertical-align: baseline;
+}
+sup { bottom: 1ex; }
+sub { top: .5ex; }
+
