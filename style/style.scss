@@ -1,4 +1,4 @@
-$max-width: 780px;
+$max-width: 880px;
 
 $v-padding: 20px;
 $h-padding: 20px;
@@ -24,7 +24,7 @@ $h-padding: 20px;
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300);
 @import url(http://fonts.googleapis.com/css?family=PT+Sans);
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,300);
-@import url(http://fonts.googleapis.com/css?family=Merriweather);
+@import url(http://fonts.googleapis.com/css?family=Cabin+Condensed:400);
 
 /* Use the more sane border-box model. */
 * {
@@ -46,28 +46,31 @@ $h-padding: 20px;
  */
 
 h1, h2, h3 {
-    font-family: Open Sans, sans-serif;
+    font-family: Cabin Condensed, Open Sans, sans-serif;
     line-height: 1.0;
-    color: #222;
+    color: #444;
     padding-top: 0.83em;
     margin-top: 0;
+    font-weight: 400;
 }
 
 h1 {
     font-size: 3.45em;
-    font-weight: 300;
 }
 
 h2 {
     font-size: 2.0em;
-    font-weight: 300;
+}
+
+h3 {
+    font-size: 1.5em;
 }
 
 body {
     /* Default body text */
-    font-family: Roboto, Open Sans, sans-serif;
+    font-family: Open Sans, sans-serif;
     font-size: 17px;
-    line-height: 1.6;
+    line-height: 1.7;
     color: #444;
     font-weight: 300;
 }
@@ -243,6 +246,7 @@ article pre {
 
 article code {
     padding: 0 0.1em;
+    font-size: 0.90em;
     font-family: Inconsolata, Consolas, monospace;
 }
 

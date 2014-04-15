@@ -273,7 +273,7 @@ The reason for this oddity is to avoid false collisions between *two ensures*, w
 
 [snapshot isolation]: http://en.wikipedia.org/wiki/Snapshot_isolation
 
-### Conclusions
+## Conclusions
 
 The STMs in Haskell and Clojure are not identical. Haskell provides stronger isolation and an emphasis on safety.
 
