@@ -22,6 +22,7 @@ $h-padding: 20px;
 }
 
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300);
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab:400,300);
 @import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:400,300);
 
 /* Use the more sane border-box model. */
@@ -66,11 +67,11 @@ h3 {
 
 body {
     /* Default body text */
-    font-family: Open Sans, sans-serif;
-    font-size: 17px;
+    font-family: Roboto Slab, sans-serif;
+    font-size: 19px;
     line-height: 1.7;
     color: #444;
-    font-weight: 400;
+    font-weight: 300;
 }
 
 header {
@@ -104,6 +105,7 @@ pre {
     line-height: 1.3em;
     color: #444;
     font-weight: normal;
+    font-size: 17px;
 }
 
 .post-date {
@@ -199,7 +201,7 @@ header, footer > div, article {
 
 #content {
     //background-image: url(/image/bgnoise.png);
-    background-color: #fff;
+    background-color: #f8f8f8;
 }
 
 article img {
@@ -235,7 +237,7 @@ article pre {
     overflow: auto;
     @include border-radius(1em);
     color: black;
-    background: #eee;
+    background: #fff;
     padding: 15px 0 15px 15px;
     margin-left: -15px;
     margin-right: -15px;
@@ -252,7 +254,7 @@ article code.kb {
     color: white;
     padding: 0 0.3em;
     background: hsl(350, 36%, 75%);
-    @include border-radius(3px);
+    @include border-radius(0.4em);
 }
 
 blockquote {
