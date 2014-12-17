@@ -44,7 +44,7 @@ Many non-blocking algorithms had been published in the early '90s, but unfortuna
 
 [CAS]: http://en.wikipedia.org/wiki/Compare-and-swap
 
-Shavit and Touitou found a way to do it. They designed a software version of Transactional Memory, and showed how it could be used to implement a k-word CAS. It would be slower, but it would allow the non-blocking algorithms to run on existing hardware. [^1]
+Shavit and Touitou found a way to do it. They designed a software version of Transactional Memory and showed how it could be used to implement a k-word CAS. It would be slower, but it would allow the non-blocking algorithms to run on existing hardware. [^1]
 
 [^1]: I would love to explain the algorithm, but it's too complicated for me. Also, I should point out that it is based on the LL/SC instruction, which was available on the PowerPC in 1995, but not on x86 (and still isn't).
 
@@ -222,7 +222,7 @@ The result would be lots of write collisions and retries. Use `commute` here to 
 
 The commit logic makes up the bulk of the [`LockingTransaction`][locktrans] class. This class and [Ref][] together make up the STM implementation.
 
-Commiting is straightforward if there are no collisions. The set of refs that were reads, updated, ensured (see below) or commuted are known at this point. The transaction must lock all of them except the reads, and then execute the pending updates atomically.
+Commiting is straightforward if there are no collisions. The set of refs that were read, updated, ensured (see below) or commuted are known at this point. The transaction must lock all of them except the reads, and then execute the pending updates atomically.
 
 The tricky bit is to handle retries correctly. It's done by throwing and catching a special Java Error. If a `(ref-set)` throws, the stack is unwound to the top of the dosync block, skipping the rest of the transaction.
 
