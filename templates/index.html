@@ -6,13 +6,10 @@
 {% endblock %}
 {% block content %}
     {% for p in posts %}
-        {% set content = p.abstract %}
-        {% set title   = p.title %}
-        {% set posted  = p.posted %}
-        {% set tags    = p.tags %}
-        {% set url     = p.url %}
-        {% include "post.html" %}
-        <p><a href="{{ p.url }}">more</a></p>
+        <div>
+            <span class="post-date">{{p.posted.display}}</span>
+            <a href="{{p.url}}">{{p.title}}</a>
+        </div>
     {% endfor %}
 {% endblock %}
 

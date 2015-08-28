@@ -90,19 +90,6 @@ header .home {
     margin-bottom: 0.0em;
 }
 
-footer {
-}
-
-footer #column-header {
-    font-size: 1.3em;
-}
-
-footer ul {
-    list-style-type: circle;
-    /* Stop identing lists like crazy */
-    padding: 0 0 0 1.5em;
-}
-
 pre {
     line-height: 22px;
     color: #444;
@@ -122,9 +109,6 @@ pre {
 a {
     color: #268bd2;
     text-decoration: none;
-}
-
-footer a {
 }
 
 a:hover {
@@ -152,7 +136,7 @@ body {
 }
 
 /* Standard padding for text containers. */
-header, article, footer > div {
+header, article {
     padding: $v-padding $h-padding;
 
     @media (max-width: 500px) {
@@ -166,45 +150,9 @@ header {
     padding-bottom: 12px;
 }
 
-header, footer > div, article {
+header, article {
     max-width: $max-width;
     margin: 0 auto;
-}
-
-#footer-content {
-    position: relative;
-    #doodle {
-        position: absolute;
-        right: $h-padding;
-        top: $v-padding;
-    }
-
-    @media (min-width: 500px) {
-        > div {
-            float: left;
-            width: 30%;
-            margin-left: 4%;
-            margin-bottom: 10px;
-        }
-
-        > :first-child {
-            margin-left: 0px;
-            width: 60%;
-        }
-    }
-
-    #column-header {
-        margin-bottom: 0.5em;
-    }
-}
-
-#tags a {
-    line-height: 22px; /* See MAX_SCALE in gen_footer.py */
-}
-
-#content {
-    //background-image: url(/image/bgnoise.png);
-    background-color: #fff;
 }
 
 article img {
@@ -220,13 +168,6 @@ article img.inline {
 
 img.shadow {
     @include box-shadow(#999, 1px, 1px, 6px);
-}
-
-footer:before, #content:before {
-    content: "";
-    display: block;
-    height: 0px;
-    background: hsl(220, 0%, 90%);
 }
 
 article {

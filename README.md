@@ -1,12 +1,11 @@
 # My personal web site
 
-This is a home built blog. It is inspired by [Jekyll][], [Hyde][] and [MultiMarkdown-CMS][mmd].
+A simple static blog generator, inspired by [Jekyll][], [Hyde][] and [MultiMarkdown-CMS][mmd].
 
 ## Features
 
 - simple
 - static
-- quick rebuilds
 - staging area
 
 [Jekyll]: https://github.com/mojombo/jekyll/

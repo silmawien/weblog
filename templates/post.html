@@ -1,16 +1,21 @@
-{# Post with title and content #}
-<div class="post-header">
-    <h1>
-        <a class="plain-link" href="{{ url }}">{{ title }}</a>
-    </h1>
-    <div class="post-date">
-        {% if posted is defined %}
-            <time datetime="{{ posted.htmltime }}">
-            {{ posted.display }}
-        </time>
-        {% else %}
-            Draft
-        {% endif %}
+{# Page with a single post #}
+{% extends "base.html" %}
+{% block title %}{{ title }}{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    <div class="post-header">
+        <h1>{{ title }}</h1>
+        <div class="post-date">
+            {% if posted is defined %}
+                <time datetime="{{ posted.htmltime }}">
+                {{ posted.display }}
+            </time>
+            {% else %}
+                Draft
+            {% endif %}
+        </div>
     </div>
-</div>
-{{ content }}
+    {{ content }}
+{% endblock %}
