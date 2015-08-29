@@ -4,15 +4,15 @@
         <name>J Random Hacker</name>
     </author>
     <title>{{ blog.title }}</title>
-    <link href="{{ url }}" rel="self" />
+    <link href="{{ blog.base ~ "/" ~ blog.feed }}" rel="self" />
     <link href="{{ blog.base }}" />
     <id>{{ blog.base ~ blog.root }}</id>
-    <updated>{{ posted }}</updated>
+    <updated>{{ updated }}</updated>
     {% for post in posts %}
     <entry>
         <title>{{ post.title }}</title>
         <link href="{{ blog.base ~ "/" ~ post.url }}"/>
-        <id>{{ blog.base ~ post.url }}</id>
+        <id>{{ blog.base ~ "/" ~ post.url }}</id>
         <updated>{{ post.posted.isotime }}</updated>
         <summary type="html">
             {{ post.abstract }}

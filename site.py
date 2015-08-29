@@ -2,6 +2,7 @@ import glob
 from post import read_post
 import jinja2
 import os
+import re
 
 blog = { "base": "http://mattias.niklewski.com", "title": "mattias", "feed": "atom.xml" }
 
@@ -23,31 +24,32 @@ def render(template, ctx, dst):
         fd.write(html)
 
 def entry(post):
-    print post["url"]
     dst = out(post["url"] + ".html")
     render("post.html", post, dst)
 
 def index(posts):
-    print "index"
     render("index.html", { "posts": posts }, out("index.html"))
 
 def escape_html(html):
     return html.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
 def feed(posts):
-    print "feed"
-    # escape html
     for post in posts:
         post["content"] = escape_html(post["content"])
+        post["abstract"] = escape_html(post["abstract"])
     # use the most recent post's post time as the feed's update time
     updated = posts[0]["posted"]["isotime"] 
-    ctx = { "posts": posts,"url": blog["feed"], "updated": updated }
+    ctx = { "posts": posts, "updated": updated }
     render("atom.xml", ctx, out(blog["feed"]))
 
+def entry_url(path, rel):
+    path = os.path.relpath(path, rel)
+    return re.sub(".txt$", ".html", path)
+
 if __name__ == "__main__":
-    drafts = [ read_post(path, os.path.splitext(path)[0]) for path in glob.glob("drafts/*.txt")]
+    drafts = [ read_post(path, entry_url(path, "")) for path in glob.glob("drafts/*.txt")]
     map(entry, drafts)
-    posts = [ read_post(path, os.path.splitext(path)[0]) for path in glob.glob("posts/*/*/*")]
+    posts = [ read_post(path, entry_url(path, "posts")) for path in glob.glob("posts/*/*/*")]
     posts = sorted(posts, key=lambda p: p["posted"]["datetime"], reverse=True)
     map(entry, posts)
     feed(posts)
