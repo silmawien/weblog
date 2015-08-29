@@ -41,7 +41,7 @@ ease-of-use that has still not been cleared.
 
 [nc]: http://en.wikipedia.org/wiki/Norton_Commander
 <img class="shadow"
-src="http://upload.wikimedia.org/wikipedia/en/b/bf/Norton_commander.png">
+src="/image/norton_commander_wikipedia.png">
 
 ## Linux Beginnings
 
