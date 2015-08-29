@@ -38,8 +38,7 @@ def feed(posts):
         post["content"] = escape_html(post["content"])
         post["abstract"] = escape_html(post["abstract"])
     # use the most recent post's post time as the feed's update time
-    updated = posts[0]["posted"]["isotime"] 
-    ctx = { "posts": posts, "updated": updated }
+    ctx = { "posts": posts, "updated": posts[0]["posted"]["isotime"] }
     render("atom.xml", ctx, out(blog["feed"]))
 
 def entry_url(path, rel):

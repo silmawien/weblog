@@ -20,8 +20,8 @@ def make_date(datestr):
             "htmltime": datestr, "isotime": iso_time(dt)}
 
 metatrans = {
-    "posted": lambda x: make_date(x),
-    "created": lambda x: make_date(x)
+    "posted": make_date,
+    "created": make_date
 }
 
 def read_post(src, dst):
