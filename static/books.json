@@ -1,1296 +1,1075 @@
 [
     {
-        "date": "", 
-        "author": "", 
-        "title": "",
-        "link": ""
-    }, 
-    {
         "author": "Daniel Kahneman", 
         "date": "2015-08-24", 
-        "link": "", 
         "title": "Thinking, Fast and Slow"
     }, 
     {
         "author": "Ann Leckie", 
         "date": "2015-08-20", 
-        "link": "", 
         "title": "Ancillary Justice"
     }, 
     {
         "author": "Ernest K. Gann", 
         "date": "2015-08-02", 
-        "link": "", 
         "title": "Fate Is the Hunter"
     }, 
     {
         "author": "Thomas Paine", 
         "date": "2015-07-26", 
-        "link": "", 
         "title": "The Age of Reason"
     }, 
     {
         "author": "Steven Levy", 
         "date": "2015-07-20", 
-        "link": "", 
         "title": "In the Plex"
     }, 
     {
         "author": "Henry Marsh", 
         "date": "2015-06-23", 
-        "link": "", 
         "title": "Do No Harm"
     }, 
     {
         "author": "Eric Ries", 
         "date": "2015-06-17", 
-        "link": "", 
         "title": "The Lean Startup"
     }, 
     {
         "author": "L. Frank Baum", 
         "date": "2015-06-17", 
-        "link": "", 
         "title": "The Wonderful Wizard of Oz"
     }, 
     {
         "author": "Richard Feynman", 
         "date": "2015-04-04", 
-        "link": "", 
         "title": "The Feynman Lectures on Physics Vol 3"
     }, 
     {
         "author": "Mats Strandberg, Sara Bergman Elfgren", 
         "date": "2015-03-15", 
-        "link": "", 
         "title": "Cirkeln"
     }, 
     {
         "author": "Andrew Smith", 
         "date": "2015-03-14", 
-        "link": "", 
         "title": "Grasshopper Jungle"
     }, 
     {
         "author": "Claude L\u00e9vi-Strauss",
         "date": "2015-02-25", 
-        "link": "", 
         "title": "Tristes Tropiques"
     }, 
     {
         "author": "Richard Morgan", 
         "date": "2015-02-25", 
-        "link": "", 
         "title": "Broken Angels"
     }, 
     {
         "author": "Alexandra Fuller", 
         "date": "2015-02-14", 
-        "link": "", 
         "title": "Don't Let's Go to the Dogs Tonight"
     }, 
     {
-        "author": "", 
         "date": "2015-02-10", 
         "link": "https://www.goodreads.com/book/show/18213403-no-place-to-hide", 
         "title": "No Place to Hide"
     }, 
     {
-        "author": "", 
         "date": "2015-02-07", 
         "link": "https://www.goodreads.com/book/show/2173611.House_of_Many_Ways", 
         "title": "House of Many Ways"
     }, 
     {
-        "author": "", 
         "date": "2015-02-04", 
         "link": "https://www.goodreads.com/book/show/827.The_Diamond_Age", 
         "title": "The Diamond Age"
     }, 
     {
-        "author": "", 
         "date": "2015-02-01", 
         "link": "http://www.cogito.nu/sites/default/files/languages/Ekofeminism%20Cogito.pdf", 
         "title": "Introduktion till ekofeminism"
     }, 
     {
-        "author": "", 
         "date": "2015-02-01", 
         "link": "https://www.goodreads.com/book/show/18260616-den-sista-myten", 
         "title": "Den sista myten"
     }, 
     {
-        "author": "", 
         "date": "2015-01-29", 
         "link": "https://www.goodreads.com/book/show/1128434.The_Last_Wish", 
         "title": "The Last Wish"
     }, 
     {
-        "author": "", 
         "date": "2015-01-24", 
         "link": "http://www.goodreads.com/book/show/10718.Something_Happened", 
         "title": "Something Happened"
     }, 
     {
-        "author": "", 
         "date": "2014-12-30", 
         "link": "http://www.goodreads.com/book/show/6732019-rework", 
         "title": "Rework"
     }, 
     {
-        "author": "", 
         "date": "2014-12-27", 
         "link": "http://www.goodreads.com/book/show/1490767.The_Feynman_Lectures_on_Physics_Vol_2", 
         "title": "The Feynman Lectures on Physics Vol 2"
     }, 
     {
-        "author": "", 
         "date": "2014-12-26", 
         "link": "http://www.goodreads.com/book/show/7865083-liar-s-poker", 
         "title": "Liar's Poker"
     }, 
     {
-        "author": "", 
         "date": "2014-12-16", 
         "link": "http://www.goodreads.com/book/show/781182.Barbarians_at_the_Gate", 
         "title": "Barbarians at the Gate"
     }, 
     {
-        "author": "", 
         "date": "2014-11-15", 
         "link": "http://www.goodreads.com/book/show/587058.Ett_ga_r_tt", 
-        "title": "Ett \u00c3\u00b6ga r\u00c3\u00b6tt"
+        "title": "Ett öga rött"
     }, 
     {
-        "author": "", 
         "date": "2014-11-08", 
         "link": "http://www.goodreads.com/book/show/18399767-en-av-oss", 
         "title": "En av oss"
     }, 
     {
-        "author": "", 
         "date": "2014-10-25", 
         "link": "http://www.goodreads.com/book/show/12520110-s-t-nkte-jag", 
-        "title": "S\u00c3\u00a5 t\u00c3\u00a4nkte jag"
+        "title": "Så tänkte jag"
     }, 
     {
-        "author": "", 
         "date": "2014-10-19", 
         "link": "http://www.goodreads.com/book/show/14064.I_Am_Legend", 
         "title": "I Am Legend"
     }, 
     {
-        "author": "", 
         "date": "2014-10-11", 
         "link": "http://www.goodreads.com/book/show/9525054-prins-charles-k-nsla", 
-        "title": "Prins Charles K\u00c3\u00a4nsla"
+        "title": "Prins Charles Känsla"
     }, 
     {
-        "author": "", 
         "date": "2014-09-28", 
         "link": "http://www.goodreads.com/book/show/216363.The_Man_in_the_High_Castle", 
         "title": "The Man in the High Castle"
     }, 
     {
-        "author": "", 
         "date": "2014-09-27", 
         "link": "http://www.bokforlagetatlas.se/bok/den_offentliga_lognen/", 
-        "title": "Den Offentliga L\u00c3\u00b6gnen"
+        "title": "Den Offentliga Lögnen"
     }, 
     {
-        "author": "", 
         "date": "2014-09-20", 
         "link": "http://books.google.se/books/about/I_farliga_farvatten.html?id=ur3sngEACAAJ&redir_esc=y", 
         "title": "I Farliga Farvatten"
     }, 
     {
-        "author": "", 
         "date": "2014-09-13", 
         "link": "http://www.goodreads.com/book/show/5805.V_for_Vendetta", 
         "title": "V for Vendetta"
     }, 
     {
-        "author": "", 
         "date": "2014-08-26", 
         "link": "https://biblioteket.stockholm.se/titel/370696", 
-        "title": "Mina fem skeppsbrott - 100.000 sj\u00c3\u00b6mil med ensamseglaren Stig"
+        "title": "Mina fem skeppsbrott - 100.000 sjömil med ensamseglaren Stig"
     }, 
     {
-        "author": "", 
         "date": "2014-08-19", 
         "link": "http://www.goodreads.com/book/show/226004.A_Deepness_in_the_Sky", 
         "title": "A Deepness in the Sky"
     }, 
     {
-        "author": "", 
         "date": "2014-08-18", 
         "link": "http://www.goodreads.com/book/show/186369.The_Pastures_of_Heaven", 
         "title": "The Pastures of Heaven"
     }, 
     {
-        "author": "", 
         "date": "2014-08-12", 
         "link": "http://www.goodreads.com/book/show/152923.Dove", 
         "title": "Dove"
     }, 
     {
-        "author": "", 
         "date": "2014-08-11", 
         "link": "http://www.goodreads.com/book/show/5470.1984", 
         "title": "1984"
     }, 
     {
-        "author": "", 
         "date": "2014-08-09", 
         "link": "http://www.amazon.com/Systemantics-Systems-Work-Especially-They/dp/0812906748", 
         "title": "Systemantics"
     }, 
     {
-        "author": "", 
         "date": "2014-08-08", 
         "link": "http://craphound.com/littlebrother/download/", 
         "title": "Little Brother"
     }, 
     {
-        "author": "", 
         "date": "2014-08-07", 
         "link": "http://www.trebocker.se/bocker/segling-i-forbjudna-farvatten/", 
-        "title": "Segling i f\u00c3\u00b6rbjudna farvatten"
+        "title": "Segling i förbjudna farvatten"
     }, 
     {
-        "author": "", 
         "date": "2014-07-28", 
         "link": "http://www.goodreads.com/book/show/12722.The_Moon_Is_Down", 
         "title": "The Moon Is Down"
     }, 
     {
-        "author": "", 
         "date": "2014-07-26", 
         "link": "http://en.wikipedia.org/wiki/What_Do_You_Care_What_Other_People_Think%3F", 
         "title": "What Do You Care What Other People Think"
     }, 
     {
-        "author": "", 
         "date": "2014-07-22", 
         "link": "http://www.goodreads.com/book/show/172147.The_Fly_in_the_Cathedral", 
         "title": "The Fly in the Cathedral"
     }, 
     {
-        "author": "", 
         "date": "2014-07-16", 
         "link": "http://www.goodreads.com/book/show/8842.Night_Flight", 
         "title": "Night Flight"
     }, 
     {
-        "author": "", 
         "date": "2014-07-13", 
         "link": "http://www.goodreads.com/book/show/270032.Seven_Years_in_Tibet", 
         "title": "Seven Years in Tibet"
     }, 
     {
-        "author": "", 
         "date": "2014-07-06", 
         "link": "http://www.amazon.com/Introduction-Algorithms-Thomas-H-Cormen/dp/0262033844", 
         "title": "Introduction to Algorithms"
     }, 
     {
-        "author": "", 
         "date": "2014-06-28", 
         "link": "http://www.goodreads.com/book/show/22590.Ubik", 
         "title": "Ubik"
     }, 
     {
-        "author": "", 
         "date": "2014-06-23", 
         "link": "http://www.norstedts.se/bocker/utgiven/2011/Host/borgnas_lars-nationens_intresse-inbunden/", 
         "title": "Nationens Intresse"
     }, 
     {
-        "author": "", 
         "date": "2014-06-14", 
         "link": "http://www.goodreads.com/book/show/65714.Kallocain", 
         "title": "Kallocain"
     }, 
     {
-        "author": "", 
         "date": "2014-06-08", 
         "link": "http://www.sportsci.org/2009/ss.htm", 
         "title": "Intervals, Thresholds, and Long Slow Distance"
     }, 
     {
-        "author": "", 
         "date": "2014-06-07", 
         "link": "http://www.goodreads.com/book/show/18480244-sp-r", 
-        "title": "Sp\u00c3\u00a5r"
+        "title": "Spår"
     }, 
     {
-        "author": "", 
         "date": "2014-06-01", 
         "link": "http://www.goodreads.com/book/show/10260.The_Pleasure_of_Finding_Things_Out", 
         "title": "The Pleasure of Finding Things Out"
     }, 
     {
-        "author": "", 
         "date": "2014-05-25", 
         "link": "http://www.goodreads.com/book/show/1740513.English_Vocabulary_Elements", 
         "title": "English Vocabulary Elements"
     }, 
     {
-        "author": "", 
         "date": "2014-05-24", 
         "link": "http://www.goodreads.com/book/show/639076.Opening_Skinner_s_Box", 
         "title": "Opening Skinner's Box"
     }, 
     {
-        "author": "", 
         "date": "2014-05-18", 
         "link": "http://www.goodreads.com/book/show/6149.Beloved", 
         "title": "Beloved"
     }, 
     {
-        "author": "", 
         "date": "2014-05-13", 
         "link": "http://www.goodreads.com/book/show/2203.John_Adams", 
         "title": "John Adams"
     }, 
     {
-        "author": "", 
         "date": "2014-04-21", 
         "link": "http://www.goodreads.com/book/show/80571.American_Prometheus?from_search=true", 
         "title": "American Prometheus"
     }, 
     {
-        "author": "", 
         "date": "2014-04-19", 
         "link": "http://www.goodreads.com/book/show/74034.Amusing_Ourselves_to_Death", 
         "title": "Amusing Ourselves to Death"
     }, 
     {
-        "author": "", 
         "date": "2014-04-06", 
         "link": "http://www.goodreads.com/book/show/17098.Isaac_Newton", 
         "title": "Isaac Newton"
     }, 
     {
-        "author": "", 
         "date": "2014-03-21", 
         "link": "http://www.goodreads.com/book/show/17278.The_Feynman_Lectures_on_Physics_Vol_1", 
         "title": "The Feynman Lectures on Physics Vol 1"
     }, 
     {
-        "author": "", 
         "date": "2014-03-09", 
         "link": "http://aosabook.org/en/index.html", 
         "title": "The Architecture of Open Source Applications"
     }, 
     {
-        "author": "", 
         "date": "2014-02-27", 
         "link": "http://www.rastertragedy.com/", 
         "title": "The Raster Tragedy at Low-Resolution"
     }, 
     {
-        "author": "", 
         "date": "2014-02-15", 
         "link": "http://www.goodreads.com/book/show/15997.Paradise_Lost", 
         "title": "Paradise Lost"
     }, 
     {
-        "author": "", 
         "date": "2014-02-08", 
         "link": "http://www.goodreads.com/book/show/18423.The_Left_Hand_of_Darkness", 
         "title": "The Left Hand of Darkness"
     }, 
     {
-        "author": "", 
         "date": "2014-01-18", 
         "link": "http://www.goodreads.com/book/show/16981.Invisible_Man", 
         "title": "Invisible Man"
     }, 
     {
-        "author": "", 
         "date": "2014-01-12", 
         "link": "http://www.goodreads.com/book/show/23756.Berlin_Diary", 
         "title": "Berlin Diary"
     }, 
     {
-        "author": "", 
         "date": "2013-12-20", 
         "link": "http://www.goodreads.com/book/show/11218167-the-sound-and-the-fury", 
         "title": "The Sound and the Fury"
     }, 
     {
-        "author": "", 
         "date": "2013-12-12", 
         "link": "http://www.goodreads.com/book/show/10583.Pet_Sematary", 
         "title": "Pet Sematary"
     }, 
     {
-        "author": "", 
         "date": "2013-12-08", 
         "link": "", 
         "title": "Beowulf"
     }, 
     {
-        "author": "", 
         "date": "2013-11-27", 
         "link": "http://www.goodreads.com/book/show/12046245-liars-and-outliers", 
         "title": "Liars and Outliers"
     }, 
     {
-        "author": "", 
         "date": "2013-11-21", 
         "link": "http://www.goodreads.com/book/show/9491855-why-the-west-rules-for-now", 
         "title": "Why the West Rules - for Now"
     }, 
     {
-        "author": "", 
         "date": "2013-11-14", 
         "link": "http://en.wikipedia.org/wiki/The_Two_Cultures", 
         "title": "The Two Cultures"
     }, 
     {
-        "author": "", 
         "date": "2013-10-17", 
         "link": "http://www.goodreads.com/book/show/18490.Frankenstein", 
         "title": "Frankenstein"
     }, 
     {
-        "author": "", 
         "date": "2013-10-10", 
         "link": "http://www.amazon.com/Business-Model-Generation-Visionaries-Challengers/dp/0470876417", 
         "title": "Business Model Generation"
     }, 
     {
-        "author": "", 
         "date": "2013-10-08", 
         "link": "http://www.goodreads.com/book/show/11084145-steve-jobs", 
         "title": "Steve Jobs"
     }, 
     {
-        "author": "", 
         "date": "2013-10-02", 
         "link": "http://www.goodreads.com/book/show/8935689-consider-phlebas", 
         "title": "Consider Phlebas"
     }, 
     {
-        "author": "", 
         "date": "2013-09-28", 
         "link": "http://www.goodreads.com/book/show/4982.The_Sirens_of_Titan", 
         "title": "The Sirens of Titan"
     }, 
     {
-        "author": "", 
         "date": "2013-09-21", 
         "link": "http://www.goodreads.com/book/show/222146.Masters_of_Doom", 
         "title": "Masters of Doom"
     }, 
     {
-        "author": "", 
         "date": "2013-09-08", 
         "link": "http://www.goodreads.com/book/show/6633912-the-good-soldiers", 
         "title": "The Good Soldiers"
     }, 
     {
-        "author": "", 
         "date": "2013-08-26", 
         "link": "http://www.goodreads.com/book/show/7967.Speaker_for_the_Dead", 
         "title": "Speaker for the Dead"
     }, 
     {
-        "author": "", 
         "date": "2013-08-17", 
         "link": "http://www.goodreads.com/book/show/242472.The_Black_Swan", 
         "title": "The Black Swan"
     }, 
     {
-        "author": "", 
         "date": "2013-08-06", 
         "link": "http://www.goodreads.com/book/show/194769.To_Mock_a_Mockingbird", 
         "title": "To Mock a Mockingbird"
     }, 
     {
-        "author": "", 
         "date": "2013-07-29", 
         "link": "http://dl.acm.org/citation.cfm?doid=359576.359585", 
         "title": "Communicating Sequential Processes -"
     }, 
     {
-        "author": "", 
         "date": "2013-07-27", 
         "link": "http://www.goodreads.com/book/show/6288.The_Road", 
         "title": "The Road"
     }, 
     {
-        "author": "", 
         "date": "2013-07-25", 
         "link": "http://www.goodreads.com/book/show/16690.The_Moon_is_a_Harsh_Mistress", 
         "title": "The Moon is a Harsh Mistress"
     }, 
     {
-        "author": "", 
         "date": "2013-07-22", 
         "link": "http://www.goodreads.com/book/show/5759.Fight_Club", 
         "title": "Fight Club"
     }, 
     {
-        "author": "", 
         "date": "2013-07-19", 
         "link": "http://www.av8n.com/how/", 
         "title": "See How It Flies"
     }, 
     {
-        "author": "", 
         "date": "2013-07-18", 
         "link": "http://www.goodreads.com/book/show/4906766-tales-of-the-madman-underground", 
         "title": "Tales of the Madman Underground"
     }, 
     {
-        "author": "", 
         "date": "2013-07-13", 
         "link": "http://www.goodreads.com/book/show/102738.Another_Day_of_Life", 
         "title": "Another Day of Life"
     }, 
     {
-        "author": "", 
         "date": "2013-07-11", 
         "link": "http://www.goodreads.com/book/show/14680.The_Charterhouse_of_Parma", 
         "title": "The Charterhouse of Parma"
     }, 
     {
-        "author": "", 
         "date": "2013-07-10", 
         "link": "http://www.goodreads.com/book/show/134353.I_m_OK_You_re_OK", 
         "title": "I'm OK - You're OK"
     }, 
     {
-        "author": "", 
         "date": "2013-07-05", 
         "link": "http://www.amazon.com/Ruby-Programming-Language-David-Flanagan/dp/0596516177", 
         "title": "The Ruby Programming Language"
     }, 
     {
-        "author": "", 
         "date": "2013-06-22", 
         "link": "http://www.goodreads.com/book/show/11012.Dubliners", 
         "title": "Dubliners"
     }, 
     {
-        "author": "", 
         "date": "2013-06-12", 
         "link": "http://www.goodreads.com/book/show/7624.Lord_of_the_Flies", 
         "title": "Lord of the Flies"
     }, 
     {
-        "author": "", 
         "date": "2013-06-08", 
         "link": "http://www.goodreads.com/book/show/318335.Fatelessness", 
-        "title": "Mannen utan \u00c3\u00b6de"
+        "title": "Mannen utan öde"
     }, 
     {
-        "author": "", 
         "date": "2013-06-07", 
         "link": "http://learnvimscriptthehardway.stevelosh.com/", 
         "title": "Learn Vimscript the Hard Way"
     }, 
     {
-        "author": "", 
         "date": "2013-06-04", 
         "link": "http://www.goodreads.com/book/show/68520.The_Winter_King", 
         "title": "The Winter King"
     }, 
     {
-        "author": "", 
         "date": "2013-06-02", 
         "link": "http://ribbonfarm.com/the-gervais-principle", 
         "title": "The Gervais Principle"
     }, 
     {
-        "author": "", 
         "date": "2013-05-19", 
         "link": "https://www.goodreads.com/book/show/548914.The_Little_Schemer", 
         "title": "The Little Schemer"
     }, 
     {
-        "author": "", 
         "date": "2013-05-18", 
         "link": "http://books.google.se/books/about/Islam.html?id=DBf4MgAACAAJ&redir_esc=y", 
-        "title": "Islam: L\u00c3\u00a4ra och Livsm\u00c3\u00b6nster"
+        "title": "Islam: Lära och Livsmönster"
     }, 
     {
-        "author": "", 
         "date": "2013-05-08", 
         "link": "http://www.goodreads.com/book/show/1173576.What_Every_Body_is_Saying", 
         "title": "What Every Body is Saying"
     }, 
     {
-        "author": "", 
         "date": "2013-05-05", 
         "link": "http://www.goodreads.com/book/show/101438.Skunk_Works", 
         "title": "Skunk Works"
     }, 
     {
-        "author": "", 
         "date": "2013-05-01", 
         "link": "http://www.goodreads.com/book/show/22320.Pattern_Recognition", 
         "title": "Pattern Recognition"
     }, 
     {
-        "author": "", 
         "date": "2013-04-28", 
         "link": "http://www.goodreads.com/book/show/49176.Games_People_Play", 
         "title": "Games People Play"
     }, 
     {
-        "author": "", 
         "date": "2013-04-25", 
         "link": "http://shaffner.us/cs/papers/tarpit.pdf", 
         "title": "Out of the Tar Pit"
     }, 
     {
-        "author": "", 
         "date": "2013-04-23", 
         "link": "http://www.goodreads.com/book/show/905.The_Inner_Game_of_Tennis", 
         "title": "The Inner Game of Tennis"
     }, 
     {
-        "author": "", 
         "date": "2013-04-23", 
         "link": "http://www.goodreads.com/book/show/160149.The_Call_of_Cthulhu_and_Other_Weird_Stories", 
         "title": "The Call of Cthulhu"
     }, 
     {
-        "author": "", 
         "date": "2013-04-16", 
         "link": "http://www.goodreads.com/book/show/4407.American_Gods", 
         "title": "American Gods"
     }, 
     {
-        "author": "", 
         "date": "2013-04-13", 
         "link": "http://www.goodreads.com/book/show/57913.The_Illuminatus_Trilogy", 
         "title": "The Illuminatus! Trilogy"
     }, 
     {
-        "author": "", 
         "date": "2013-03-15", 
         "link": "http://en.wikipedia.org/wiki/DC_Universe:_The_Stories_of_Alan_Moore", 
         "title": "DC Universe"
     }, 
     {
-        "author": "", 
         "date": "2013-03-15", 
         "link": "http://www.goodreads.com/book/show/5659.The_Wind_in_the_Willows", 
         "title": "The Wind in the Willows"
     }, 
     {
-        "author": "", 
         "date": "2013-03-07", 
         "link": "http://www.goodreads.com/book/show/49540.Les_Liaisons_Dangereuses", 
         "title": "Les Liaisons Dangereuses"
     }, 
     {
-        "author": "", 
         "date": "2013-03-02", 
         "link": "http://books.google.se/books/about/Leonardo.html?id=uuMWROjcp7EC&redir_esc=y", 
         "title": "Leonardo: The Artist and the Man"
     }, 
     {
-        "author": "", 
         "date": "2013-02-23", 
         "link": "http://books.google.se/books/about/Michael_Abrash_s_Graphics_Programming_Bl.html?id=KnzQAAAACAAJ&redir_esc=y", 
         "title": "Michael Abrash's Graphics Programming Black Book"
     }, 
     {
-        "author": "", 
         "date": "2013-02-22", 
         "link": "http://sv.wikipedia.org/wiki/Ringens_v%C3%A4rld", 
-        "title": "Ringens V\u00c3\u00a4rld"
+        "title": "Ringens Värld"
     }, 
     {
-        "author": "", 
         "date": "2013-02-16", 
         "link": "http://www.goodreads.com/book/show/306940.Impro", 
         "title": "Impro"
     }, 
     {
-        "author": "", 
         "date": "2013-02-12", 
         "link": "http://www.amazon.com/The-Psychology-Computer-Programming-Anniversary/dp/0932633420", 
         "title": "The Psychology of Computer Programming"
     }, 
     {
-        "author": "", 
         "date": "2013-02-09", 
         "link": "http://www.amazon.com/Linux-Kernel-Development-Robert-Love/dp/0672329468", 
         "title": "Linux Kernel Development"
     }, 
     {
-        "author": "", 
         "date": "2013-02-03", 
         "link": "http://www.goodreads.com/book/show/1044831.Are_Your_Lights_On_", 
         "title": "Are Your Lights On?"
     }, 
     {
-        "author": "", 
         "date": "2013-01-22", 
         "link": "http://www.amazon.com/Patterns-Enterprise-Application-Architecture-Martin/dp/0321127420", 
         "title": "Patterns of Enterprise Application Architecture"
     }, 
     {
-        "author": "", 
         "date": "2013-01-09", 
         "link": "http://www.goodreads.com/book/show/8520610-quiet", 
         "title": "Quiet"
     }, 
     {
-        "author": "", 
         "date": "2013-01-06", 
         "link": "http://www.goodreads.com/book/show/6115149-drawing-on-the-right-side-of-the-brain", 
         "title": "Drawing on the Right Side of the Brain -"
     }, 
     {
-        "author": "", 
         "date": "2013-01-03", 
         "link": "http://www.goodreads.com/book/show/951749.The_Dying_Earth", 
         "title": "The Dying Earth"
     }, 
     {
-        "author": "", 
         "date": "2013-01-02", 
         "link": "http://www.goodreads.com/book/show/51893.Thus_Spoke_Zarathustra", 
         "title": "Thus Spoke Zarathustra"
     }, 
     {
-        "author": "", 
         "date": "2012-12-29", 
         "link": "http://www.goodreads.com/book/show/715287.The_Broken_Sword", 
         "title": "The Broken Sword"
     }, 
     {
-        "author": "", 
         "date": "2012-12-26", 
         "link": "http://www.goodreads.com/book/show/13023.Alice_in_Wonderland", 
         "title": "Alice in Wonderland"
     }, 
     {
-        "author": "", 
         "date": "2012-12-16", 
         "link": "http://www.goodreads.com/book/show/60211.The_Shadow_of_the_Torturer", 
         "title": "The Shadow of the Torturer"
     }, 
     {
-        "author": "", 
         "date": "2012-12-11", 
         "link": "http://www.goodreads.com/book/show/493.My_Inventions", 
         "title": "My Inventions"
     }, 
     {
-        "author": "", 
         "date": "2012-12-07", 
         "link": "http://www.goodreads.com/book/show/52309.The_Autobiography_of_Benjamin_Franklin", 
         "title": "The Autobiography of Benjamin Franklin"
     }, 
     {
-        "author": "", 
         "date": "2012-12-03", 
         "link": "http://www.bwater.com/Uploads/FileManager/Principles/Bridgewater-Associates-Ray-Dalio-Principles.pdf", 
         "title": "Principles -"
     }, 
     {
-        "author": "", 
         "date": "2012-11-24", 
         "link": "http://www.amazon.com/Out-Crisis-W-Edwards-Deming/dp/0262541157", 
         "title": "Out of the Crisis"
     }, 
     {
-        "author": "", 
         "date": "2012-11-15", 
         "link": "http://www.goodreads.com/book/show/3698.The_Quiet_American", 
         "title": "The Quiet American"
     }, 
     {
-        "author": "", 
         "date": "2012-11-15", 
         "link": "http://www.goodreads.com/book/show/3143028-the-improv-handbook", 
         "title": "The Improv Handbook"
     }, 
     {
-        "author": "", 
         "date": "2012-11-09", 
         "link": "http://www.goodreads.com/book/show/4424.An_Unfinished_Life", 
         "title": "An Unfinished Life"
     }, 
     {
-        "author": "", 
         "date": "2012-10-28", 
         "link": "http://www.goodreads.com/book/show/5113.Franny_and_Zooey", 
         "title": "Franny and Zooey"
     }, 
     {
-        "author": "", 
         "date": "2012-10-22", 
         "link": "http://www.goodreads.com/book/show/42287.The_Perfect_Mile", 
         "title": "The Perfect Mile"
     }, 
     {
-        "author": "", 
         "date": "2012-10-20", 
         "link": "http://www.dn.se/dnbok/bokrecensioner/sven-eric-liedman-hets-en-bok-om-skolan", 
         "title": "Hets!"
     }, 
     {
-        "author": "", 
         "date": "2012-10-10", 
         "link": "http://www.goodreads.com/book/show/63032.2666", 
         "title": "2666 -"
     }, 
     {
-        "author": "", 
         "date": "2012-09-09", 
         "link": "http://www.goodreads.com/book/show/6289283-born-to-run", 
         "title": "Born to Run"
     }, 
     {
-        "author": "", 
         "date": "2012-09-06", 
         "link": "http://www.amazon.com/Coders-Work-Reflections-Craft-Programming/dp/1430219483", 
         "title": "Coders at Work"
     }, 
     {
-        "author": "", 
         "date": "2012-09-06", 
         "link": "http://www.goodreads.com/book/show/52367.Batman", 
         "title": "Batman: The Dark Knight Strikes Again"
     }, 
     {
-        "author": "", 
         "date": "2012-09-04", 
         "link": "http://www.goodreads.com/book/show/59960.Batman", 
         "title": "Batman: The Dark Knight Returns"
     }, 
     {
-        "author": "", 
         "date": "2012-08-26", 
         "link": "http://www.goodreads.com/book/show/394535.Blood_Meridian_or_the_Evening_Redness_in_the_West", 
         "title": "Blood Meridian"
     }, 
     {
-        "author": "", 
         "date": "2012-08-19", 
         "link": "http://www.goodreads.com/book/show/157993.The_Little_Prince", 
         "title": "The Little Prince"
     }, 
     {
-        "author": "", 
         "date": "2012-08-15", 
         "link": "http://en.wikipedia.org/wiki/Public_Opinion_%28book%29", 
         "title": "Public Opinion"
     }, 
     {
-        "author": "", 
         "date": "2012-08-09", 
         "link": "http://books.google.se/books/about/The_Long_Way.html?id=rgKRmmMpJ8kC&redir_esc=y", 
         "title": "The Long Way"
     }, 
     {
-        "author": "", 
         "date": "2012-08-08", 
         "link": "http://www.goodreads.com/book/show/7329.Unfinished_Tales_of_N_menor_and_Middle_Earth", 
         "title": "Unfinished Tales"
     }, 
     {
-        "author": "", 
         "date": "2012-08-02", 
         "link": "http://en.wikipedia.org/wiki/Dune_%28novel%29", 
         "title": "Dune"
     }, 
     {
-        "author": "", 
         "date": "2012-07-28", 
         "link": "http://www.amazon.com/gp/product/0961392142/ref=as_li_ss_tl?ie=UTF8&tag=ucmbread-20&linkCode=as2&camp=217145&creative=399369&creativeASIN=0961392142", 
         "title": "The Visual Display of Quantitative Information"
     }, 
     {
-        "author": "", 
         "date": "2012-07-26", 
         "link": "http://www.amazon.com/JavaScript-Definitive-Guide-Activate-Guides/dp/0596805527", 
         "title": "Javascript, The Definitive Guide"
     }, 
     {
-        "author": "", 
         "date": "2012-07-15", 
         "link": "http://www.goodreads.com/book/show/77711.A_Fire_Upon_the_Deep", 
         "title": "A Fire Upon the Deep"
     }, 
     {
-        "author": "", 
         "date": "2012-07-11", 
         "link": "http://www.wired.com/wired/archive/4.12/ffglass_pr.html", 
         "title": "Mother Earth Mother Board"
     }, 
     {
-        "author": "", 
         "date": "2012-07-06", 
         "link": "https://en.wikipedia.org/w/index.php?title=Underworld_%28DeLillo_novel%29", 
         "title": "Underworld"
     }, 
     {
-        "author": "", 
         "date": "2012-07-02", 
         "link": "http://www.amazon.com/Cool-It-Skeptical-Environmentalists-Warming/dp/030738652X", 
         "title": "Cool It"
     }, 
     {
-        "author": "", 
         "date": "2012-06-25", 
         "link": "http://shop.oreilly.com/product/9781565924260.do", 
         "title": "Learning the vi Editor"
     }, 
     {
-        "author": "", 
         "date": "2012-06-25", 
         "link": "http://www.amazon.com/Structure-Interpretation-Computer-Programs-Engineering/dp/0262011530", 
         "title": "Structure and Interpretation of Computer Programs"
     }, 
     {
-        "author": "", 
         "date": "2012-06-09", 
         "link": "http://www.goodreads.com/book/show/77566.Hyperion", 
         "title": "Hyperion"
     }, 
     {
-        "author": "", 
         "date": "2012-05-27", 
         "link": "https://en.wikipedia.org/wiki/Great_Expectations", 
         "title": "Great Expectations"
     }, 
     {
-        "author": "", 
         "date": "2012-05-05", 
         "link": "http://www.goodreads.com/book/show/3237979-sista-brevet-till-sverige", 
         "title": "Sista Brevet Till Sverige"
     }, 
     {
-        "author": "", 
         "date": "2012-05-03", 
         "link": "http://www.goodreads.com/book/show/28704.Players", 
         "title": "Players"
     }, 
     {
-        "author": "", 
         "date": "2012-04-29", 
         "link": "http://www.amazon.com/Punishment-Bantam-Classics-Fyodor-Dostoevsky/dp/0553211757", 
         "title": "Crime and Punishment"
     }, 
     {
-        "author": "", 
         "date": "2012-04-22", 
         "link": "http://www.dn.se/dnbok/bokrecensioner/sara-stridsberg-dromfakulteten", 
-        "title": "Dr\u00c3\u00b6mfakulteten"
+        "title": "Drömfakulteten"
     }, 
     {
-        "author": "", 
         "date": "2012-04-17", 
         "link": "http://www.goodreads.com/book/show/6571918-how-to-solve-it", 
         "title": "How to Solve It"
     }, 
     {
-        "author": "", 
         "date": "2012-04-13", 
         "link": "http://www.goodreads.com/book/show/165038.The_Settlers", 
         "title": "Nybyggarna"
     }, 
     {
-        "author": "", 
         "date": "2012-04-13", 
         "link": "http://www.goodreads.com/book/show/458347.The_Short_Stories", 
         "title": "Short Stories (Hemingway)"
     }, 
     {
-        "author": "", 
         "date": "2012-04-01", 
         "link": "http://www.adlibris.com/se/product.aspx?isbn=911301112X", 
         "title": "Noveller (Tjechov)"
     }, 
     {
-        "author": "", 
         "date": "2012-03-30", 
         "link": "http://www.goodreads.com/book/show/10362813-underbara-dagar-framf-r-oss", 
-        "title": "Underbara dagar framf\u00c3\u00b6r oss"
+        "title": "Underbara dagar framför oss"
     }, 
     {
-        "author": "", 
         "date": "2012-03-17", 
         "link": "http://www.amazon.com/How-Read-Why-Harold-Bloom/dp/0684859076", 
         "title": "How to Read and Why"
     }, 
     {
-        "author": "", 
         "date": "2012-03-12", 
         "link": "http://www.innovationsradet.se/wp/wp-content/uploads/2012/02/Lean-och-systemsyn-i-stat-och-kommun1.pdf", 
         "title": "Lean och systemsyn i stat och kommun"
     }, 
     {
-        "author": "", 
         "date": "2012-03-11", 
         "link": "http://www.amazon.com/Ficciones-English-Translation-Jorge-Borges/dp/0802130305/ref=sr_1_2?s=books&ie=UTF8&qid=1331499525&sr=1-2", 
         "title": "Ficciones"
     }, 
     {
-        "author": "", 
         "date": "2012-03-04", 
         "link": "http://www.amazon.com/Propaganda-Edward-Bernays/dp/0970312598", 
         "title": "Propaganda"
     }, 
     {
-        "author": "", 
         "date": "2012-02-29", 
         "link": "http://www.amazon.com/Mein-Kampf-Adolf-Hitler/dp/0395925037", 
         "title": "Mein Kampf"
     }, 
     {
-        "author": "", 
         "date": "2012-02-21", 
         "link": "http://www.amazon.com/Yosemite-Websters-Spanish-Thesaurus/dp/B001CV8OHC/ref=sr_1_3?s=books&ie=UTF8&qid=1329858921&sr=1-3", 
         "title": "The Yosemite"
     }, 
     {
-        "author": "", 
         "date": "2012-02-18", 
         "link": "http://www.amazon.com/Gravitys-Rainbow-Penguin-Classics-Deluxe/dp/0143039946/ref=sr_1_1?s=books&ie=UTF8&qid=1329573256&sr=1-1", 
         "title": "Gravity's Rainbow"
     }, 
     {
-        "author": "", 
         "date": "2012-02-04", 
         "link": "http://www.amazon.com/dp/1935182641/?tag=stackoverfl08-20", 
         "title": "The Joy of Clojure"
     }, 
     {
-        "author": "", 
         "date": "2012-02-01", 
         "link": "http://www.amazon.com/Kon-Tiki-Across-Pacific-Thor-Heyerdahl/dp/0671726528", 
         "title": "Kon-Tiki"
     }, 
     {
-        "author": "", 
         "date": "2012-01-27", 
         "link": "http://www.amazon.com/Starship-Troopers-Robert-Heinlein/dp/0441783589", 
         "title": "Starship Troopers"
     }, 
     {
-        "author": "", 
         "date": "2012-01-15", 
         "link": "http://www.goodreads.com/book/show/21611.The_Forever_War", 
         "title": "The Forever War"
     }, 
     {
-        "author": "", 
         "date": "2012-01-12", 
         "link": "http://www.amazon.com/o/asin/0670804401?tag=fogus-20", 
         "title": "Money - A Suicide Note"
     }, 
     {
-        "author": "", 
         "date": "2012-01-05", 
         "link": "http://www.amazon.com/Founders-Work-Stories-Startups-Problem-Solution/dp/1430210788/ref=sr_1_1?s=books&ie=UTF8&qid=1313369033&sr=1-1", 
         "title": "Founders at Work"
     }, 
     {
-        "author": "", 
         "date": "2012-01-04", 
         "link": "http://www.goodreads.com/book/show/15196.Maus_I", 
         "title": "Maus"
     }, 
     {
-        "author": "", 
         "date": "2012-01-03", 
         "link": "http://www.amazon.com/exec/obidos/ASIN/0671004107/_1-20", 
         "title": "Contact"
     }, 
     {
-        "author": "", 
         "date": "2011-12-26", 
         "link": "http://www.goodreads.com/book/show/41804.I_Robot", 
         "title": "I, Robot"
     }, 
     {
-        "author": "", 
         "date": "2011-12-25", 
         "link": "http://www.amazon.com/Mrs-Dalloway-Virginia-Woolf/dp/0156628708", 
         "title": "Mrs Dalloway"
     }, 
     {
-        "author": "", 
         "date": "2011-12-20", 
         "link": "http://www.amazon.com/Matter-Iain-M-Banks/dp/0316005363", 
         "title": "Matter"
     }, 
     {
-        "author": "", 
         "date": "2011-12-17", 
         "link": "http://www.amazon.com/Understanding-Comics-Invisible-Scott-Mccloud/dp/006097625X", 
         "title": "Understanding Comics: The Invisible Art"
     }, 
     {
-        "author": "", 
         "date": "2011-12-10", 
         "link": "http://www.amazon.com/Mezzanine-Nicholson-Baker/dp/0679725768", 
         "title": "The Mezzanine"
     }, 
     {
-        "author": "", 
         "date": "2011-12-04", 
         "link": "http://www.amazon.co.uk/Endeavour-Captain-Voyage-Voyages-Promotion/dp/0753817322", 
         "title": "Endeavour"
     }, 
     {
-        "author": "", 
         "date": "2011-11-26", 
         "link": "http://www.amazon.com/exec/obidos/ASIN/B0026P9LFW/_1-20", 
         "title": "The Stars My Destination"
     }, 
     {
-        "author": "", 
         "date": "2011-11-13", 
         "link": "http://www.amazon.com/End-Eternity-Gollancz-Sf-Library/dp/0575071184", 
         "title": "The End of Eternity"
     }, 
     {
-        "author": "", 
         "date": "2011-11-10", 
         "link": "http://www.amazon.com/exec/obidos/ASIN/0899684491/_1-20", 
         "title": "Rendezvous with Rama"
     }, 
     {
-        "author": "", 
         "date": "2011-10-10", 
         "link": "http://www.goodreads.com/book/show/51330.The_Trial_of_Socrates", 
         "title": "The Trial of Socrates"
     }, 
     {
-        "author": "", 
         "date": "2011-10-07", 
         "link": "http://books.google.com/books/about/Learn_You_a_Haskell_for_Great_Good.html?id=miO8bwAACAAJ", 
         "title": "Learn You a Haskell for Great Good!"
     }, 
     {
-        "author": "", 
         "date": "2011-09-30", 
         "link": "http://www.goodreads.com/book/show/321005.True_Names_and_Other_Dangers", 
         "title": "True Names"
     }, 
     {
-        "author": "", 
         "date": "2011-09-26", 
         "link": "http://www.amazon.com/Enders-Game-Orson-Scott-Card/dp/0765342294", 
         "title": "Ender's Game"
     }, 
     {
-        "author": "", 
         "date": "2011-09-12", 
         "link": "http://www.amazon.com/Shock-Doctrine-Rise-Disaster-Capitalism/dp/0805079831", 
         "title": "The Shock Doctrine"
     }, 
     {
-        "author": "", 
         "date": "2011-09-02", 
         "link": "http://www.amazon.com/Let-Over-Lambda-Doug-Hoyte/dp/1435712757", 
         "title": "Let Over Lambda"
     }, 
     {
-        "author": "", 
         "date": "2011-08-27", 
         "link": "http://www.amazon.com/Dive-Into-Python-Books-Professionals/dp/1430224150", 
         "title": "Dive Into Python 3"
     }, 
     {
-        "author": "", 
         "date": "2011-08-21", 
         "link": "http://www.amazon.com/LISP-Advanced-Techniques-Common/dp/0130305529", 
         "title": "On Lisp"
     }, 
     {
-        "author": "", 
         "date": "2011-08-18", 
         "link": "http://www.amazon.com/Tao-Pooh-Benjamin-Hoff/dp/0140067477", 
         "title": "The Tao of Pooh"
     }, 
     {
-        "author": "", 
         "date": "2011-08-15", 
         "link": "http://www.amazon.com/Lila-Inquiry-Morals-Robert-Pirsig/dp/0553299611", 
         "title": "Lila: An Inquiry Into Morals"
     }, 
     {
-        "author": "", 
         "date": "2011-08-12", 
         "link": "http://www.amazon.com/Jane-Signet-Classics-Charlotte-Bront%C3%AB/dp/0451526554", 
         "title": "Jane Eyre"
     }, 
     {
-        "author": "", 
         "date": "2011-08-10", 
         "link": "http://www.amazon.com/Shadow-Man-Jane-Goodall/dp/0618056769", 
         "title": "In the Shadow of Man"
     }, 
     {
-        "author": "", 
         "date": "2011-08-05", 
         "link": "http://www.amazon.com/QED-Strange-Princeton-Science-Library/dp/0691125759", 
         "title": "QED: The Strange Theory of Light and Matter"
     }, 
     {
-        "author": "", 
         "date": "2011-08-01", 
         "link": "http://www.amazon.com/Zen-Art-Motorcycle-Maintenance-Inquiry/dp/0553277472", 
         "title": "Zen and the Art of Motorcycle Maintenance"
     }, 
     {
-        "author": "", 
         "date": "2011-07-29", 
         "link": "http://www.amazon.com/Gorillas-Mist-Dian-Fossey-Dr/dp/061808360X", 
         "title": "Gorillas in the Mist"
     }, 
     {
-        "author": "", 
         "date": "2011-07-27", 
         "link": "http://www.amazon.com/Six-Easy-Pieces-Essentials-Brilliant/dp/0465023924", 
         "title": "Six Easy Pieces"
     }, 
     {
-        "author": "", 
         "date": "2011-07-26", 
         "link": "http://www.amazon.com/Robert-Peltons-Worlds-Dangerous-Places/dp/0060011602", 
         "title": "The World's Most Dangerous Places"
     }, 
     {
-        "author": "", 
         "date": "2011-07-20", 
         "link": "http://goo.gl/6V6Vc", 
         "title": "Relativity: The Special and the General Theory"
     }, 
     {
-        "author": "", 
         "date": "2011-07-17", 
         "link": "http://goo.gl/jFAV8", 
         "title": "Is There Anything Good About Men? [essay]"
     }, 
     {
-        "author": "", 
         "date": "2011-07-16", 
         "link": "http://goo.gl/bTBLN", 
         "title": "The Curious Incident of the Dog in the Night-Time"
     }, 
     {
-        "author": "", 
         "date": "2011-07-12", 
         "link": "http://goo.gl/LRE8H", 
         "title": "First Light"
     }, 
     {
-        "author": "", 
         "date": "2011-07-08", 
         "link": "http://goo.gl/vCjIn", 
         "title": "Linux Device Drivers"

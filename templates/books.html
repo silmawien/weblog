@@ -8,10 +8,76 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 {% endblock %}
 
-{% block bottom %}
-    <script type="text/jsx>
-        console.log("hello from jsx");
-    </script>
+{% block script %}
+<script type="text/jsx">
+
+var books = null;
+
+var PrettyDate = React.createClass({
+    render: function() {
+        return (
+            <time className="post-date">{this.props.date}</time>
+        );
+    }
+});
+
+var Book = React.createClass({
+    render: function() {
+        var book = this.props.data;
+        var author;
+        var link;
+        if ("author" in book) {
+            author = (<span>&#xA0; by {book.author}</span>);
+        }
+        if ("link" in book) {
+            link = (<a href={book.link}>&#10149;</a>);
+        }
+        return (
+            <div>
+                <PrettyDate date={book.date} />
+                <b>&#xA0; {book.title}</b>
+                {author}
+                &#xA0; {link}
+            </div>
+        );
+    }
+});
+
+var BookShelf = React.createClass({
+    getInitialState: function() {
+        return {data: []};
+    },
+    componentDidMount: function() {
+        $.ajax({
+            url: this.props.url,
+            dataType: 'json',
+            success: function(data) {
+                this.setState({data: data});
+                books = data;
+            }.bind(this),
+            error: function(xhr, status, err) {
+                console.error(this.props.url, status, err.toString());
+            }.bind(this)
+        });
+    },
+    render: function() {
+        bookNodes = this.state.data.map(function(book) {
+            return (<Book data={book} />);
+        });
+        return (
+            <article className="wei">
+                <h2>Books</h2>
+                {bookNodes}
+            </article>
+        );
+    }
+});
+
+React.render(
+    <BookShelf url="/books.json" />,
+    document.getElementById('content')
+);
+</script>
 {% endblock %}
 
 

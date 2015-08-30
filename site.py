@@ -45,6 +45,9 @@ def entry_url(path, rel):
     path = os.path.relpath(path, rel)
     return re.sub(".txt$", ".html", path)
 
+def books():
+    render("books.html", {}, out("books.html"))
+
 if __name__ == "__main__":
     drafts = [ read_post(path, entry_url(path, "")) for path in glob.glob("drafts/*.txt")]
     map(entry, drafts)
@@ -53,4 +56,5 @@ if __name__ == "__main__":
     map(entry, posts)
     feed(posts)
     index(posts)
+    books()
 
