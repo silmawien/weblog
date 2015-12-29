@@ -1,5 +1,30 @@
 [
     {
+        "author": "Werner Heisenberg",
+        "date": "2015-12-29",
+        "title": "Physics and Beyond"
+    },
+    {
+        "author": "Freeman Dyson",
+        "date": "2015-11-28",
+        "title": "Disturbing the Universe"
+    },
+    {
+        "author": "H.G. Wells", 
+        "date": "2015-11-22", 
+        "title": "The Island of Dr Moreau"
+    }, 
+    {
+        "author": "Richard Feynman", 
+        "date": "2015-10-01", 
+        "title": "Tips on Physics"
+    }, 
+    {
+        "author": "Liu Cixin", 
+        "date": "2015-09-01", 
+        "title": "The Three-Body Problem"
+    }, 
+    {
         "author": "Daniel Kahneman", 
         "date": "2015-08-24", 
         "title": "Thinking, Fast and Slow"
