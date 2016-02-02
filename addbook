@@ -1,0 +1,30 @@
+#!/usr/bin/env python
+
+import json
+import sys
+import datetime
+import codecs
+
+def prompt(msg):
+    sys.stdout.write(msg + ": ")
+    return sys.stdin.readline().strip()
+
+def today_str():
+    return datetime.date.strftime(datetime.date.today(), "%Y-%m-%d")
+
+title = prompt("title")
+author = prompt("author")
+date = prompt("date (%s)" % today_str())
+
+if (title and author):
+    if (not date):
+        date = today_str()
+    entry = { 'title': title, 'author': author, 'date': date }
+    with codecs.open("static/books.json", "r+", "utf-8") as f:
+        js = json.load(f)
+        js.insert(0, entry)
+        f.seek(0)
+        f.truncate()
+        s = json.dumps(js, indent=4, sort_keys=True,
+                separators=(',', ': '), ensure_ascii=False)
+        f.write(s)
