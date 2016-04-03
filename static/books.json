@@ -1,5 +1,25 @@
 [
     {
+        "author": "Jacqueline Koyanagi",
+        "date": "2016-04-03",
+        "title": "Ascension"
+    },
+    {
+        "author": "Olaf Stapledon",
+        "date": "2016-03-28",
+        "title": "Last and First Men"
+    },
+    {
+        "author": "Joe Armstrong",
+        "date": "2016-03-13",
+        "title": "Making reliable distributed systems"
+    },
+    {
+        "author": "Michael Lewis",
+        "date": "2016-02-28",
+        "title": "Flash Boys"
+    },
+    {
         "author": "Naomi Novik",
         "date": "2016-02-27",
         "title": "Uprooted"
