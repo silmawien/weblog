@@ -7,7 +7,7 @@ import codecs
 
 def prompt(msg):
     sys.stdout.write(msg + ": ")
-    return sys.stdin.readline().strip()
+    return unicode(sys.stdin.readline().strip(), "utf-8")
 
 def today_str():
     return datetime.date.strftime(datetime.date.today(), "%Y-%m-%d")
@@ -23,8 +23,8 @@ if (title and author):
     with codecs.open("static/books.json", "r+", "utf-8") as f:
         js = json.load(f)
         js.insert(0, entry)
-        f.seek(0)
-        f.truncate()
         s = json.dumps(js, indent=4, sort_keys=True,
                 separators=(',', ': '), ensure_ascii=False)
+        f.seek(0)
+        f.truncate()
         f.write(s)
