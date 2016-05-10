@@ -177,7 +177,7 @@ doing vector math in your sleep. I speak from experience.
 
 Quake was released under the GPL a long time ago. You can fetch the code from
 github [here][q1source]. For a quick high-level introduction, check out Fabien
-Sanglar'd wonderful [Quake Engine Code Review][qecr].
+Sanglard's wonderful [Quake Engine Code Review][qecr].
 
 [q1source]: https://github.com/id-Software/Quake
 [qecr]: http://fabiensanglard.net/quakeSource/
