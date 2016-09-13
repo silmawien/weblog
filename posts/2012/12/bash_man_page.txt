@@ -75,7 +75,7 @@ a pain to something to look forward to? Just like sharpening the
 kitchen knife can make cooking fun again, getting to know your shell makes it
 fun to play around at the prompt. Or at least much less annoying.
 
-Second, the shell is an historical curiosity. Any program that stays around
+Second, the shell is a historical curiosity. Any program that stays around
 for 20 years without changing much, either got something right, or is
 impossible to replace for legacy reasons.
 

@@ -33,7 +33,7 @@ other programming languages. Imagine C without arithmetic expressions.
 
 Arithmetic expressions have universal appeal because they match the language of mathematics, but don't fool yourself; the choice of + and - for addition and subtraction is just as arbitrary as the choice of | and & by the shell. You can view arithmetic expressions as a small DSL tacked on to C for convenience.
 
-Unix pipes are not as widely useful as arithmatic. And so it is less convenient to launch processes from most languages, like with Python's [subprocess][] library. Efforts to improve the experience tend to end up reinventing a subset of Bash's syntax *inside the host language*. That's approximately what [envoy][] or [iterpipes][] do, both for Python.
+Unix pipes are not as widely useful as arithmetic. And so it is less convenient to launch processes from most languages, like with Python's [subprocess][] library. Efforts to improve the experience tend to end up reinventing a subset of Bash's syntax *inside the host language*. That's approximately what [envoy][] or [iterpipes][] do, both for Python.
 
 [subprocess]: http://docs.python.org/2/library/subprocess.html
 
@@ -84,7 +84,7 @@ including any error messages. I also use it to disable all output from
 chatty programs like eclipse.
 
     :::bash
-    # avoid random errors messages
+    # avoid random error messages
     $ eclipse > /dev/null 2>&1 &
 
 ## Shell parameters
@@ -175,7 +175,7 @@ Job control is occasionally useful.
     $ bg            # resume in the background
 
 Just a word of caution. If you want to truly understand job control, you
-need to lean a few things about [signals and terminals][] as well, which
+need to learn a few things about [signals and terminals][] as well, which
 might be more than you bargained for.
 
 [signals and terminals]: http://www.linusakesson.net/programming/tty/

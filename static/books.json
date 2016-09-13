@@ -1,5 +1,61 @@
 [
     {
+        "author": "Maj Sjöwall, Per Wahlöö",
+        "date": "2016-08-31",
+        "title": "Terroristerna"
+    },
+    {
+        "author": "Johannes Anyuru",
+        "date": "2016-08-19",
+        "title": "En storm kom från paradiset"
+    },
+    {
+        "author": "Truman Capote",
+        "date": "2016-08-18",
+        "title": "In Cold Blood"
+    },
+    {
+        "author": "J M Coetzee",
+        "date": "2016-08-11",
+        "title": "Waiting for the Barbarians"
+    },
+    {
+        "author": "Lawrence Wright",
+        "date": "2016-08-11",
+        "title": "The Looming Tower"
+    },
+    {
+        "author": "George Orwell",
+        "date": "2016-08-05",
+        "title": "Homage to Catalonia"
+    },
+    {
+        "author": "Charles Duhigg",
+        "date": "2016-08-02",
+        "title": "The Power of Habit"
+    },
+    {
+        "author": "Primo Levi",
+        "date": "2016-08-01",
+        "title": "If This Is a Man"
+    },
+    {
+        "author": "Andrew O'Hagan",
+        "date": "2016-07-30",
+        "link": "http://www.lrb.co.uk/v38/n13/andrew-ohagan/the-satoshi-affair",
+        "title": "The Satoshi Affair"
+    },
+    {
+        "author": "G. Pascal Zachary",
+        "date": "2016-07-24",
+        "title": "Show Stopper!"
+    },
+    {
+        "author": "Bret Easton Ellis",
+        "date": "2016-07-22",
+        "title": "American Psycho"
+    },
+    {
         "author": "Thomas S. Kuhn",
         "date": "2016-07-16",
         "title": "The Structure of Scientific Revolutions"
