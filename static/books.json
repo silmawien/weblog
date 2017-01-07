@@ -1,5 +1,30 @@
 [
     {
+        "author": "Julius Caesar",
+        "date": "2017-01-07",
+        "title": "Kriget i Gallien"
+    },
+    {
+        "author": "Joseph Allen Hill",
+        "date": "2016-12-29",
+        "title": "The Venus Effect"
+    },
+    {
+        "author": "Terry Pratchett",
+        "date": "2016-12-25",
+        "title": "The Color of Magic"
+    },
+    {
+        "author": "Greg Egan",
+        "date": "2016-12-18",
+        "title": "Diaspora"
+    },
+    {
+        "author": "Ursula K. Le Guin",
+        "date": "2016-12-14",
+        "title": "A Wizard of Earthsea"
+    },
+    {
         "author": "Frederik Pohl",
         "date": "2016-11-19",
         "title": "Gateway"
