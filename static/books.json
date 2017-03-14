@@ -1,5 +1,25 @@
 [
     {
+        "author": "Eric Evans",
+        "date": "2017-03-14",
+        "title": "Domain-Driven Design"
+    },
+    {
+        "author": "Thomas L. Floyd, David Buchla",
+        "date": "2017-03-06",
+        "title": "Basic Operational Amplifiers"
+    },
+    {
+        "author": "Gavin de Becker",
+        "date": "2017-02-26",
+        "title": "The Gift of Fear"
+    },
+    {
+        "author": "Thomas Harris",
+        "date": "2017-02-18",
+        "title": "Red Dragon"
+    },
+    {
         "author": "Bruce A. Schumm",
         "date": "2017-02-14",
         "title": "Deep Down Things"
