@@ -1,5 +1,31 @@
 [
     {
+        "author": "Bruce Schneier, Niels Ferguson, Tadayoshi Kohno",
+        "date": "2017-04-20",
+        "title": "Cryptography Engineering"
+    },
+    {
+        "author": "Nassim Nicholas Taleb",
+        "date": "2017-04-09",
+        "title": "Fooled by Randomness"
+    },
+    {
+        "author": "Ursula K. Le Guin",
+        "date": "2017-04-05",
+        "title": "The Word for World Is Forest"
+    },
+    {
+        "author": "Edith Wharton",
+        "date": "2017-03-31",
+        "title": "The Age of Innocence"
+    },
+    {
+        "author": "Alan Kay",
+        "date": "2017-03-23",
+        "link": "http://worrydream.com/EarlyHistoryOfSmalltalk/",
+        "title": "The Early History Of Smalltalk"
+    },
+    {
         "author": "Eric Evans",
         "date": "2017-03-14",
         "title": "Domain-Driven Design"
