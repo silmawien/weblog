@@ -1,5 +1,30 @@
 [
     {
+        "author": "Michail Bulgakov",
+        "date": "2017-08-27",
+        "title": "Mästaren och Margarita"
+    },
+    {
+        "author": "Walpola Rahula",
+        "date": "2017-08-09",
+        "title": "What the Buddha Taught"
+    },
+    {
+        "author": "Yuval Noah Harari",
+        "date": "2017-08-07",
+        "title": "Sapiens"
+    },
+    {
+        "author": "Eric Hoffer",
+        "date": "2017-07-28",
+        "title": "The True Believer"
+    },
+    {
+        "author": "Tim Wu",
+        "date": "2017-07-27",
+        "title": "The Master Switch"
+    },
+    {
         "author": "Eliezer Yudkowsky",
         "date": "2017-07-25",
         "title": "Rationality - From AI to Zombies"

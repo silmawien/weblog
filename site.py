@@ -24,7 +24,7 @@ def render(template, ctx, dst):
         fd.write(html)
 
 def entry(post):
-    dst = out(post["url"] + ".html")
+    dst = out(post["url"])
     render("post.html", post, dst)
 
 def index(posts):
