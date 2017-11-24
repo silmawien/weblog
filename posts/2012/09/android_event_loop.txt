@@ -4,7 +4,7 @@ Tags: android programming
 
 Android apps are event driven, and this post explores the nitty-gritty of the
 event loop. It is not about concurrent programming. In fact, perhaps the
-biggest strength of an event loop is that it avoid concurrency altogether.
+biggest strength of an event loop is that it avoids concurrency altogether.
 
 <!-- abstract -->
 
