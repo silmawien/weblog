@@ -35,10 +35,6 @@ site:
 # generate site to staging directory
 stage: ${STATIC} ${SCSS} site
 
-clean:
-	rm -rf ${OUT}
-	rm -rf gen/
-
 # move site from staging -> deploy dir, excluding drafts
 deploy: stage
 	rsync -r --delete --exclude "/drafts/" ${OUT}/ ${DEPLOY}/
