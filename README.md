@@ -17,4 +17,3 @@ A simple static blog generator, inspired by [Jekyll][], [Hyde][] and [MultiMarkd
 - Make (!)
 - Markdown
 - Python (Jinja2)
-- SASS

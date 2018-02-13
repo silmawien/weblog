@@ -1,26 +1,3 @@
-$max-width: 780px;
-
-$v-padding: 20px;
-$h-padding: 20px;
-
-@mixin box-sizing($model) {
-    -webkit-box-sizing: $model;
-       -moz-box-sizing: $model;
-            box-sizing: $model;
-}
-
-@mixin border-radius($radius) {
-    -webkit-border-radius: $radius;
-       -moz-border-radius: $radius;
-            border-radius: $radius;
-}
-
-@mixin box-shadow($color, $dx, $dy, $blur) {
-    -webkit-box-shadow: $color $dx $dy $blur;
-       -moz-box-shadow: $color $dx $dy $blur;
-            box-shadow: $color $dx $dy $blur;
-}
-
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300);
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,300);
 @import url(http://fonts.googleapis.com/css?family=Karma:400,300);
@@ -29,7 +6,9 @@ $h-padding: 20px;
 
 /* Use the more sane border-box model. */
 * {
-  @include box-sizing(border-box);
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
 }
 
 ::selection {
@@ -137,9 +116,11 @@ body {
 
 /* Standard padding for text containers. */
 header, article {
-    padding: $v-padding $h-padding;
+    padding: 20px 20px;
+}
 
-    @media (max-width: 500px) {
+@media (max-width: 500px) {
+    header, article {
         padding-left: 4%;
         padding-right: 4%;
     }
@@ -151,7 +132,7 @@ header {
 }
 
 header, article {
-    max-width: $max-width;
+    max-width: 780px;
     margin: 0 auto;
 }
 
@@ -167,7 +148,9 @@ article img.inline {
 }
 
 img.shadow {
-    @include box-shadow(#999, 1px, 1px, 6px);
+    -webkit-box-shadow: #999999 1px 1px 6px;
+       -moz-box-shadow: #999999 1px 1px 6px;
+            box-shadow: #999999 1px 1px 6px;
 }
 
 article {
@@ -179,7 +162,9 @@ article {
 article pre {
     /* Avoid overflowing on narrow displays. */
     overflow: auto;
-    @include border-radius(1em);
+    -webkit-border-radius: 1em;
+    -moz-border-radius: 1em;
+    border-radius: 1em;
     color: black;
     background: #f8f8f8;
     padding: 15px 0 15px 15px;
@@ -192,7 +177,9 @@ article code.kb {
     color: white;
     padding: 0 0.3em;
     background: hsl(350, 36%, 75%);
-    @include border-radius(0.4em);
+    -webkit-border-radius: 0.4em;
+       -moz-border-radius: 0.4em;
+            border-radius: 0.4em;
 }
 
 blockquote {
