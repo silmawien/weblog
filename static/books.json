@@ -1,5 +1,40 @@
 [
     {
+        "author": "David Halberstam",
+        "date": "2018-09-02",
+        "title": "The Best and the Brightest"
+    },
+    {
+        "author": "John Berger",
+        "date": "2018-08-26",
+        "title": "And Our Faces, My Heart, Brief As Photos"
+    },
+    {
+        "author": "Rudyard Kipling",
+        "date": "2018-08-16",
+        "title": "Just So Stories"
+    },
+    {
+        "author": "Patrick Rothfuss",
+        "date": "2018-08-08",
+        "title": "The Name of the Wind"
+    },
+    {
+        "author": "Yuri Modin",
+        "date": "2018-08-06",
+        "title": "My Five Cambridge Friends"
+    },
+    {
+        "author": "Matthew Walker",
+        "date": "2018-08-02",
+        "title": "Why We Sleep"
+    },
+    {
+        "author": "Thomas Mann",
+        "date": "2018-07-31",
+        "title": "Bergtagen"
+    },
+    {
         "author": "Michael Wolff",
         "date": "2018-07-18",
         "title": "Fire and Fury"
@@ -8,6 +43,11 @@
         "author": "Väinö Linna",
         "date": "2018-07-16",
         "title": "Okänd soldat"
+    },
+    {
+        "author": "Finn Bojsen-Møller",
+        "date": "2018-07-05",
+        "title": "Rörelseapparents anatomi"
     },
     {
         "author": "Hunter Allen, Andrew Coggan",
