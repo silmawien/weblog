@@ -3,9 +3,9 @@
 {% block title %} Books {% endblock %}
 {% block head %}
     {{ super() }}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="react.js"></script>
+    <script src="JSXTransformer.js"></script>
+    <script src="jquery.min.js"></script>
 {% endblock %}
 
 {% block script %}
@@ -53,7 +53,6 @@ var BookShelf = React.createClass({
             dataType: 'json',
             success: function(data) {
                 this.setState({data: data});
-                books = data;
             }.bind(this),
             error: function(xhr, status, err) {
                 console.error(this.props.url, status, err.toString());
