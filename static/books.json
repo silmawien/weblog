@@ -1,5 +1,70 @@
 [
     {
+        "author": "V.A.",
+        "date": "2019-12-31",
+        "title": "Bhagavad Gita"
+    },
+    {
+        "author": "Robin S. Sharma",
+        "date": "2019-12-29",
+        "title": "The Monk Who Sold His Ferrari"
+    },
+    {
+        "author": "Paulo Coelho",
+        "date": "2019-12-27",
+        "title": "The Alchemist"
+    },
+    {
+        "author": "V.A.",
+        "date": "2019-12-24",
+        "title": "Dhammapada"
+    },
+    {
+        "author": "Marshall B. Rosenberg",
+        "date": "2019-12-23",
+        "title": "Nonviolent Communication"
+    },
+    {
+        "author": "J. K. Rowling",
+        "date": "2019-12-09",
+        "title": "Harry Potter and the Cursed Child"
+    },
+    {
+        "author": "Neil Stephenson",
+        "date": "2019-11-23",
+        "title": "Anathem"
+    },
+    {
+        "author": "Fredrik Ekelund",
+        "date": "2019-09-23",
+        "title": "Stuv Malmö, kom!"
+    },
+    {
+        "author": "Stanislaw Lem",
+        "date": "2019-08-25",
+        "title": "The Invincible"
+    },
+    {
+        "author": "Mark Manson",
+        "date": "2019-07-16",
+        "title": "Models"
+    },
+    {
+        "author": "Neil Strauss",
+        "date": "2019-07-02",
+        "title": "The Game"
+    },
+    {
+        "author": "Tim Krabbé",
+        "date": "2019-06-16",
+        "title": "Cyklisten"
+    },
+    {
+        "author": "A. A. Milne",
+        "date": "2019-06-04",
+        "title": "The House at Pooh Corner"
+    },
+    {
         "author": "Donella H. Meadows",
         "date": "2019-05-26",
         "title": "Thinking in Systems"
