@@ -18,7 +18,7 @@ def mkdir(d):
 def render(template, ctx, dst):
     ctx = ctx.copy()
     ctx["blog"] = blog
-    html = env.get_template(template).render(ctx).encode("utf-8")
+    html = env.get_template(template).render(ctx)
     mkdir(os.path.dirname(dst))
     with open(dst, "w") as fd:
         fd.write(html)

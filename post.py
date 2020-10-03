@@ -1,6 +1,8 @@
 import re
 from datetime import datetime
 from markdown import markdown
+from markdown.extensions.footnotes import FootnoteExtension
+from markdown.extensions.codehilite import CodeHiliteExtension
 import codecs
 
 def pretty_date(datetime):
@@ -40,7 +42,10 @@ def read_post(src, dst):
     post["url"] = dst
 
     # Format with markdown
-    post["content"] = markdown(body, extensions=['footnotes', 'codehilite(guess_lang=False)'])
+    post["content"] = markdown(body, extensions=[
+        FootnoteExtension(),
+        CodeHiliteExtension(guess_lang=False)
+    ])
 
     # Make a nice abstract
     abstract = body.split('<!-- abstract -->', 1)[0]
