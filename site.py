@@ -50,10 +50,12 @@ def books():
 
 if __name__ == "__main__":
     drafts = [ read_post(path, entry_url(path, "")) for path in glob.glob("drafts/*.txt")]
-    map(entry, drafts)
+    for d in drafts:
+        entry(d)
     posts = [ read_post(path, entry_url(path, "posts")) for path in glob.glob("posts/*/*/*")]
     posts = sorted(posts, key=lambda p: p["posted"]["datetime"], reverse=True)
-    map(entry, posts)
+    for p in posts:
+        entry(p)
     feed(posts)
     index(posts)
     books()
