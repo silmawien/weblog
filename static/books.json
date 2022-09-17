@@ -1,5 +1,105 @@
 [
     {
+        "author": "Lena Andersson",
+        "date": "2022-09-17",
+        "title": "Koryféerna"
+    },
+    {
+        "author": "Kerstin Ekman",
+        "date": "2022-09-11",
+        "title": "Händelser vid vatten"
+    },
+    {
+        "author": "Lena Andersson",
+        "date": "2022-09-09",
+        "title": "Dottern"
+    },
+    {
+        "author": "Edward O. Thorp",
+        "date": "2022-08-27",
+        "title": "A Man for All Markets"
+    },
+    {
+        "author": "Tom Clancy",
+        "date": "2022-08-20",
+        "title": "Red Storm Rising"
+    },
+    {
+        "author": "Lena Andersson",
+        "date": "2022-08-11",
+        "title": "Sveas son"
+    },
+    {
+        "author": "Lars Wilderäng",
+        "date": "2022-08-07",
+        "title": "Midsommargryning"
+    },
+    {
+        "author": "Lars Wilderäng",
+        "date": "2022-08-05",
+        "title": "Midvinternatt"
+    },
+    {
+        "author": "Richard Morgan",
+        "date": "2022-07-25",
+        "title": "Altered Carbon"
+    },
+    {
+        "author": "Donna Tartt",
+        "date": "2022-07-20",
+        "title": "The Goldfinch"
+    },
+    {
+        "author": "Greg Egan",
+        "date": "2022-06-10",
+        "title": "Distress"
+    },
+    {
+        "author": "Greg Egan",
+        "date": "2022-06-05",
+        "title": "Permutation City"
+    },
+    {
+        "author": "Greg Egan",
+        "date": "2022-06-01",
+        "title": "Quarantine"
+    },
+    {
+        "author": "Ingrid Carlberg",
+        "date": "2021-09-23",
+        "title": "Det står ett rum här och väntar på dig"
+    },
+    {
+        "author": "Sven Lindqvist",
+        "date": "2021-08-16",
+        "title": "Bänkpress"
+    },
+    {
+        "author": "Kim Stanley Robinson",
+        "date": "2021-06-10",
+        "title": "Red Mars"
+    },
+    {
+        "author": "Robert Jordan",
+        "date": "2021-04-16",
+        "title": "The Eye of the World"
+    },
+    {
+        "author": "Sam Fussell",
+        "date": "2021-04-02",
+        "title": "Muscle"
+    },
+    {
+        "author": "Jonathan Lundberg",
+        "date": "2021-03-20",
+        "title": "Sverigevänner"
+    },
+    {
+        "author": "Ernest Becker",
+        "date": "2021-03-10",
+        "title": "The Denial of Death"
+    },
+    {
         "author": "Tim Jackson",
         "date": "2021-02-09",
         "title": "Prosperity Without Growth"
@@ -1953,7 +2053,7 @@
     },
     {
         "date": "2011-07-17",
-        "link": "http://goo.gl/jFAV8",
+        "link": "http://www.denisdutton.com/baumeister.htm",
         "title": "Is There Anything Good About Men? [essay]"
     },
     {
