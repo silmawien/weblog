@@ -1,5 +1,45 @@
 [
     {
+        "author": "Frank Herbert",
+        "date": "2024-02",
+        "title": "Dune"
+    },
+    {
+        "author": "Vernor Vinge",
+        "date": "2023",
+        "title": "Marooned in Realtime"
+    },
+    {
+        "author": "Vernor Vinge",
+        "date": "2023",
+        "title": "The Peace War"
+    },
+    {
+        "author": "Kim Stanley Robinson",
+        "date": "2023",
+        "title": "Blue Mars"
+    },
+    {
+        "author": "Hanya Yanagihara",
+        "date": "2024-05-12",
+        "title": "A Little Life"
+    },
+    {
+        "author": "Gregory Zuckerman",
+        "date": "2024-05-11",
+        "title": "The Man Who Solved The Market"
+    },
+    {
+        "author": "Per Anders Fogelström",
+        "date": "2024-03-01",
+        "title": "Mina drömmars stad"
+    },
+    {
+        "author": "J. D. A. Wiseman",
+        "date": "2023-07-31",
+        "title": "Pricing Money"
+    },
+    {
         "author": "Clifford Stoll",
         "date": "2023-01-15",
         "title": "The Cuckoo's Egg"
