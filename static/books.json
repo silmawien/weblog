@@ -1,5 +1,20 @@
 [
     {
+        "author": "R. V. Jones",
+        "date": "2024-08-15",
+        "title": "Most Secret War"
+    },
+    {
+        "author": "Jack D. Schwager",
+        "date": "2024-08-11",
+        "title": "The Market Wizards"
+    },
+    {
+        "author": "Howard Marks",
+        "date": "2024-08-01",
+        "title": "The Most Important Thing Illuminated"
+    },
+    {
         "author": "Christopher R. Browning",
         "date": "2024-07-30",
         "title": "Ordinary Men"
@@ -45,14 +60,29 @@
         "title": "The Laws of Trading"
     },
     {
+        "author": "Michel Houellebecq",
+        "date": "2024-06",
+        "title": "Underkastelse"
+    },
+    {
         "author": "Plato",
         "date": "2024-05-28",
         "title": "Phaedrus"
     },
     {
-        "author": "Michel Houellebecq",
-        "date": "2024-06",
-        "title": "Underkastelse"
+        "author": "Hanya Yanagihara",
+        "date": "2024-05-12",
+        "title": "A Little Life"
+    },
+    {
+        "author": "Gregory Zuckerman",
+        "date": "2024-05-11",
+        "title": "The Man Who Solved The Market"
+    },
+    {
+        "author": "Per Anders Fogelström",
+        "date": "2024-03-01",
+        "title": "Mina drömmars stad"
     },
     {
         "author": "Frank Herbert",
@@ -73,21 +103,6 @@
         "author": "Kim Stanley Robinson",
         "date": "2023",
         "title": "Blue Mars"
-    },
-    {
-        "author": "Hanya Yanagihara",
-        "date": "2024-05-12",
-        "title": "A Little Life"
-    },
-    {
-        "author": "Gregory Zuckerman",
-        "date": "2024-05-11",
-        "title": "The Man Who Solved The Market"
-    },
-    {
-        "author": "Per Anders Fogelström",
-        "date": "2024-03-01",
-        "title": "Mina drömmars stad"
     },
     {
         "author": "J. D. A. Wiseman",
@@ -273,11 +288,6 @@
         "author": "Adrian Tchaikovsky",
         "date": "2020-11-08",
         "title": "Children of Time"
-    },
-    {
-        "author": "R. V. Jones",
-        "date": "2020-11-03",
-        "title": "Most Secret War"
     },
     {
         "author": "Nick Bostrom",
