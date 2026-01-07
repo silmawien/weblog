@@ -35,7 +35,7 @@ In a few lines of code, you could leave the dull 80x25 grey-on-black DOS world b
     :::pascal
     mem[$A000:320*y+x] := color;
 
-Oh, and by the way - the 256-color palette was customizable. Each of the palette entries could be replaced by any color from the 32-bit color space. A few pages into the tutorial, and already you had complete control over *everything* that was shown on screen. This was a mind-blowing experience for someone who up until now had been restricted to reading and printing text to the console. Mode 13h represented a blank canvas and a Spaceship of the Imagination.
+Oh, and by the way - the 256-color palette was customizable. Each of the palette entries could be replaced by any color from an 18-bit color space. A few pages into the tutorial, and already you had complete control of *everything* that was shown on screen. This was a mind-blowing experience for someone who up until now had been restricted to reading and printing text to the console. Mode 13h represented a blank canvas and a Spaceship of the Imagination.
 
 The tutorial was well written and full of useful tricks. In the first few chapters it built a crude but functional graphics library on top of the `putpixel()` primitive. It taught the standard algorithms for drawing [lines](http://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm) and [circles](http://en.wikipedia.org/wiki/Midpoint_circle_algorithm). It explained how to optimize inner loops with tricks like lookup tables or by dropping down to inline assembler.
 
